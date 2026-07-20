@@ -1,0 +1,179 @@
+{
+  "description": "داشبورد مبيعات HameemDB",
+  "archived": false,
+  "view_count": 0,
+  "collection_position": null,
+  "dashcards": [
+    {
+      "size_x": 18,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "مجموع مبلغ الحجوزات (total_price، كل الحالات) موزّعاً على الأيام لآخر 30 يوماً — HameemDB.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "day",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "day",
+            "field_ref": [
+              "field",
+              "day",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "sales",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "sales",
+            "field_ref": [
+              "field",
+              "sales",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "إجمالي المبيعات اليومية — آخر 30 يوم",
+        "document_id": null,
+        "last_used_at": "2026-07-20T13:35:43.536268Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 378,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T13:35:43.536268Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT DATE(created_at) AS day, ROUND(SUM(CAST(total_price AS DECIMAL(12,2))),2) AS sales FROM reservations WHERE deleted_at IS NULL AND created_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) GROUP BY DATE(created_at) ORDER BY day"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 364,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "ucLeYhoLsNjYL7lL8xBIM",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "day"
+          ],
+          "graph.x_axis.title_text": "اليوم",
+          "graph.y_axis.title_text": "المبيعات (﷼)",
+          "graph.show_values": true,
+          "graph.metrics": [
+            "sales"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T13:35:43.536268Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T13:35:57.166069Z",
+      "col": 0,
+      "id": 397,
+      "parameter_mappings": [],
+      "card_id": 364,
+      "entity_id": "KA3nRxGcyaynvPASHXnik",
+      "visualization_settings": {},
+      "size_y": 8,
+      "dashboard_id": 199,
+      "created_at": "2026-07-20T13:35:57.166069Z",
+      "row": 0
+    }
+  ],
+  "embedding_type": null,
+  "initially_published_at": null,
+  "can_write": true,
+  "can_set_cache_policy": true,
+  "tabs": [],
+  "enable_embedding": false,
+  "collection_id": 100,
+  "show_in_getting_started": false,
+  "name": "لوحة مبيعات هميم",
+  "is_remote_synced": false,
+  "width": "fixed",
+  "caveats": null,
+  "collection_authority_level": null,
+  "creator_id": 134,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-20T13:35:55.252272Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "last_used_param_values": {},
+  "id": 199,
+  "last_viewed_at": "2026-07-20T13:35:55.252272Z",
+  "position": null,
+  "archived_directly": false,
+  "entity_id": "feGmlm3HDAprAD485hXbd",
+  "param_fields": {},
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-20T13:35:57.244093Z"
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "saleh",
+    "archive_operation_id": null,
+    "name": "saleh",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "effective_location": "/",
+    "id": 100,
+    "archived_directly": null,
+    "entity_id": "h1gJ0l3UuPLO4tIwBMPj0",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-20T07:54:21.268009Z"
+  },
+  "parameters": [],
+  "auto_apply_filters": true,
+  "created_at": "2026-07-20T13:35:55.252272Z",
+  "public_uuid": null,
+  "points_of_interest": null,
+  "can_delete": false
+}

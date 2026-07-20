@@ -12,3 +12,13 @@ with the "before" snapshot and a ready-to-run undo command.
 Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 
 ---
+
+### 20260720T133610Z — CREATE card #364
+- **Name:** إجمالي المبيعات اليومية — آخر 30 يوم
+- **Before-snapshot:** `—`
+- **Undo:** `source metabase/lib.sh && archive card 364`
+
+### 20260720T133610Z — CREATE dashboard #199
+- **Name:** لوحة مبيعات هميم
+- **Before-snapshot:** `—`
+- **Undo:** `source metabase/lib.sh && archive dashboard 199`
