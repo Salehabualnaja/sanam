@@ -1,0 +1,7 @@
+# Secrets — never commit credentials
+metabase/.env
+*.secret
+*.key
+
+# OS / editor noise
+.DS_Store
