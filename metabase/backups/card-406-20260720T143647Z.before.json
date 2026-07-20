@@ -1,0 +1,188 @@
+{
+  "cache_invalidated_at": null,
+  "description": "الحجوزات المكتملة (status=3) التي تستهلك باقة (use_package=1) شهرياً.",
+  "archived": false,
+  "view_count": 1,
+  "collection_position": null,
+  "source_card_id": null,
+  "table_id": null,
+  "can_run_adhoc_query": true,
+  "result_metadata": [
+    {
+      "database_type": "DATE",
+      "semantic_type": null,
+      "lib/deduplicated-name": "month",
+      "lib/original-name": "month",
+      "name": "month",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "month",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "month",
+        {
+          "base-type": "type/Date"
+        }
+      ],
+      "effective_type": "type/Date",
+      "lib/desired-column-alias": "month",
+      "display_name": "month",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 20,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/DateTime": {
+            "earliest": "2024-12-01",
+            "latest": "2026-07-01",
+            "mode-fraction": 0.05,
+            "top-3-fraction": 0.15
+          }
+        }
+      },
+      "base_type": "type/Date"
+    },
+    {
+      "database_type": "BIGINT",
+      "semantic_type": null,
+      "lib/deduplicated-name": "completed_from_packages",
+      "lib/original-name": "completed_from_packages",
+      "name": "completed_from_packages",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "completed_from_packages",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "completed_from_packages",
+        {
+          "base-type": "type/BigInteger"
+        }
+      ],
+      "effective_type": "type/BigInteger",
+      "lib/desired-column-alias": "completed_from_packages",
+      "display_name": "completed_from_packages",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 20,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/Number": {
+            "skewness": 1.1072529035709393,
+            "min": 9.0,
+            "q1": 253.0,
+            "q3": 1119.0,
+            "excess-kurtosis": 0.549029490885343,
+            "zero-fraction": 0.0,
+            "mode-fraction": 0.05,
+            "top-3-fraction": 0.15,
+            "max": 2629.0,
+            "sd": 726.3746025005931,
+            "avg": 823.1999999999999
+          }
+        }
+      },
+      "base_type": "type/BigInteger"
+    }
+  ],
+  "embedding_type": null,
+  "creator": {
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "is_data_analyst": false,
+    "last_login": null,
+    "is_qbnewb": true,
+    "is_superuser": true,
+    "id": 134,
+    "last_name": "",
+    "tenant_id": null,
+    "date_joined": "2026-07-20T07:58:18.870805Z",
+    "common_name": "saleh"
+  },
+  "initially_published_at": null,
+  "can_write": true,
+  "card_schema": 23,
+  "database_id": 67,
+  "enable_embedding": false,
+  "collection_id": 100,
+  "query_type": "native",
+  "name": "الغسلات المكتملة من الباقات — شهرياً",
+  "last_query_start": "2026-07-20T14:32:54.067758Z",
+  "is_remote_synced": false,
+  "dashboard_count": 1,
+  "document_id": null,
+  "last_used_at": "2026-07-20T14:32:54.075005Z",
+  "dashboard": null,
+  "type": "question",
+  "dimensions": null,
+  "average_query_time": 836.0000000000000000,
+  "creator_id": 134,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-20T14:04:58.117136Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "dataset_query": {
+    "lib/type": "mbql/query",
+    "database": 67,
+    "stages": [
+      {
+        "lib/type": "mbql.stage/native",
+        "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, COUNT(*) AS completed_from_packages FROM reservations WHERE deleted_at IS NULL AND status=3 AND use_package=1 GROUP BY 1 ORDER BY 1"
+      }
+    ]
+  },
+  "dimension_mappings": null,
+  "id": 406,
+  "legacy_query": null,
+  "parameter_mappings": [],
+  "can_manage_db": true,
+  "display": "line",
+  "archived_directly": false,
+  "entity_id": "rlLCofp6UZ3KptIekn08G",
+  "param_fields": {},
+  "collection_preview": true,
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-20T14:04:58.136044Z"
+  },
+  "visualization_settings": {
+    "graph.dimensions": [
+      "month"
+    ],
+    "graph.metrics": [
+      "completed_from_packages"
+    ]
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "saleh",
+    "archive_operation_id": null,
+    "name": "saleh",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "id": 100,
+    "archived_directly": null,
+    "entity_id": "h1gJ0l3UuPLO4tIwBMPj0",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-20T07:54:21.268009Z"
+  },
+  "metabase_version": "v1.62.5 (402cb80)",
+  "parameters": [],
+  "dashboard_id": null,
+  "created_at": "2026-07-20T14:04:58.117136Z",
+  "parameter_usage_count": 0,
+  "public_uuid": null,
+  "can_delete": false
+}

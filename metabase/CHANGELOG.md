@@ -27,3 +27,8 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **Change:** added 4 tabs (Growth / BD & Sales / Efficiency / Delighting Customers) and 13 cards (397–409) from HameemDB.
 - **Before-snapshot:** `metabase/backups/dashboard-166-20260720T140028Z.before.json`
 - **Undo (whole batch):** `bash metabase/undo_okrs.sh`
+
+### 20260720T143719Z — EDIT 13 OKR cards → daily (2026-07-18 .. 2026-08-18)
+- **Change:** cards 397–409 switched from monthly to daily granularity, filtered to 18 Jul–18 Aug 2026.
+- **Before-snapshots:** listed in `metabase/backups/okrs_daily_undo.txt`
+- **Undo:** `bash metabase/undo_okrs_daily.sh`

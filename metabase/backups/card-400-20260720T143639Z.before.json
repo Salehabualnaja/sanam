@@ -1,0 +1,237 @@
+{
+  "cache_invalidated_at": "2026-07-20T14:05:59.697608Z",
+  "description": "طلبات الغسلة المفردة المدفوعة (use_package=0): العدد ونسبته. الهدف 60%.",
+  "archived": false,
+  "view_count": 1,
+  "collection_position": null,
+  "source_card_id": null,
+  "table_id": null,
+  "can_run_adhoc_query": true,
+  "result_metadata": [
+    {
+      "database_type": "DATE",
+      "semantic_type": null,
+      "lib/deduplicated-name": "month",
+      "lib/original-name": "month",
+      "name": "month",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "month",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "month",
+        {
+          "base-type": "type/Date"
+        }
+      ],
+      "effective_type": "type/Date",
+      "lib/desired-column-alias": "month",
+      "display_name": "month",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 34,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/DateTime": {
+            "earliest": "2023-10-01",
+            "latest": "2026-07-01",
+            "mode-fraction": 0.029411764705882353,
+            "top-3-fraction": 0.08823529411764706
+          }
+        }
+      },
+      "base_type": "type/Date"
+    },
+    {
+      "database_type": "DECIMAL",
+      "semantic_type": null,
+      "lib/deduplicated-name": "single_orders",
+      "lib/original-name": "single_orders",
+      "name": "single_orders",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "single_orders",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "single_orders",
+        {
+          "base-type": "type/Decimal"
+        }
+      ],
+      "effective_type": "type/Decimal",
+      "lib/desired-column-alias": "single_orders",
+      "display_name": "single_orders",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 34,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/Number": {
+            "skewness": 0.31753061922346115,
+            "min": 256.0,
+            "q1": 840.0,
+            "q3": 2120.0,
+            "excess-kurtosis": -1.1770377315115925,
+            "zero-fraction": 0.0,
+            "mode-fraction": 0.029411764705882353,
+            "top-3-fraction": 0.08823529411764706,
+            "max": 2940.0,
+            "sd": 777.7994004294281,
+            "avg": 1496.1764705882354
+          }
+        }
+      },
+      "base_type": "type/Decimal"
+    },
+    {
+      "database_type": "DECIMAL",
+      "semantic_type": null,
+      "lib/deduplicated-name": "single_pct",
+      "lib/original-name": "single_pct",
+      "name": "single_pct",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "single_pct",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "single_pct",
+        {
+          "base-type": "type/Decimal"
+        }
+      ],
+      "effective_type": "type/Decimal",
+      "lib/desired-column-alias": "single_pct",
+      "display_name": "single_pct",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 21,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/Number": {
+            "skewness": -0.9342219529727721,
+            "min": 40.0,
+            "q1": 73.5,
+            "q3": 100.0,
+            "excess-kurtosis": -0.057415440812049745,
+            "zero-fraction": 0.0,
+            "mode-fraction": 0.4117647058823529,
+            "top-3-fraction": 0.47058823529411764,
+            "max": 100.0,
+            "sd": 17.56491829538946,
+            "avg": 84.60294117647058
+          }
+        }
+      },
+      "base_type": "type/Decimal"
+    }
+  ],
+  "embedding_type": null,
+  "creator": {
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "is_data_analyst": false,
+    "last_login": null,
+    "is_qbnewb": true,
+    "is_superuser": true,
+    "id": 134,
+    "last_name": "",
+    "tenant_id": null,
+    "date_joined": "2026-07-20T07:58:18.870805Z",
+    "common_name": "saleh"
+  },
+  "initially_published_at": null,
+  "can_write": true,
+  "card_schema": 23,
+  "database_id": 67,
+  "enable_embedding": false,
+  "collection_id": 100,
+  "query_type": "native",
+  "name": "طلبات الغسلة المفردة — شهرياً (هدف 60%)",
+  "last_query_start": "2026-07-20T14:32:15.751755Z",
+  "is_remote_synced": false,
+  "dashboard_count": 1,
+  "document_id": null,
+  "last_used_at": "2026-07-20T14:32:15.762214Z",
+  "dashboard": null,
+  "type": "question",
+  "dimensions": null,
+  "average_query_time": 3027.0000000000000000,
+  "creator_id": 134,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-20T14:05:59.695839Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "dataset_query": {
+    "lib/type": "mbql/query",
+    "database": 67,
+    "stages": [
+      {
+        "lib/type": "mbql.stage/native",
+        "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, SUM(use_package=0) AS single_orders, ROUND(100*SUM(use_package=0)/COUNT(*),1) AS single_pct FROM reservations WHERE deleted_at IS NULL GROUP BY 1 ORDER BY 1"
+      }
+    ]
+  },
+  "dimension_mappings": null,
+  "id": 400,
+  "legacy_query": null,
+  "parameter_mappings": [],
+  "can_manage_db": true,
+  "display": "bar",
+  "archived_directly": false,
+  "entity_id": "4Xh7gSWJjDXUJ20d66WOn",
+  "param_fields": {},
+  "collection_preview": true,
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-20T14:05:59.722118Z"
+  },
+  "visualization_settings": {
+    "graph.dimensions": [
+      "month"
+    ],
+    "series_settings": {
+      "single_pct": {
+        "axis": "right",
+        "display": "line"
+      }
+    },
+    "graph.metrics": [
+      "single_orders",
+      "single_pct"
+    ]
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "saleh",
+    "archive_operation_id": null,
+    "name": "saleh",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "id": 100,
+    "archived_directly": null,
+    "entity_id": "h1gJ0l3UuPLO4tIwBMPj0",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-20T07:54:21.268009Z"
+  },
+  "metabase_version": "v1.62.5 (402cb80)",
+  "parameters": [],
+  "dashboard_id": null,
+  "created_at": "2026-07-20T14:04:51.073773Z",
+  "parameter_usage_count": 0,
+  "public_uuid": null,
+  "can_delete": false
+}

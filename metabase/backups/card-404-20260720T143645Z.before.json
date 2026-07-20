@@ -1,0 +1,231 @@
+{
+  "cache_invalidated_at": null,
+  "description": "عدد الـ B2B leads شهرياً وعدد من تم الاتصال بهم — corporate_wash_leads.",
+  "archived": false,
+  "view_count": 1,
+  "collection_position": null,
+  "source_card_id": null,
+  "table_id": null,
+  "can_run_adhoc_query": true,
+  "result_metadata": [
+    {
+      "database_type": "DATE",
+      "semantic_type": null,
+      "lib/deduplicated-name": "month",
+      "lib/original-name": "month",
+      "name": "month",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "month",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "month",
+        {
+          "base-type": "type/Date"
+        }
+      ],
+      "effective_type": "type/Date",
+      "lib/desired-column-alias": "month",
+      "display_name": "month",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 11,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/DateTime": {
+            "earliest": "2025-09-01",
+            "latest": "2026-07-01",
+            "mode-fraction": 0.09090909090909091,
+            "top-3-fraction": 0.2727272727272727
+          }
+        }
+      },
+      "base_type": "type/Date"
+    },
+    {
+      "database_type": "BIGINT",
+      "semantic_type": null,
+      "lib/deduplicated-name": "leads",
+      "lib/original-name": "leads",
+      "name": "leads",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "leads",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "leads",
+        {
+          "base-type": "type/BigInteger"
+        }
+      ],
+      "effective_type": "type/BigInteger",
+      "lib/desired-column-alias": "leads",
+      "display_name": "leads",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 10,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/Number": {
+            "skewness": 1.3412833340393486,
+            "min": 1.0,
+            "q1": 3.0,
+            "q3": 16.0,
+            "excess-kurtosis": 1.2905256063022152,
+            "zero-fraction": 0.0,
+            "mode-fraction": 0.18181818181818182,
+            "top-3-fraction": 0.36363636363636365,
+            "max": 31.0,
+            "sd": 9.274598741626606,
+            "avg": 10.272727272727272
+          }
+        }
+      },
+      "base_type": "type/BigInteger"
+    },
+    {
+      "database_type": "DECIMAL",
+      "semantic_type": null,
+      "lib/deduplicated-name": "contacted",
+      "lib/original-name": "contacted",
+      "name": "contacted",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "contacted",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "contacted",
+        {
+          "base-type": "type/Decimal"
+        }
+      ],
+      "effective_type": "type/Decimal",
+      "lib/desired-column-alias": "contacted",
+      "display_name": "contacted",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 2,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/Number": {
+            "skewness": 3.3166247903554007,
+            "min": 0.0,
+            "q1": 0.0,
+            "q3": 0.0,
+            "excess-kurtosis": 11.000000000000004,
+            "zero-fraction": 0.9090909090909091,
+            "mode-fraction": 0.9090909090909091,
+            "top-3-fraction": 1.0,
+            "max": 5.0,
+            "sd": 1.507556722888818,
+            "avg": 0.45454545454545453
+          }
+        }
+      },
+      "base_type": "type/Decimal"
+    }
+  ],
+  "embedding_type": null,
+  "creator": {
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "is_data_analyst": false,
+    "last_login": null,
+    "is_qbnewb": true,
+    "is_superuser": true,
+    "id": 134,
+    "last_name": "",
+    "tenant_id": null,
+    "date_joined": "2026-07-20T07:58:18.870805Z",
+    "common_name": "saleh"
+  },
+  "initially_published_at": null,
+  "can_write": true,
+  "card_schema": 23,
+  "database_id": 67,
+  "enable_embedding": false,
+  "collection_id": 100,
+  "query_type": "native",
+  "name": "عملاء B2B محتملون (Leads) والمُتّصل بهم — شهرياً",
+  "last_query_start": "2026-07-20T14:32:17.609967Z",
+  "is_remote_synced": false,
+  "dashboard_count": 1,
+  "document_id": null,
+  "last_used_at": "2026-07-20T14:32:17.617674Z",
+  "dashboard": null,
+  "type": "question",
+  "dimensions": null,
+  "average_query_time": 1094.0000000000000000,
+  "creator_id": 134,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-20T14:04:56.094179Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "dataset_query": {
+    "lib/type": "mbql/query",
+    "database": 67,
+    "stages": [
+      {
+        "lib/type": "mbql.stage/native",
+        "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, COUNT(*) AS leads, SUM(contact_status>0) AS contacted FROM corporate_wash_leads GROUP BY 1 ORDER BY 1"
+      }
+    ]
+  },
+  "dimension_mappings": null,
+  "id": 404,
+  "legacy_query": null,
+  "parameter_mappings": [],
+  "can_manage_db": true,
+  "display": "bar",
+  "archived_directly": false,
+  "entity_id": "WUrZsOUm4kDSDWr1hOicS",
+  "param_fields": {},
+  "collection_preview": true,
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-20T14:04:56.115878Z"
+  },
+  "visualization_settings": {
+    "graph.dimensions": [
+      "month"
+    ],
+    "graph.metrics": [
+      "leads",
+      "contacted"
+    ]
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "saleh",
+    "archive_operation_id": null,
+    "name": "saleh",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "id": 100,
+    "archived_directly": null,
+    "entity_id": "h1gJ0l3UuPLO4tIwBMPj0",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-20T07:54:21.268009Z"
+  },
+  "metabase_version": "v1.62.5 (402cb80)",
+  "parameters": [],
+  "dashboard_id": null,
+  "created_at": "2026-07-20T14:04:56.094179Z",
+  "parameter_usage_count": 0,
+  "public_uuid": null,
+  "can_delete": false
+}

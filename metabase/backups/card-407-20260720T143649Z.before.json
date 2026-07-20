@@ -1,0 +1,237 @@
+{
+  "cache_invalidated_at": "2026-07-20T14:06:00.427053Z",
+  "description": "متوسط تقييم المراجعات (1-5) ونسبة الرضا (تقييم 4-5) شهرياً — reviews.",
+  "archived": false,
+  "view_count": 2,
+  "collection_position": null,
+  "source_card_id": null,
+  "table_id": null,
+  "can_run_adhoc_query": true,
+  "result_metadata": [
+    {
+      "database_type": "DATE",
+      "semantic_type": null,
+      "lib/deduplicated-name": "month",
+      "lib/original-name": "month",
+      "name": "month",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "month",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "month",
+        {
+          "base-type": "type/Date"
+        }
+      ],
+      "effective_type": "type/Date",
+      "lib/desired-column-alias": "month",
+      "display_name": "month",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 34,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/DateTime": {
+            "earliest": "2023-10-01",
+            "latest": "2026-07-01",
+            "mode-fraction": 0.029411764705882353,
+            "top-3-fraction": 0.08823529411764706
+          }
+        }
+      },
+      "base_type": "type/Date"
+    },
+    {
+      "database_type": "DECIMAL",
+      "semantic_type": "type/Score",
+      "lib/deduplicated-name": "avg_score",
+      "lib/original-name": "avg_score",
+      "name": "avg_score",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "avg_score",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "avg_score",
+        {
+          "base-type": "type/Decimal"
+        }
+      ],
+      "effective_type": "type/Decimal",
+      "lib/desired-column-alias": "avg_score",
+      "display_name": "avg_score",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 23,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/Number": {
+            "skewness": -1.7968992677981155,
+            "min": 3.55,
+            "q1": 4.41,
+            "q3": 4.58,
+            "excess-kurtosis": 6.194171857292334,
+            "zero-fraction": 0.0,
+            "mode-fraction": 0.11764705882352941,
+            "top-3-fraction": 0.29411764705882354,
+            "max": 4.89,
+            "sd": 0.2420522770246835,
+            "avg": 4.484705882352942
+          }
+        }
+      },
+      "base_type": "type/Decimal"
+    },
+    {
+      "database_type": "DECIMAL",
+      "semantic_type": null,
+      "lib/deduplicated-name": "csat_pct",
+      "lib/original-name": "csat_pct",
+      "name": "csat_pct",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "csat_pct",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "csat_pct",
+        {
+          "base-type": "type/Decimal"
+        }
+      ],
+      "effective_type": "type/Decimal",
+      "lib/desired-column-alias": "csat_pct",
+      "display_name": "csat_pct",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 34,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/Number": {
+            "skewness": -1.0608107084195408,
+            "min": 65.0,
+            "q1": 83.3,
+            "q3": 88.6,
+            "excess-kurtosis": 3.080819114571202,
+            "zero-fraction": 0.0,
+            "mode-fraction": 0.029411764705882353,
+            "top-3-fraction": 0.08823529411764706,
+            "max": 98.6,
+            "sd": 6.277876867852253,
+            "avg": 85.69117647058822
+          }
+        }
+      },
+      "base_type": "type/Decimal"
+    }
+  ],
+  "embedding_type": null,
+  "creator": {
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "is_data_analyst": false,
+    "last_login": null,
+    "is_qbnewb": true,
+    "is_superuser": true,
+    "id": 134,
+    "last_name": "",
+    "tenant_id": null,
+    "date_joined": "2026-07-20T07:58:18.870805Z",
+    "common_name": "saleh"
+  },
+  "initially_published_at": null,
+  "can_write": true,
+  "card_schema": 23,
+  "database_id": 67,
+  "enable_embedding": false,
+  "collection_id": 100,
+  "query_type": "native",
+  "name": "رضا العملاء — متوسط التقييم و CSAT% — شهرياً",
+  "last_query_start": "2026-07-20T14:32:54.174724Z",
+  "is_remote_synced": false,
+  "dashboard_count": 1,
+  "document_id": null,
+  "last_used_at": "2026-07-20T14:32:54.18083Z",
+  "dashboard": null,
+  "type": "question",
+  "dimensions": null,
+  "average_query_time": 539.5000000000000000,
+  "creator_id": 134,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-20T14:06:00.424657Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "dataset_query": {
+    "lib/type": "mbql/query",
+    "database": 67,
+    "stages": [
+      {
+        "lib/type": "mbql.stage/native",
+        "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, ROUND(AVG(score),2) AS avg_score, ROUND(100*SUM(score>=4)/COUNT(*),1) AS csat_pct FROM reviews WHERE deleted_at IS NULL GROUP BY 1 ORDER BY 1"
+      }
+    ]
+  },
+  "dimension_mappings": null,
+  "id": 407,
+  "legacy_query": null,
+  "parameter_mappings": [],
+  "can_manage_db": true,
+  "display": "line",
+  "archived_directly": false,
+  "entity_id": "LvoRMoRjTpNI6KvjDntUT",
+  "param_fields": {},
+  "collection_preview": true,
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-20T14:06:00.46616Z"
+  },
+  "visualization_settings": {
+    "graph.dimensions": [
+      "month"
+    ],
+    "series_settings": {
+      "csat_pct": {
+        "axis": "right",
+        "display": "line"
+      }
+    },
+    "graph.metrics": [
+      "avg_score",
+      "csat_pct"
+    ]
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "saleh",
+    "archive_operation_id": null,
+    "name": "saleh",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "id": 100,
+    "archived_directly": null,
+    "entity_id": "h1gJ0l3UuPLO4tIwBMPj0",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-20T07:54:21.268009Z"
+  },
+  "metabase_version": "v1.62.5 (402cb80)",
+  "parameters": [],
+  "dashboard_id": null,
+  "created_at": "2026-07-20T14:04:59.018792Z",
+  "parameter_usage_count": 0,
+  "public_uuid": null,
+  "can_delete": false
+}

@@ -1,0 +1,188 @@
+{
+  "cache_invalidated_at": null,
+  "description": "متوسط total_price للطلبات المدفوعة (use_package=0) شهرياً.",
+  "archived": false,
+  "view_count": 1,
+  "collection_position": null,
+  "source_card_id": null,
+  "table_id": null,
+  "can_run_adhoc_query": true,
+  "result_metadata": [
+    {
+      "database_type": "DATE",
+      "semantic_type": null,
+      "lib/deduplicated-name": "month",
+      "lib/original-name": "month",
+      "name": "month",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "month",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "month",
+        {
+          "base-type": "type/Date"
+        }
+      ],
+      "effective_type": "type/Date",
+      "lib/desired-column-alias": "month",
+      "display_name": "month",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 34,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/DateTime": {
+            "earliest": "2023-10-01",
+            "latest": "2026-07-01",
+            "mode-fraction": 0.029411764705882353,
+            "top-3-fraction": 0.08823529411764706
+          }
+        }
+      },
+      "base_type": "type/Date"
+    },
+    {
+      "database_type": "DECIMAL",
+      "semantic_type": null,
+      "lib/deduplicated-name": "aov",
+      "lib/original-name": "aov",
+      "name": "aov",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "aov",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "aov",
+        {
+          "base-type": "type/Decimal"
+        }
+      ],
+      "effective_type": "type/Decimal",
+      "lib/desired-column-alias": "aov",
+      "display_name": "aov",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 34,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/Number": {
+            "skewness": -0.2407096609119977,
+            "min": 15.21,
+            "q1": 31.04,
+            "q3": 36.1,
+            "excess-kurtosis": 3.0419328571524917,
+            "zero-fraction": 0.0,
+            "mode-fraction": 0.029411764705882353,
+            "top-3-fraction": 0.08823529411764706,
+            "max": 45.02,
+            "sd": 5.579852284348709,
+            "avg": 33.64
+          }
+        }
+      },
+      "base_type": "type/Decimal"
+    }
+  ],
+  "embedding_type": null,
+  "creator": {
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "is_data_analyst": false,
+    "last_login": null,
+    "is_qbnewb": true,
+    "is_superuser": true,
+    "id": 134,
+    "last_name": "",
+    "tenant_id": null,
+    "date_joined": "2026-07-20T07:58:18.870805Z",
+    "common_name": "saleh"
+  },
+  "initially_published_at": null,
+  "can_write": true,
+  "card_schema": 23,
+  "database_id": 67,
+  "enable_embedding": false,
+  "collection_id": 100,
+  "query_type": "native",
+  "name": "متوسط قيمة الطلب (AOV) — شهرياً",
+  "last_query_start": "2026-07-20T14:32:15.745962Z",
+  "is_remote_synced": false,
+  "dashboard_count": 1,
+  "document_id": null,
+  "last_used_at": "2026-07-20T14:32:15.762214Z",
+  "dashboard": null,
+  "type": "question",
+  "dimensions": null,
+  "average_query_time": 3036.0000000000000000,
+  "creator_id": 134,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-20T14:04:52.06077Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "dataset_query": {
+    "lib/type": "mbql/query",
+    "database": 67,
+    "stages": [
+      {
+        "lib/type": "mbql.stage/native",
+        "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, ROUND(AVG(CAST(total_price AS DECIMAL(12,2))),2) AS aov FROM reservations WHERE deleted_at IS NULL AND use_package=0 GROUP BY 1 ORDER BY 1"
+      }
+    ]
+  },
+  "dimension_mappings": null,
+  "id": 401,
+  "legacy_query": null,
+  "parameter_mappings": [],
+  "can_manage_db": true,
+  "display": "line",
+  "archived_directly": false,
+  "entity_id": "DFCZQJiUcQEE3-FFOg1xi",
+  "param_fields": {},
+  "collection_preview": true,
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-20T14:04:52.083483Z"
+  },
+  "visualization_settings": {
+    "graph.dimensions": [
+      "month"
+    ],
+    "graph.metrics": [
+      "aov"
+    ]
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "saleh",
+    "archive_operation_id": null,
+    "name": "saleh",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "id": 100,
+    "archived_directly": null,
+    "entity_id": "h1gJ0l3UuPLO4tIwBMPj0",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-20T07:54:21.268009Z"
+  },
+  "metabase_version": "v1.62.5 (402cb80)",
+  "parameters": [],
+  "dashboard_id": null,
+  "created_at": "2026-07-20T14:04:52.06077Z",
+  "parameter_usage_count": 0,
+  "public_uuid": null,
+  "can_delete": false
+}

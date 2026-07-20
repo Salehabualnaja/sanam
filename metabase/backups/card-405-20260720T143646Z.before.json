@@ -1,0 +1,188 @@
+{
+  "cache_invalidated_at": null,
+  "description": "الغسلات المكتملة ÷ (عدد العمال × أيام العمل) لكل شهر.",
+  "archived": false,
+  "view_count": 2,
+  "collection_position": null,
+  "source_card_id": null,
+  "table_id": null,
+  "can_run_adhoc_query": true,
+  "result_metadata": [
+    {
+      "database_type": "DATE",
+      "semantic_type": null,
+      "lib/deduplicated-name": "month",
+      "lib/original-name": "month",
+      "name": "month",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "month",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "month",
+        {
+          "base-type": "type/Date"
+        }
+      ],
+      "effective_type": "type/Date",
+      "lib/desired-column-alias": "month",
+      "display_name": "month",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 34,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/DateTime": {
+            "earliest": "2023-10-01",
+            "latest": "2026-07-01",
+            "mode-fraction": 0.029411764705882353,
+            "top-3-fraction": 0.08823529411764706
+          }
+        }
+      },
+      "base_type": "type/Date"
+    },
+    {
+      "database_type": "DECIMAL",
+      "semantic_type": null,
+      "lib/deduplicated-name": "per_washer_per_day",
+      "lib/original-name": "per_washer_per_day",
+      "name": "per_washer_per_day",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "per_washer_per_day",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "per_washer_per_day",
+        {
+          "base-type": "type/Decimal"
+        }
+      ],
+      "effective_type": "type/Decimal",
+      "lib/desired-column-alias": "per_washer_per_day",
+      "display_name": "per_washer_per_day",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 33,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/Number": {
+            "skewness": 0.32995272881251597,
+            "min": 0.66,
+            "q1": 1.79,
+            "q3": 3.11,
+            "excess-kurtosis": -0.41098063872639923,
+            "zero-fraction": 0.0,
+            "mode-fraction": 0.058823529411764705,
+            "top-3-fraction": 0.11764705882352941,
+            "max": 4.41,
+            "sd": 0.9875716089020824,
+            "avg": 2.4041176470588237
+          }
+        }
+      },
+      "base_type": "type/Decimal"
+    }
+  ],
+  "embedding_type": null,
+  "creator": {
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "is_data_analyst": false,
+    "last_login": null,
+    "is_qbnewb": true,
+    "is_superuser": true,
+    "id": 134,
+    "last_name": "",
+    "tenant_id": null,
+    "date_joined": "2026-07-20T07:58:18.870805Z",
+    "common_name": "saleh"
+  },
+  "initially_published_at": null,
+  "can_write": true,
+  "card_schema": 23,
+  "database_id": 67,
+  "enable_embedding": false,
+  "collection_id": 100,
+  "query_type": "native",
+  "name": "متوسط الغسلات لكل عامل يومياً — شهرياً",
+  "last_query_start": "2026-07-20T14:32:54.062923Z",
+  "is_remote_synced": false,
+  "dashboard_count": 1,
+  "document_id": null,
+  "last_used_at": "2026-07-20T14:32:54.075005Z",
+  "dashboard": null,
+  "type": "question",
+  "dimensions": null,
+  "average_query_time": 715.0000000000000000,
+  "creator_id": 134,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-20T14:04:57.046965Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "dataset_query": {
+    "lib/type": "mbql/query",
+    "database": 67,
+    "stages": [
+      {
+        "lib/type": "mbql.stage/native",
+        "native": "SELECT month, ROUND(completed/NULLIF(reps*days,0),2) AS per_washer_per_day FROM (SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, COUNT(*) AS completed, COUNT(DISTINCT representative_id) AS reps, COUNT(DISTINCT DATE(created_at)) AS days FROM reservations WHERE deleted_at IS NULL AND status=3 AND representative_id IS NOT NULL GROUP BY 1) t ORDER BY 1"
+      }
+    ]
+  },
+  "dimension_mappings": null,
+  "id": 405,
+  "legacy_query": null,
+  "parameter_mappings": [],
+  "can_manage_db": true,
+  "display": "line",
+  "archived_directly": false,
+  "entity_id": "uGH2oV72lQjTin-P126vX",
+  "param_fields": {},
+  "collection_preview": true,
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-20T14:04:57.065733Z"
+  },
+  "visualization_settings": {
+    "graph.dimensions": [
+      "month"
+    ],
+    "graph.metrics": [
+      "per_washer_per_day"
+    ]
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "saleh",
+    "archive_operation_id": null,
+    "name": "saleh",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "id": 100,
+    "archived_directly": null,
+    "entity_id": "h1gJ0l3UuPLO4tIwBMPj0",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-20T07:54:21.268009Z"
+  },
+  "metabase_version": "v1.62.5 (402cb80)",
+  "parameters": [],
+  "dashboard_id": null,
+  "created_at": "2026-07-20T14:04:57.046965Z",
+  "parameter_usage_count": 0,
+  "public_uuid": null,
+  "can_delete": false
+}
