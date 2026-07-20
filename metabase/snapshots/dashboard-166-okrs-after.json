@@ -1,0 +1,1816 @@
+{
+  "description": null,
+  "archived": false,
+  "view_count": 6,
+  "collection_position": null,
+  "dashcards": [
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 67,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "مجموع total_price لكل الحجوزات شهرياً — HameemDB.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "month",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "month",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "sales",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "sales",
+            "field_ref": [
+              "field",
+              "sales",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "المبيعات الشهرية",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:04:47.122785Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:04:47.122785Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, ROUND(SUM(CAST(total_price AS DECIMAL(12,2))),2) AS sales FROM reservations WHERE deleted_at IS NULL GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 397,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "MJSceQIrNq1h8b-Z4XWzq",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "graph.metrics": [
+            "sales"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:04:47.122785Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 0,
+      "id": 430,
+      "parameter_mappings": [],
+      "card_id": 397,
+      "entity_id": "phfwmPQO6tGoAAgViQudr",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 0
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 67,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "عدد الحجوزات المُنشأة شهرياً (كل الحالات).",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "month",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "month",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "orders",
+            "database_type": "BIGINT",
+            "base_type": "type/BigInteger",
+            "display_name": "orders",
+            "field_ref": [
+              "field",
+              "orders",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "عدد الطلبات الشهري",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:04:48.827931Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:04:48.827931Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, COUNT(*) AS orders FROM reservations WHERE deleted_at IS NULL GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 398,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "ul-cE0d3uWLgxnUEXFI2L",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "graph.metrics": [
+            "orders"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:04:48.827931Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 12,
+      "id": 431,
+      "parameter_mappings": [],
+      "card_id": 398,
+      "entity_id": "aYwR3VWzCaG_9tbLgmp4b",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 0
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 67,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": "2026-07-20T14:05:59.045874Z",
+        "description": "الطلبات التي تستهلك باقة (use_package=1): العدد ونسبته من إجمالي الطلبات. الهدف 40%.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "month",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "month",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "package_orders",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "package_orders",
+            "field_ref": [
+              "field",
+              "package_orders",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          },
+          {
+            "name": "package_pct",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "package_pct",
+            "field_ref": [
+              "field",
+              "package_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "طلبات الباقات — شهرياً (هدف 40%)",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:04:49.881941Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:05:59.043762Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, SUM(use_package=1) AS package_orders, ROUND(100*SUM(use_package=1)/COUNT(*),1) AS package_pct FROM reservations WHERE deleted_at IS NULL GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 399,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "r8ylrF8R7mG6pyNeZV8_M",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "series_settings": {
+            "package_pct": {
+              "axis": "right",
+              "display": "line"
+            }
+          },
+          "graph.metrics": [
+            "package_orders",
+            "package_pct"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:04:49.881941Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 0,
+      "id": 432,
+      "parameter_mappings": [],
+      "card_id": 399,
+      "entity_id": "9VS4eZJV60yiyQCFYoBOE",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 7
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 67,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": "2026-07-20T14:05:59.697608Z",
+        "description": "طلبات الغسلة المفردة المدفوعة (use_package=0): العدد ونسبته. الهدف 60%.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "month",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "month",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "single_orders",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "single_orders",
+            "field_ref": [
+              "field",
+              "single_orders",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          },
+          {
+            "name": "single_pct",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "single_pct",
+            "field_ref": [
+              "field",
+              "single_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "طلبات الغسلة المفردة — شهرياً (هدف 60%)",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:04:51.073773Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:05:59.695839Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, SUM(use_package=0) AS single_orders, ROUND(100*SUM(use_package=0)/COUNT(*),1) AS single_pct FROM reservations WHERE deleted_at IS NULL GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 400,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "4Xh7gSWJjDXUJ20d66WOn",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "series_settings": {
+            "single_pct": {
+              "axis": "right",
+              "display": "line"
+            }
+          },
+          "graph.metrics": [
+            "single_orders",
+            "single_pct"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:04:51.073773Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 12,
+      "id": 433,
+      "parameter_mappings": [],
+      "card_id": 400,
+      "entity_id": "_sNyQNs64Ow_MWG71HV-H",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 7
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 67,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "متوسط total_price للطلبات المدفوعة (use_package=0) شهرياً.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "month",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "month",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "aov",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "aov",
+            "field_ref": [
+              "field",
+              "aov",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "متوسط قيمة الطلب (AOV) — شهرياً",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:04:52.06077Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:04:52.06077Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, ROUND(AVG(CAST(total_price AS DECIMAL(12,2))),2) AS aov FROM reservations WHERE deleted_at IS NULL AND use_package=0 GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 401,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "DFCZQJiUcQEE3-FFOg1xi",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "graph.metrics": [
+            "aov"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:04:52.06077Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 0,
+      "id": 434,
+      "parameter_mappings": [],
+      "card_id": 401,
+      "entity_id": "jNR9ZMtuC6d5Mld8d4Vpq",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 14
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 67,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "عدد الحجوزات المكتملة فعلياً (status=3) شهرياً.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "month",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "month",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "completed",
+            "database_type": "BIGINT",
+            "base_type": "type/BigInteger",
+            "display_name": "completed",
+            "field_ref": [
+              "field",
+              "completed",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "الغسلات المكتملة (Completed) — شهرياً",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:04:53.335969Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:04:53.335969Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, COUNT(*) AS completed FROM reservations WHERE deleted_at IS NULL AND status=3 GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 402,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "1RaEc-YVQvIhpH6WDGvY0",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "graph.metrics": [
+            "completed"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:04:53.335969Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 12,
+      "id": 435,
+      "parameter_mappings": [],
+      "card_id": 402,
+      "entity_id": "h93C1FpNsvCIp4UlU47Ht",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 14
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 68,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "عدد الشركات (عملاء B2B) المُضافة شهرياً — جدول companies.",
+        "archived": false,
+        "view_count": 1,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "month",
+            "lib/original-name": "month",
+            "name": "month",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "month",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "month",
+            "display_name": "month",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 2,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2025-03-01",
+                  "latest": "2025-09-01",
+                  "mode-fraction": 0.5,
+                  "top-3-fraction": 1.0
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "new_companies",
+            "lib/original-name": "new_companies",
+            "name": "new_companies",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "new_companies",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "new_companies",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "new_companies",
+            "display_name": "new_companies",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 2,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": null,
+                  "min": 1.0,
+                  "q1": 1.0,
+                  "q3": 4.0,
+                  "excess-kurtosis": null,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.5,
+                  "top-3-fraction": 1.0,
+                  "max": 4.0,
+                  "sd": 2.1213203435596424,
+                  "avg": 2.5
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "عملاء B2B (الشركات) — شهرياً",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:06:11.565713Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 376,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:04:54.496019Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, COUNT(*) AS new_companies FROM companies GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 403,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "g13bj447wtZHVbstjPCgr",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "graph.metrics": [
+            "new_companies"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:04:54.496019Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 0,
+      "id": 436,
+      "parameter_mappings": [],
+      "card_id": 403,
+      "entity_id": "wS4fQM_YWsDD6WykEM4Bl",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 0
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 68,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "عدد الـ B2B leads شهرياً وعدد من تم الاتصال بهم — corporate_wash_leads.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "month",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "month",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "leads",
+            "database_type": "BIGINT",
+            "base_type": "type/BigInteger",
+            "display_name": "leads",
+            "field_ref": [
+              "field",
+              "leads",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ]
+          },
+          {
+            "name": "contacted",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "contacted",
+            "field_ref": [
+              "field",
+              "contacted",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "عملاء B2B محتملون (Leads) والمُتّصل بهم — شهرياً",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:04:56.094179Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:04:56.094179Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, COUNT(*) AS leads, SUM(contact_status>0) AS contacted FROM corporate_wash_leads GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 404,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "WUrZsOUm4kDSDWr1hOicS",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "graph.metrics": [
+            "leads",
+            "contacted"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:04:56.094179Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 12,
+      "id": 437,
+      "parameter_mappings": [],
+      "card_id": 404,
+      "entity_id": "0KAmGC_aLi_JnCVb8Slsk",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 0
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 69,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "الغسلات المكتملة ÷ (عدد العمال × أيام العمل) لكل شهر.",
+        "archived": false,
+        "view_count": 1,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "month",
+            "lib/original-name": "month",
+            "name": "month",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "month",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "month",
+            "display_name": "month",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2023-10-01",
+                  "latest": "2026-07-01",
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "per_washer_per_day",
+            "lib/original-name": "per_washer_per_day",
+            "name": "per_washer_per_day",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "per_washer_per_day",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "per_washer_per_day",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "per_washer_per_day",
+            "display_name": "per_washer_per_day",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 33,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.32995272881251597,
+                  "min": 0.66,
+                  "q1": 1.79,
+                  "q3": 3.11,
+                  "excess-kurtosis": -0.41098063872639923,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.11764705882352941,
+                  "max": 4.41,
+                  "sd": 0.9875716089020824,
+                  "avg": 2.4041176470588237
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "متوسط الغسلات لكل عامل يومياً — شهرياً",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:06:09.165435Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 676,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:04:57.046965Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT month, ROUND(completed/NULLIF(reps*days,0),2) AS per_washer_per_day FROM (SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, COUNT(*) AS completed, COUNT(DISTINCT representative_id) AS reps, COUNT(DISTINCT DATE(created_at)) AS days FROM reservations WHERE deleted_at IS NULL AND status=3 AND representative_id IS NOT NULL GROUP BY 1) t ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 405,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "uGH2oV72lQjTin-P126vX",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "graph.metrics": [
+            "per_washer_per_day"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:04:57.046965Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 0,
+      "id": 438,
+      "parameter_mappings": [],
+      "card_id": 405,
+      "entity_id": "fd8tN1U-u7Q360fIvXpzW",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 0
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 69,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "الحجوزات المكتملة (status=3) التي تستهلك باقة (use_package=1) شهرياً.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "month",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "month",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "completed_from_packages",
+            "database_type": "BIGINT",
+            "base_type": "type/BigInteger",
+            "display_name": "completed_from_packages",
+            "field_ref": [
+              "field",
+              "completed_from_packages",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "الغسلات المكتملة من الباقات — شهرياً",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:04:58.117136Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:04:58.117136Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, COUNT(*) AS completed_from_packages FROM reservations WHERE deleted_at IS NULL AND status=3 AND use_package=1 GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 406,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "rlLCofp6UZ3KptIekn08G",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "graph.metrics": [
+            "completed_from_packages"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:04:58.117136Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 12,
+      "id": 439,
+      "parameter_mappings": [],
+      "card_id": 406,
+      "entity_id": "jw9OTCGG2GtEL1GSBItIx",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 0
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 70,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": "2026-07-20T14:06:00.427053Z",
+        "description": "متوسط تقييم المراجعات (1-5) ونسبة الرضا (تقييم 4-5) شهرياً — reviews.",
+        "archived": false,
+        "view_count": 1,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "month",
+            "lib/original-name": "month",
+            "name": "month",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "month",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "month",
+            "display_name": "month",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2023-10-01",
+                  "latest": "2026-07-01",
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": "type/Score",
+            "lib/deduplicated-name": "avg_score",
+            "lib/original-name": "avg_score",
+            "name": "avg_score",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "avg_score",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "avg_score",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "avg_score",
+            "display_name": "avg_score",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 23,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -1.7968992677981155,
+                  "min": 3.55,
+                  "q1": 4.41,
+                  "q3": 4.58,
+                  "excess-kurtosis": 6.194171857292334,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.11764705882352941,
+                  "top-3-fraction": 0.29411764705882354,
+                  "max": 4.89,
+                  "sd": 0.2420522770246835,
+                  "avg": 4.484705882352942
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "csat_pct",
+            "lib/original-name": "csat_pct",
+            "name": "csat_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "csat_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "csat_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "csat_pct",
+            "display_name": "csat_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -1.0608107084195408,
+                  "min": 65.0,
+                  "q1": 83.3,
+                  "q3": 88.6,
+                  "excess-kurtosis": 3.080819114571202,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 98.6,
+                  "sd": 6.277876867852253,
+                  "avg": 85.69117647058822
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "رضا العملاء — متوسط التقييم و CSAT% — شهرياً",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:06:10.17895Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 437,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:06:00.424657Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, ROUND(AVG(score),2) AS avg_score, ROUND(100*SUM(score>=4)/COUNT(*),1) AS csat_pct FROM reviews WHERE deleted_at IS NULL GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 407,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "LvoRMoRjTpNI6KvjDntUT",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "series_settings": {
+            "csat_pct": {
+              "axis": "right",
+              "display": "line"
+            }
+          },
+          "graph.metrics": [
+            "avg_score",
+            "csat_pct"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:04:59.018792Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 0,
+      "id": 440,
+      "parameter_mappings": [],
+      "card_id": 407,
+      "entity_id": "zTw-MmnItGgzcCZEIl087",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 0
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 70,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "متوسط الفارق بين إنشاء الشكوى والرد عليها (answer_at) بالساعات — client_complaints.",
+        "archived": false,
+        "view_count": 1,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "month",
+            "lib/original-name": "month",
+            "name": "month",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "month",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "month",
+            "display_name": "month",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 4,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2026-04-01",
+                  "latest": "2026-07-01",
+                  "mode-fraction": 0.25,
+                  "top-3-fraction": 0.75
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "avg_hours",
+            "lib/original-name": "avg_hours",
+            "name": "avg_hours",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "avg_hours",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "avg_hours",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "avg_hours",
+            "display_name": "avg_hours",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 4,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -1.7488913784257398,
+                  "min": 20.6,
+                  "q1": 20.6,
+                  "q3": 58.8,
+                  "excess-kurtosis": 3.0102478588465367,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.25,
+                  "top-3-fraction": 0.75,
+                  "max": 59.4,
+                  "sd": 18.297973476134814,
+                  "avg": 47.425000000000004
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "متوسط وقت حل الشكاوى (ساعات) — شهرياً",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:06:10.891934Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 381,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:05:00.339765Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, ROUND(AVG(TIMESTAMPDIFF(HOUR,created_at,answer_at)),1) AS avg_hours FROM client_complaints WHERE deleted_at IS NULL AND answer_at IS NOT NULL GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 408,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "4YMddBTmG2Hx0Hc-As5ax",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "graph.metrics": [
+            "avg_hours"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:05:00.339765Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 12,
+      "id": 441,
+      "parameter_mappings": [],
+      "card_id": 408,
+      "entity_id": "JAuCa_tEvfXLotokl9HRi",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 0
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 70,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "عدد الشكاوى المُنشأة شهرياً — client_complaints.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "month",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "month",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "issues",
+            "database_type": "BIGINT",
+            "base_type": "type/BigInteger",
+            "display_name": "issues",
+            "field_ref": [
+              "field",
+              "issues",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "عدد الشكاوى — شهرياً",
+        "document_id": null,
+        "last_used_at": "2026-07-20T14:05:01.446818Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-20T14:05:01.446818Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, COUNT(*) AS issues FROM client_complaints WHERE deleted_at IS NULL GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 409,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "eVGyYQmWXJLvTrVY3tXYt",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "graph.metrics": [
+            "issues"
+          ]
+        },
+        "metabase_version": "v1.62.5 (402cb80)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-20T14:05:01.446818Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-20T14:05:38.930852Z",
+      "col": 0,
+      "id": 442,
+      "parameter_mappings": [],
+      "card_id": 409,
+      "entity_id": "SEYhxQXSfBnMdfM83FyjO",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 166,
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "row": 7
+    }
+  ],
+  "embedding_type": null,
+  "initially_published_at": null,
+  "can_write": true,
+  "can_set_cache_policy": true,
+  "tabs": [
+    {
+      "id": 67,
+      "dashboard_id": 166,
+      "name": "Growth",
+      "position": 0,
+      "entity_id": "Ix1SfbM46M88_xwVzP7Vw",
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "updated_at": "2026-07-20T14:05:38.930852Z"
+    },
+    {
+      "id": 68,
+      "dashboard_id": 166,
+      "name": "BD & Sales",
+      "position": 1,
+      "entity_id": "BT1uUD9ReyapRaR-mf4ua",
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "updated_at": "2026-07-20T14:05:38.930852Z"
+    },
+    {
+      "id": 69,
+      "dashboard_id": 166,
+      "name": "Efficiency",
+      "position": 2,
+      "entity_id": "J0ynNnFSQyCwU7OEYzV7B",
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "updated_at": "2026-07-20T14:05:38.930852Z"
+    },
+    {
+      "id": 70,
+      "dashboard_id": 166,
+      "name": "Delighting Customers",
+      "position": 3,
+      "entity_id": "jYFFtg83qDUPk4957HPrO",
+      "created_at": "2026-07-20T14:05:38.930852Z",
+      "updated_at": "2026-07-20T14:05:38.930852Z"
+    }
+  ],
+  "enable_embedding": false,
+  "collection_id": 100,
+  "show_in_getting_started": false,
+  "name": "OKRs",
+  "is_remote_synced": false,
+  "width": "fixed",
+  "caveats": null,
+  "collection_authority_level": null,
+  "creator_id": 34,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-20T07:56:36.279523Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "last_used_param_values": {},
+  "id": 166,
+  "last_viewed_at": "2026-07-20T07:56:36.279523Z",
+  "position": null,
+  "archived_directly": false,
+  "entity_id": "SG68EwSqjo5c4tidomtsL",
+  "param_fields": {},
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-20T14:05:39.025889Z"
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "saleh",
+    "archive_operation_id": null,
+    "name": "saleh",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "effective_location": "/",
+    "id": 100,
+    "archived_directly": null,
+    "entity_id": "h1gJ0l3UuPLO4tIwBMPj0",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-20T07:54:21.268009Z"
+  },
+  "parameters": [],
+  "auto_apply_filters": true,
+  "created_at": "2026-07-20T07:56:36.279523Z",
+  "public_uuid": null,
+  "points_of_interest": null,
+  "can_delete": false
+}

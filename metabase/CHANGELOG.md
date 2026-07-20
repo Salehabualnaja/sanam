@@ -22,3 +22,8 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **Name:** لوحة مبيعات هميم
 - **Before-snapshot:** `—`
 - **Undo:** `source metabase/lib.sh && archive dashboard 199`
+
+### 20260720T140638Z — EDIT dashboard #166 (OKRs) + CREATE 13 cards
+- **Change:** added 4 tabs (Growth / BD & Sales / Efficiency / Delighting Customers) and 13 cards (397–409) from HameemDB.
+- **Before-snapshot:** `metabase/backups/dashboard-166-20260720T140028Z.before.json`
+- **Undo (whole batch):** `bash metabase/undo_okrs.sh`
