@@ -10,6 +10,12 @@ step can be undone.
 - `backups/` — full "before" snapshots of any entity we edit.
 - `snapshots/` — point-in-time exports (e.g. a whole dashboard) for reference.
 
+## Scope lock 🔒
+**All work is confined to the `saleh` collection (id `100`). No other collection is
+touched.** `lib.sh` enforces this: `restore`, `archive`, and any edit call
+`assert_scope`, which refuses to act on an entity that is not in collection 100.
+New dashboards/cards are always created with `collection_id: 100`.
+
 ## The safety rule
 No mutating call goes out without a **before-snapshot** first. Then the change is
 logged in `CHANGELOG.md` with a ready undo command.
