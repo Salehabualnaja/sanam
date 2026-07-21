@@ -1,0 +1,34 @@
+{
+  "dataset_query": {
+    "database": 67,
+    "type": "native",
+    "native": {
+      "query": "WITH g AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) ELSE DATE(created_at) END AS period, SUM(use_package=1) pkg, COUNT(*) tot\n           FROM reservations WHERE deleted_at IS NULL GROUP BY 1)\nSELECT period,\n  CASE WHEN {{granularity}}='cumulative' THEN SUM(pkg) OVER (ORDER BY period) ELSE pkg END AS package_orders,\n  ROUND(CASE WHEN {{granularity}}='cumulative' THEN 100*SUM(pkg) OVER (ORDER BY period)/NULLIF(SUM(tot) OVER (ORDER BY period),0)\n             ELSE 100*pkg/NULLIF(tot,0) END,1) AS package_pct\nFROM g ORDER BY period\n",
+      "template-tags": {
+        "granularity": {
+          "type": "text",
+          "id": "gran-tag",
+          "name": "granularity",
+          "display-name": "Granularity",
+          "default": "daily"
+        }
+      }
+    }
+  },
+  "display": "bar",
+  "visualization_settings": {
+    "graph.dimensions": [
+      "period"
+    ],
+    "series_settings": {
+      "package_pct": {
+        "axis": "right",
+        "display": "line"
+      }
+    },
+    "graph.metrics": [
+      "package_orders",
+      "package_pct"
+    ]
+  }
+}

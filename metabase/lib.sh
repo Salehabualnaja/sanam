@@ -100,6 +100,29 @@ restore() {
   mb_api PUT "/api/${etype}/${id}" "$(cat "$file")" | jq -c '{id, name, archived}'
 }
 
+# --- Card-specific snapshot/restore (GET returns pMBQL; PUT wants legacy) ---
+# snap_card ID -> writes a legacy-format dataset_query backup, prints its path.
+snap_card() {
+  local id="$1"
+  local file="$BACKUP_DIR/card-${id}-$(_ts).legacy.json"
+  mb_api GET "/api/card/${id}" | jq '{dataset_query:{database:.dataset_query.database, type:"native",
+    native:{query:.dataset_query.stages[0].native, "template-tags":(.dataset_query.stages[0]["template-tags"] // {})}},
+    display:.display, visualization_settings:.visualization_settings}' > "$file"
+  if ! jq -e '.dataset_query.native.query | length > 0' "$file" >/dev/null 2>&1; then
+    echo "!! snap_card failed for $id" >&2; return 1
+  fi
+  echo "$file"
+}
+# restore_card ID FILE -> PUT the legacy dataset_query (+display+viz) back.
+restore_card() {
+  local id="$1" file="$2"
+  [ -f "$file" ] || { echo "!! backup not found: $file" >&2; return 1; }
+  assert_scope card "$id" || return 1
+  mb_api PUT "/api/card/$id" "$(cat "$file")" > /dev/null
+  local ok; ok=$(mb_api POST "/api/card/$id/query" | jq -r '.status')
+  echo "restored card $id -> query status: $ok"
+}
+
 # Archive = reversible soft-delete.  archive ENTITY_TYPE ID
 archive() {
   local etype="$1" id="$2"

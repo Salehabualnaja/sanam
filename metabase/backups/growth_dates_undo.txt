@@ -1,0 +1,10 @@
+430 /home/user/sanam/metabase/backups/card-430-20260721T151723Z.legacy.json
+431 /home/user/sanam/metabase/backups/card-431-20260721T151727Z.legacy.json
+432 /home/user/sanam/metabase/backups/card-432-20260721T151730Z.legacy.json
+433 /home/user/sanam/metabase/backups/card-433-20260721T151732Z.legacy.json
+434 /home/user/sanam/metabase/backups/card-434-20260721T151735Z.legacy.json
+435 /home/user/sanam/metabase/backups/card-435-20260721T151738Z.legacy.json
+436 /home/user/sanam/metabase/backups/card-436-20260721T151740Z.legacy.json
+437 /home/user/sanam/metabase/backups/card-437-20260721T151743Z.legacy.json
+438 /home/user/sanam/metabase/backups/card-438-20260721T151745Z.legacy.json
+439 /home/user/sanam/metabase/backups/card-439-20260721T151748Z.legacy.json

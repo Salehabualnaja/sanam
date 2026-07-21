@@ -1,0 +1,27 @@
+{
+  "dataset_query": {
+    "database": 67,
+    "type": "native",
+    "native": {
+      "query": "WITH s AS (\n  SELECT ps.id, ps.created_at sc, MAX(r.created_at) lu\n  FROM package_subscriptions ps JOIN reservations r ON r.subscription_id=ps.id AND r.deleted_at IS NULL\n  WHERE ps.deleted_at IS NULL GROUP BY ps.id, ps.created_at),\ng AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(sc,'%Y-%m-01') AS DATE) ELSE DATE(sc) END AS period, SUM(DATEDIFF(lu,sc)) sum_days, COUNT(*) cnt FROM s WHERE lu IS NOT NULL GROUP BY 1)\nSELECT period, ROUND(CASE WHEN {{granularity}}='cumulative'\n         THEN SUM(sum_days) OVER (ORDER BY period)/NULLIF(SUM(cnt) OVER (ORDER BY period),0)\n         ELSE sum_days/NULLIF(cnt,0) END,1) AS avg_days_to_consume\nFROM g ORDER BY period\n",
+      "template-tags": {
+        "granularity": {
+          "type": "text",
+          "id": "gran-tag",
+          "name": "granularity",
+          "display-name": "Granularity",
+          "default": "daily"
+        }
+      }
+    }
+  },
+  "display": "line",
+  "visualization_settings": {
+    "graph.dimensions": [
+      "period"
+    ],
+    "graph.metrics": [
+      "avg_days_to_consume"
+    ]
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "cache_invalidated_at": null,
+  "description": "مجموع total_price. يدعم الفلتر: يومي/شهري/تراكمي — HameemDB.",
+  "archived": false,
+  "view_count": 5,
+  "collection_position": null,
+  "source_card_id": null,
+  "table_id": null,
+  "can_run_adhoc_query": true,
+  "result_metadata": [
+    {
+      "database_type": "DATE",
+      "semantic_type": null,
+      "lib/deduplicated-name": "period",
+      "lib/original-name": "period",
+      "name": "period",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "period",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "period",
+        {
+          "base-type": "type/Date"
+        }
+      ],
+      "effective_type": "type/Date",
+      "lib/desired-column-alias": "period",
+      "display_name": "period",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 1006,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/DateTime": {
+            "earliest": "2023-10-07",
+            "latest": "2026-07-21",
+            "mode-fraction": 0.0009940357852882703,
+            "top-3-fraction": 0.002982107355864811
+          }
+        }
+      },
+      "base_type": "type/Date"
+    },
+    {
+      "database_type": "DECIMAL",
+      "semantic_type": null,
+      "lib/deduplicated-name": "sales",
+      "lib/original-name": "sales",
+      "name": "sales",
+      "lib/source": "source/native",
+      "lib/source-column-alias": "sales",
+      "source": "native",
+      "field_ref": [
+        "field",
+        "sales",
+        {
+          "base-type": "type/Decimal"
+        }
+      ],
+      "effective_type": "type/Decimal",
+      "lib/desired-column-alias": "sales",
+      "display_name": "sales",
+      "fingerprint": {
+        "global": {
+          "distinct-count": 809,
+          "nil%": 0.0
+        },
+        "type": {
+          "type/Number": {
+            "skewness": 1.2675543465603152,
+            "min": 0.0,
+            "q1": 800.0,
+            "q3": 2487.19,
+            "excess-kurtosis": 2.4113481329995743,
+            "zero-fraction": 0.01192842942345924,
+            "mode-fraction": 0.011928429423459244,
+            "top-3-fraction": 0.02186878727634195,
+            "max": 8281.85,
+            "sd": 1282.7886764522482,
+            "avg": 1769.0698707753481
+          }
+        }
+      },
+      "base_type": "type/Decimal"
+    }
+  ],
+  "embedding_type": null,
+  "creator": {
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "is_data_analyst": false,
+    "last_login": null,
+    "is_qbnewb": true,
+    "is_superuser": true,
+    "id": 134,
+    "last_name": "",
+    "tenant_id": null,
+    "date_joined": "2026-07-20T07:58:18.870805Z",
+    "common_name": "saleh"
+  },
+  "initially_published_at": null,
+  "can_write": true,
+  "card_schema": 23,
+  "database_id": 67,
+  "enable_embedding": false,
+  "collection_id": 100,
+  "query_type": "native",
+  "name": "المبيعات",
+  "last_query_start": "2026-07-21T15:08:37.469247Z",
+  "is_remote_synced": false,
+  "dashboard_count": 1,
+  "document_id": null,
+  "last_used_at": "2026-07-21T15:08:37.478903Z",
+  "dashboard": null,
+  "type": "question",
+  "dimensions": null,
+  "average_query_time": 1128.2500000000000000,
+  "creator_id": 134,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-21T14:53:53.473053Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "dataset_query": {
+    "lib/type": "mbql/query",
+    "database": 67,
+    "stages": [
+      {
+        "template-tags": {
+          "granularity": {
+            "type": "text",
+            "id": "gran-tag",
+            "name": "granularity",
+            "display-name": "Granularity",
+            "default": "daily"
+          }
+        },
+        "lib/type": "mbql.stage/native",
+        "native": "WITH g AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) ELSE DATE(created_at) END AS period, SUM(CAST(total_price AS DECIMAL(12,2))) n\n           FROM reservations WHERE deleted_at IS NULL GROUP BY 1)\nSELECT period, ROUND(CASE WHEN {{granularity}}='cumulative' THEN SUM(n) OVER (ORDER BY period) ELSE n END,2) AS sales\nFROM g ORDER BY period\n"
+      }
+    ]
+  },
+  "dimension_mappings": null,
+  "id": 430,
+  "legacy_query": null,
+  "parameter_mappings": [],
+  "can_manage_db": true,
+  "display": "line",
+  "archived_directly": false,
+  "entity_id": "RGAE9so-fOvZdVSjCc9QU",
+  "param_fields": {},
+  "collection_preview": true,
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-21T14:53:53.515028Z"
+  },
+  "visualization_settings": {
+    "graph.dimensions": [
+      "period"
+    ],
+    "graph.metrics": [
+      "sales"
+    ]
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "saleh",
+    "archive_operation_id": null,
+    "name": "saleh",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "id": 100,
+    "archived_directly": null,
+    "entity_id": "h1gJ0l3UuPLO4tIwBMPj0",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-20T07:54:21.268009Z"
+  },
+  "metabase_version": "v1.62.5.1 (5fc1cff)",
+  "parameters": [],
+  "dashboard_id": null,
+  "created_at": "2026-07-21T14:53:53.473053Z",
+  "parameter_usage_count": 0,
+  "public_uuid": null,
+  "can_delete": false
+}

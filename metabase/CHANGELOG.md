@@ -38,3 +38,9 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **Metrics:** sales, orders, package/single orders (+%), washes/order, time-to-consume, AOV, completed, repeat, AOPU.
 - **Not built (need cost data):** CPO, CAC.
 - **Undo:** `bash metabase/undo_growth_dash.sh`
+
+### 20260721T151832Z — ADD date-range filter to Growth-KPIs dashboard #232
+- **Change:** cards 430–439 gained a {{date}} field filter (reservations/package_subscriptions.created_at); dashboard got a single 'الفترة' date-range parameter wired to all cards.
+- **Also:** fixed lib.sh card snapshot/restore for Metabase pMBQL format (snap_card/restore_card).
+- **Before-snapshots:** listed in `metabase/backups/growth_dates_undo.txt`
+- **Undo:** `bash metabase/undo_growth_dates.sh`

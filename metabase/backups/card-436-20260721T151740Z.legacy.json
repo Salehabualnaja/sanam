@@ -1,0 +1,27 @@
+{
+  "dataset_query": {
+    "database": 67,
+    "type": "native",
+    "native": {
+      "query": "WITH g AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) ELSE DATE(created_at) END AS period, SUM(CAST(total_price AS DECIMAL(12,2))) rev, COUNT(*) orders\n           FROM reservations WHERE deleted_at IS NULL AND use_package=0 GROUP BY 1)\nSELECT period, ROUND(CASE WHEN {{granularity}}='cumulative'\n         THEN SUM(rev) OVER (ORDER BY period)/NULLIF(SUM(orders) OVER (ORDER BY period),0)\n         ELSE rev/NULLIF(orders,0) END,2) AS aov\nFROM g ORDER BY period\n",
+      "template-tags": {
+        "granularity": {
+          "type": "text",
+          "id": "gran-tag",
+          "name": "granularity",
+          "display-name": "Granularity",
+          "default": "daily"
+        }
+      }
+    }
+  },
+  "display": "line",
+  "visualization_settings": {
+    "graph.dimensions": [
+      "period"
+    ],
+    "graph.metrics": [
+      "aov"
+    ]
+  }
+}

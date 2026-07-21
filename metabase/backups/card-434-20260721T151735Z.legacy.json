@@ -1,0 +1,27 @@
+{
+  "dataset_query": {
+    "database": 67,
+    "type": "native",
+    "native": {
+      "query": "WITH g AS (\n  SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(r.created_at,'%Y-%m-01') AS DATE) ELSE DATE(r.created_at) END AS period,\n         SUM(CASE WHEN COALESCE(rs.is_product,0)=0 AND COALESCE(rs.is_deleted,0)=0 THEN 1 ELSE 0 END) washes,\n         COUNT(DISTINCT r.id) orders\n  FROM reservations r LEFT JOIN reservation_service rs ON rs.reservation_id=r.id\n  WHERE r.deleted_at IS NULL GROUP BY 1)\nSELECT period, ROUND(CASE WHEN {{granularity}}='cumulative'\n         THEN SUM(washes) OVER (ORDER BY period)/NULLIF(SUM(orders) OVER (ORDER BY period),0)\n         ELSE washes/NULLIF(orders,0) END,2) AS washes_per_order\nFROM g ORDER BY period\n",
+      "template-tags": {
+        "granularity": {
+          "type": "text",
+          "id": "gran-tag",
+          "name": "granularity",
+          "display-name": "Granularity",
+          "default": "daily"
+        }
+      }
+    }
+  },
+  "display": "line",
+  "visualization_settings": {
+    "graph.dimensions": [
+      "period"
+    ],
+    "graph.metrics": [
+      "washes_per_order"
+    ]
+  }
+}
