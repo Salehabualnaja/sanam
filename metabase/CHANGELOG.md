@@ -32,3 +32,9 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **Change:** cards 397–409 switched from monthly to daily granularity, filtered to 18 Jul–18 Aug 2026.
 - **Before-snapshots:** listed in `metabase/backups/okrs_daily_undo.txt`
 - **Undo:** `bash metabase/undo_okrs_daily.sh`
+
+### 20260721T145441Z — CREATE Growth-KPIs dashboard #232 + 10 cards (430–439)
+- **Where:** collection 100 (saleh). Integrated dashboard with one filter (daily/monthly/cumulative).
+- **Metrics:** sales, orders, package/single orders (+%), washes/order, time-to-consume, AOV, completed, repeat, AOPU.
+- **Not built (need cost data):** CPO, CAC.
+- **Undo:** `bash metabase/undo_growth_dash.sh`

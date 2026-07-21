@@ -1,0 +1,1749 @@
+{
+  "description": "داشبورد متكامل لمؤشرات النمو مع فلتر موحّد: يومي/شهري/تراكمي.",
+  "archived": false,
+  "view_count": 3,
+  "collection_position": null,
+  "dashcards": [
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "مجموع total_price. يدعم الفلتر: يومي/شهري/تراكمي — HameemDB.",
+        "archived": false,
+        "view_count": 1,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "period",
+            "lib/original-name": "period",
+            "name": "period",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "period",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "period",
+            "display_name": "period",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 1006,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2023-10-07",
+                  "latest": "2026-07-21",
+                  "mode-fraction": 0.0009940357852882703,
+                  "top-3-fraction": 0.002982107355864811
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "sales",
+            "lib/original-name": "sales",
+            "name": "sales",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "sales",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "sales",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "sales",
+            "display_name": "sales",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 809,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.2675543465603152,
+                  "min": 0.0,
+                  "q1": 795.0,
+                  "q3": 2487.19,
+                  "excess-kurtosis": 2.4113481329995743,
+                  "zero-fraction": 0.01192842942345924,
+                  "mode-fraction": 0.011928429423459244,
+                  "top-3-fraction": 0.02186878727634195,
+                  "max": 8281.85,
+                  "sd": 1282.7886764522482,
+                  "avg": 1769.0698707753481
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "المبيعات",
+        "document_id": null,
+        "last_used_at": "2026-07-21T14:54:19.722928Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-21T14:53:53.473053Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": {
+                "granularity": {
+                  "type": "text",
+                  "id": "gran-tag",
+                  "name": "granularity",
+                  "display-name": "Granularity",
+                  "default": "daily"
+                }
+              },
+              "lib/type": "mbql.stage/native",
+              "native": "WITH g AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) ELSE DATE(created_at) END AS period, SUM(CAST(total_price AS DECIMAL(12,2))) n\n           FROM reservations WHERE deleted_at IS NULL GROUP BY 1)\nSELECT period, ROUND(CASE WHEN {{granularity}}='cumulative' THEN SUM(n) OVER (ORDER BY period) ELSE n END,2) AS sales\nFROM g ORDER BY period\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 430,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "RGAE9so-fOvZdVSjCc9QU",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "period"
+          ],
+          "graph.metrics": [
+            "sales"
+          ]
+        },
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-21T14:53:53.473053Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-21T14:54:04.189689Z",
+      "col": 0,
+      "id": 463,
+      "parameter_mappings": [
+        {
+          "parameter_id": "gran01",
+          "card_id": 430,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "granularity"
+            ]
+          ]
+        }
+      ],
+      "card_id": 430,
+      "entity_id": "WcdAK29__eq_4c9EBJnjf",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 232,
+      "created_at": "2026-07-21T14:54:04.189689Z",
+      "row": 0
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "عدد الحجوزات (كل الحالات). يدعم الفلتر: يومي/شهري/تراكمي — HameemDB.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "period",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "period",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "orders",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "orders",
+            "field_ref": [
+              "field",
+              "orders",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "عدد الطلبات",
+        "document_id": null,
+        "last_used_at": "2026-07-21T14:53:54.962629Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-21T14:53:54.962629Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": {
+                "granularity": {
+                  "type": "text",
+                  "id": "gran-tag",
+                  "name": "granularity",
+                  "display-name": "Granularity",
+                  "default": "daily"
+                }
+              },
+              "lib/type": "mbql.stage/native",
+              "native": "WITH g AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) ELSE DATE(created_at) END AS period, COUNT(*) n FROM reservations WHERE deleted_at IS NULL GROUP BY 1)\nSELECT period, CASE WHEN {{granularity}}='cumulative' THEN SUM(n) OVER (ORDER BY period) ELSE n END AS orders\nFROM g ORDER BY period\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 431,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "qnDWOFWABK4Yjg15-dMN3",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "period"
+          ],
+          "graph.metrics": [
+            "orders"
+          ]
+        },
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-21T14:53:54.962629Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-21T14:54:04.189689Z",
+      "col": 12,
+      "id": 464,
+      "parameter_mappings": [
+        {
+          "parameter_id": "gran01",
+          "card_id": 431,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "granularity"
+            ]
+          ]
+        }
+      ],
+      "card_id": 431,
+      "entity_id": "oGwK9pevMnX0mcWeJOIOJ",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 232,
+      "created_at": "2026-07-21T14:54:04.189689Z",
+      "row": 0
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "طلبات الباقة (use_package=1) ونسبتها. يدعم الفلتر: يومي/شهري/تراكمي — HameemDB.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "period",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "period",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "package_orders",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "package_orders",
+            "field_ref": [
+              "field",
+              "package_orders",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          },
+          {
+            "name": "package_pct",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "package_pct",
+            "field_ref": [
+              "field",
+              "package_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "طلبات الباقات (هدف 40%)",
+        "document_id": null,
+        "last_used_at": "2026-07-21T14:53:55.963026Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-21T14:53:55.963026Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": {
+                "granularity": {
+                  "type": "text",
+                  "id": "gran-tag",
+                  "name": "granularity",
+                  "display-name": "Granularity",
+                  "default": "daily"
+                }
+              },
+              "lib/type": "mbql.stage/native",
+              "native": "WITH g AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) ELSE DATE(created_at) END AS period, SUM(use_package=1) pkg, COUNT(*) tot\n           FROM reservations WHERE deleted_at IS NULL GROUP BY 1)\nSELECT period,\n  CASE WHEN {{granularity}}='cumulative' THEN SUM(pkg) OVER (ORDER BY period) ELSE pkg END AS package_orders,\n  ROUND(CASE WHEN {{granularity}}='cumulative' THEN 100*SUM(pkg) OVER (ORDER BY period)/NULLIF(SUM(tot) OVER (ORDER BY period),0)\n             ELSE 100*pkg/NULLIF(tot,0) END,1) AS package_pct\nFROM g ORDER BY period\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 432,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "R6wR1bZ3pH0J1FaCPhKig",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "period"
+          ],
+          "series_settings": {
+            "package_pct": {
+              "axis": "right",
+              "display": "line"
+            }
+          },
+          "graph.metrics": [
+            "package_orders",
+            "package_pct"
+          ]
+        },
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-21T14:53:55.963026Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-21T14:54:04.189689Z",
+      "col": 0,
+      "id": 465,
+      "parameter_mappings": [
+        {
+          "parameter_id": "gran01",
+          "card_id": 432,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "granularity"
+            ]
+          ]
+        }
+      ],
+      "card_id": 432,
+      "entity_id": "IxEsMo4bwePPbGHHDHdoW",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 232,
+      "created_at": "2026-07-21T14:54:04.189689Z",
+      "row": 7
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "الغسلة المفردة (use_package=0) ونسبتها. يدعم الفلتر: يومي/شهري/تراكمي — HameemDB.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "period",
+            "lib/original-name": "period",
+            "name": "period",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "period",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "period",
+            "display_name": "period",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 1006,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2023-10-07",
+                  "latest": "2026-07-21",
+                  "mode-fraction": 0.0009940357852882703,
+                  "top-3-fraction": 0.002982107355864811
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single_orders",
+            "lib/original-name": "single_orders",
+            "name": "single_orders",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single_orders",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single_orders",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single_orders",
+            "display_name": "single_orders",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 139,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.82397012333501,
+                  "min": 0.0,
+                  "q1": 25.0,
+                  "q3": 74.0,
+                  "excess-kurtosis": 0.5677465561299355,
+                  "zero-fraction": 0.001988071570576541,
+                  "mode-fraction": 0.02186878727634195,
+                  "top-3-fraction": 0.061630218687872766,
+                  "max": 189.0,
+                  "sd": 32.48070942533359,
+                  "avg": 50.626242544731625
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single_pct",
+            "lib/original-name": "single_pct",
+            "name": "single_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single_pct",
+            "display_name": "single_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 348,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -1.1295784724677354,
+                  "min": 0.0,
+                  "q1": 72.9,
+                  "q3": 100.0,
+                  "excess-kurtosis": 0.706896138087119,
+                  "zero-fraction": 0.001988071570576541,
+                  "mode-fraction": 0.44831013916500995,
+                  "top-3-fraction": 0.4592445328031809,
+                  "max": 100.0,
+                  "sd": 19.161568580199692,
+                  "avg": 83.9990059642147
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "طلبات الغسلة المفردة (هدف 60%)",
+        "document_id": null,
+        "last_used_at": "2026-07-21T14:53:57.568898Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-21T14:53:57.568898Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": {
+                "granularity": {
+                  "type": "text",
+                  "id": "gran-tag",
+                  "name": "granularity",
+                  "display-name": "Granularity",
+                  "default": "daily"
+                }
+              },
+              "lib/type": "mbql.stage/native",
+              "native": "WITH g AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) ELSE DATE(created_at) END AS period, SUM(use_package=0) sgl, COUNT(*) tot\n           FROM reservations WHERE deleted_at IS NULL GROUP BY 1)\nSELECT period,\n  CASE WHEN {{granularity}}='cumulative' THEN SUM(sgl) OVER (ORDER BY period) ELSE sgl END AS single_orders,\n  ROUND(CASE WHEN {{granularity}}='cumulative' THEN 100*SUM(sgl) OVER (ORDER BY period)/NULLIF(SUM(tot) OVER (ORDER BY period),0)\n             ELSE 100*sgl/NULLIF(tot,0) END,1) AS single_pct\nFROM g ORDER BY period\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 433,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "NiOUB5wmplJ_Zq0ZzjqV4",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "period"
+          ],
+          "series_settings": {
+            "single_pct": {
+              "axis": "right",
+              "display": "line"
+            }
+          },
+          "graph.metrics": [
+            "single_orders",
+            "single_pct"
+          ]
+        },
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-21T14:53:57.568898Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-21T14:54:04.189689Z",
+      "col": 12,
+      "id": 466,
+      "parameter_mappings": [
+        {
+          "parameter_id": "gran01",
+          "card_id": 433,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "granularity"
+            ]
+          ]
+        }
+      ],
+      "card_id": 433,
+      "entity_id": "4ZXxq4FN1IAVRIMfBfGGc",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 232,
+      "created_at": "2026-07-21T14:54:04.189689Z",
+      "row": 7
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "عدد خطوط الخدمة (بدون منتجات) ÷ الطلبات. يدعم الفلتر: يومي/شهري/تراكمي — HameemDB.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "period",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "period",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "washes_per_order",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "washes_per_order",
+            "field_ref": [
+              "field",
+              "washes_per_order",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "متوسط الغسلات لكل طلب",
+        "document_id": null,
+        "last_used_at": "2026-07-21T14:53:58.573059Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-21T14:53:58.573059Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": {
+                "granularity": {
+                  "type": "text",
+                  "id": "gran-tag",
+                  "name": "granularity",
+                  "display-name": "Granularity",
+                  "default": "daily"
+                }
+              },
+              "lib/type": "mbql.stage/native",
+              "native": "WITH g AS (\n  SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(r.created_at,'%Y-%m-01') AS DATE) ELSE DATE(r.created_at) END AS period,\n         SUM(CASE WHEN COALESCE(rs.is_product,0)=0 AND COALESCE(rs.is_deleted,0)=0 THEN 1 ELSE 0 END) washes,\n         COUNT(DISTINCT r.id) orders\n  FROM reservations r LEFT JOIN reservation_service rs ON rs.reservation_id=r.id\n  WHERE r.deleted_at IS NULL GROUP BY 1)\nSELECT period, ROUND(CASE WHEN {{granularity}}='cumulative'\n         THEN SUM(washes) OVER (ORDER BY period)/NULLIF(SUM(orders) OVER (ORDER BY period),0)\n         ELSE washes/NULLIF(orders,0) END,2) AS washes_per_order\nFROM g ORDER BY period\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 434,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "PLSvNUXLaDY5Yu4-tfgfl",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "period"
+          ],
+          "graph.metrics": [
+            "washes_per_order"
+          ]
+        },
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-21T14:53:58.573059Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-21T14:54:04.189689Z",
+      "col": 0,
+      "id": 467,
+      "parameter_mappings": [
+        {
+          "parameter_id": "gran01",
+          "card_id": 434,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "granularity"
+            ]
+          ]
+        }
+      ],
+      "card_id": 434,
+      "entity_id": "7ehDIeidvSo6sHRy2HqGq",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 232,
+      "created_at": "2026-07-21T14:54:04.189689Z",
+      "row": 14
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "متوسط الأيام من شراء الباقة حتى آخر غسلة منها. يدعم الفلتر: يومي/شهري/تراكمي — HameemDB.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "period",
+            "lib/original-name": "period",
+            "name": "period",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "period",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "period",
+            "display_name": "period",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 277,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2025-05-18",
+                  "latest": "2026-07-21",
+                  "mode-fraction": 0.0036101083032490976,
+                  "top-3-fraction": 0.010830324909747292
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "avg_days_to_consume",
+            "lib/original-name": "avg_days_to_consume",
+            "name": "avg_days_to_consume",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "avg_days_to_consume",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "avg_days_to_consume",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "avg_days_to_consume",
+            "display_name": "avg_days_to_consume",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 200,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 2.830036684603759,
+                  "min": 0.0,
+                  "q1": 13.3,
+                  "q3": 30.8,
+                  "excess-kurtosis": 6.556896259642725,
+                  "zero-fraction": 0.02888086642599278,
+                  "mode-fraction": 0.02888086642599278,
+                  "top-3-fraction": 0.06498194945848375,
+                  "max": 365.0,
+                  "sd": 90.89817261360228,
+                  "avg": 49.753790613718444
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "زمن استهلاك الباقة (أيام)",
+        "document_id": null,
+        "last_used_at": "2026-07-21T14:53:59.607712Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-21T14:53:59.607712Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": {
+                "granularity": {
+                  "type": "text",
+                  "id": "gran-tag",
+                  "name": "granularity",
+                  "display-name": "Granularity",
+                  "default": "daily"
+                }
+              },
+              "lib/type": "mbql.stage/native",
+              "native": "WITH s AS (\n  SELECT ps.id, ps.created_at sc, MAX(r.created_at) lu\n  FROM package_subscriptions ps JOIN reservations r ON r.subscription_id=ps.id AND r.deleted_at IS NULL\n  WHERE ps.deleted_at IS NULL GROUP BY ps.id, ps.created_at),\ng AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(sc,'%Y-%m-01') AS DATE) ELSE DATE(sc) END AS period, SUM(DATEDIFF(lu,sc)) sum_days, COUNT(*) cnt FROM s WHERE lu IS NOT NULL GROUP BY 1)\nSELECT period, ROUND(CASE WHEN {{granularity}}='cumulative'\n         THEN SUM(sum_days) OVER (ORDER BY period)/NULLIF(SUM(cnt) OVER (ORDER BY period),0)\n         ELSE sum_days/NULLIF(cnt,0) END,1) AS avg_days_to_consume\nFROM g ORDER BY period\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 435,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "EgM6vz3qbgRGOgvKk9HZe",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "period"
+          ],
+          "graph.metrics": [
+            "avg_days_to_consume"
+          ]
+        },
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-21T14:53:59.607712Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-21T14:54:04.189689Z",
+      "col": 12,
+      "id": 468,
+      "parameter_mappings": [
+        {
+          "parameter_id": "gran01",
+          "card_id": 435,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "granularity"
+            ]
+          ]
+        }
+      ],
+      "card_id": 435,
+      "entity_id": "t-RnRsQ-zIozgmCPR0GDg",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 232,
+      "created_at": "2026-07-21T14:54:04.189689Z",
+      "row": 14
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "الإيراد ÷ الطلبات المدفوعة (use_package=0). يدعم الفلتر: يومي/شهري/تراكمي — HameemDB.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "period",
+            "lib/original-name": "period",
+            "name": "period",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "period",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "period",
+            "display_name": "period",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 1004,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2023-10-07",
+                  "latest": "2026-07-21",
+                  "mode-fraction": 0.00099601593625498,
+                  "top-3-fraction": 0.00298804780876494
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "aov",
+            "lib/original-name": "aov",
+            "name": "aov",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "aov",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "aov",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "aov",
+            "display_name": "aov",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 601,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -1.1506545595417061,
+                  "min": 0.0,
+                  "q1": 31.03,
+                  "q3": 36.84,
+                  "excess-kurtosis": 9.37679828256178,
+                  "zero-fraction": 0.0099601593625498,
+                  "mode-fraction": 0.018924302788844622,
+                  "top-3-fraction": 0.052788844621513946,
+                  "max": 54.0,
+                  "sd": 5.9202334405073485,
+                  "avg": 33.88095617529878
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "متوسط قيمة الطلب (AOV)",
+        "document_id": null,
+        "last_used_at": "2026-07-21T14:54:00.50686Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-21T14:54:00.50686Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": {
+                "granularity": {
+                  "type": "text",
+                  "id": "gran-tag",
+                  "name": "granularity",
+                  "display-name": "Granularity",
+                  "default": "daily"
+                }
+              },
+              "lib/type": "mbql.stage/native",
+              "native": "WITH g AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) ELSE DATE(created_at) END AS period, SUM(CAST(total_price AS DECIMAL(12,2))) rev, COUNT(*) orders\n           FROM reservations WHERE deleted_at IS NULL AND use_package=0 GROUP BY 1)\nSELECT period, ROUND(CASE WHEN {{granularity}}='cumulative'\n         THEN SUM(rev) OVER (ORDER BY period)/NULLIF(SUM(orders) OVER (ORDER BY period),0)\n         ELSE rev/NULLIF(orders,0) END,2) AS aov\nFROM g ORDER BY period\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 436,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "cYkO6BTZCHawvCc-j02Ys",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "period"
+          ],
+          "graph.metrics": [
+            "aov"
+          ]
+        },
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-21T14:54:00.50686Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-21T14:54:04.189689Z",
+      "col": 0,
+      "id": 469,
+      "parameter_mappings": [
+        {
+          "parameter_id": "gran01",
+          "card_id": 436,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "granularity"
+            ]
+          ]
+        }
+      ],
+      "card_id": 436,
+      "entity_id": "e90ObkbG3b3Rk9enkGNqr",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 232,
+      "created_at": "2026-07-21T14:54:04.189689Z",
+      "row": 21
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "الحجوزات المكتملة (status=3). يدعم الفلتر: يومي/شهري/تراكمي — HameemDB.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "period",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "period",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "completed",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "completed",
+            "field_ref": [
+              "field",
+              "completed",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "الغسلات المكتملة",
+        "document_id": null,
+        "last_used_at": "2026-07-21T14:54:01.527598Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-21T14:54:01.527598Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": {
+                "granularity": {
+                  "type": "text",
+                  "id": "gran-tag",
+                  "name": "granularity",
+                  "display-name": "Granularity",
+                  "default": "daily"
+                }
+              },
+              "lib/type": "mbql.stage/native",
+              "native": "WITH g AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) ELSE DATE(created_at) END AS period, COUNT(*) n FROM reservations WHERE deleted_at IS NULL AND status=3 GROUP BY 1)\nSELECT period, CASE WHEN {{granularity}}='cumulative' THEN SUM(n) OVER (ORDER BY period) ELSE n END AS completed\nFROM g ORDER BY period\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 437,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "1luur3BYfgjtrqNuy21xr",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "period"
+          ],
+          "graph.metrics": [
+            "completed"
+          ]
+        },
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-21T14:54:01.527598Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-21T14:54:04.189689Z",
+      "col": 12,
+      "id": 470,
+      "parameter_mappings": [
+        {
+          "parameter_id": "gran01",
+          "card_id": 437,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "granularity"
+            ]
+          ]
+        }
+      ],
+      "card_id": 437,
+      "entity_id": "UsXWWSHH0eb4GqAI6Tb0H",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 232,
+      "created_at": "2026-07-21T14:54:04.189689Z",
+      "row": 21
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "طلبات العملاء العائدين (الطلب الثاني فأكثر) ونسبتها. يدعم الفلتر: يومي/شهري/تراكمي — HameemDB.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "period",
+            "lib/original-name": "period",
+            "name": "period",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "period",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "period",
+            "display_name": "period",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 1006,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2023-10-07",
+                  "latest": "2026-07-21",
+                  "mode-fraction": 0.0009940357852882703,
+                  "top-3-fraction": 0.002982107355864811
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "repeat_orders",
+            "lib/original-name": "repeat_orders",
+            "name": "repeat_orders",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "repeat_orders",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "repeat_orders",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "repeat_orders",
+            "display_name": "repeat_orders",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 161,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.5762639737803914,
+                  "min": 0.0,
+                  "q1": 18.0,
+                  "q3": 65.0,
+                  "excess-kurtosis": 3.255206205190497,
+                  "zero-fraction": 0.0009940357852882705,
+                  "mode-fraction": 0.032803180914512925,
+                  "top-3-fraction": 0.07952286282306163,
+                  "max": 281.0,
+                  "sd": 40.208556772703076,
+                  "avg": 46.01789264413519
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "repeat_rate_pct",
+            "lib/original-name": "repeat_rate_pct",
+            "name": "repeat_rate_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "repeat_rate_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "repeat_rate_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "repeat_rate_pct",
+            "display_name": "repeat_rate_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 414,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.5590874637043531,
+                  "min": 0.0,
+                  "q1": 55.3,
+                  "q3": 76.9,
+                  "excess-kurtosis": 0.28611718176918277,
+                  "zero-fraction": 0.0009940357852882705,
+                  "mode-fraction": 0.02186878727634195,
+                  "top-3-fraction": 0.05864811133200795,
+                  "max": 100.0,
+                  "sd": 15.675488465022518,
+                  "avg": 65.23946322067601
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "تكرار الشراء (Repeat)",
+        "document_id": null,
+        "last_used_at": "2026-07-21T14:54:02.410751Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-21T14:54:02.410751Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": {
+                "granularity": {
+                  "type": "text",
+                  "id": "gran-tag",
+                  "name": "granularity",
+                  "display-name": "Granularity",
+                  "default": "daily"
+                }
+              },
+              "lib/type": "mbql.stage/native",
+              "native": "WITH r AS (SELECT client_id, created_at, ROW_NUMBER() OVER (PARTITION BY client_id ORDER BY created_at) rn\n           FROM reservations WHERE deleted_at IS NULL),\ng AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) ELSE DATE(created_at) END AS period, SUM(rn>1) repeat_orders, COUNT(*) tot FROM r GROUP BY 1)\nSELECT period,\n  CASE WHEN {{granularity}}='cumulative' THEN SUM(repeat_orders) OVER (ORDER BY period) ELSE repeat_orders END AS repeat_orders,\n  ROUND(CASE WHEN {{granularity}}='cumulative' THEN 100*SUM(repeat_orders) OVER (ORDER BY period)/NULLIF(SUM(tot) OVER (ORDER BY period),0)\n             ELSE 100*repeat_orders/NULLIF(tot,0) END,1) AS repeat_rate_pct\nFROM g ORDER BY period\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 438,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "UG-88m3fVt3MVBibJkcIh",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "period"
+          ],
+          "series_settings": {
+            "repeat_rate_pct": {
+              "axis": "right",
+              "display": "line"
+            }
+          },
+          "graph.metrics": [
+            "repeat_orders",
+            "repeat_rate_pct"
+          ]
+        },
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-21T14:54:02.410751Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-21T14:54:04.189689Z",
+      "col": 0,
+      "id": 471,
+      "parameter_mappings": [
+        {
+          "parameter_id": "gran01",
+          "card_id": 438,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "granularity"
+            ]
+          ]
+        }
+      ],
+      "card_id": 438,
+      "entity_id": "4RAmpykr8Wdzvnz9rUba-",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 232,
+      "created_at": "2026-07-21T14:54:04.189689Z",
+      "row": 28
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "الطلبات ÷ عدد العملاء. يدعم الفلتر: يومي/شهري/تراكمي — HameemDB.",
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "period",
+            "database_type": "DATE",
+            "base_type": "type/Date",
+            "display_name": "period",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Date"
+              }
+            ]
+          },
+          {
+            "name": "aopu",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "aopu",
+            "field_ref": [
+              "field",
+              "aopu",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 100,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "متوسط الطلبات لكل عميل (AOPU)",
+        "document_id": null,
+        "last_used_at": "2026-07-21T14:54:03.296095Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-21T14:54:03.296095Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": {
+                "granularity": {
+                  "type": "text",
+                  "id": "gran-tag",
+                  "name": "granularity",
+                  "display-name": "Granularity",
+                  "default": "daily"
+                }
+              },
+              "lib/type": "mbql.stage/native",
+              "native": "WITH firsts AS (SELECT client_id, MIN(created_at) fc FROM reservations WHERE deleted_at IS NULL GROUP BY client_id),\npa AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) ELSE DATE(created_at) END AS period, COUNT(*) orders, COUNT(DISTINCT client_id) users\n       FROM reservations WHERE deleted_at IS NULL GROUP BY 1),\nnu AS (SELECT CASE WHEN {{granularity}}='monthly' THEN CAST(DATE_FORMAT(fc,'%Y-%m-01') AS DATE) ELSE DATE(fc) END AS period, COUNT(*) newu FROM firsts GROUP BY 1)\nSELECT pa.period, ROUND(CASE WHEN {{granularity}}='cumulative'\n         THEN SUM(pa.orders) OVER (ORDER BY pa.period)/NULLIF(SUM(nu.newu) OVER (ORDER BY pa.period),0)\n         ELSE pa.orders/NULLIF(pa.users,0) END,2) AS aopu\nFROM pa LEFT JOIN nu ON nu.period=pa.period ORDER BY pa.period\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 439,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "LuRNixgumzMm0WiSXiDth",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "period"
+          ],
+          "graph.metrics": [
+            "aopu"
+          ]
+        },
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-21T14:54:03.296095Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-21T14:54:04.189689Z",
+      "col": 12,
+      "id": 472,
+      "parameter_mappings": [
+        {
+          "parameter_id": "gran01",
+          "card_id": 439,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "granularity"
+            ]
+          ]
+        }
+      ],
+      "card_id": 439,
+      "entity_id": "ZxpZeBD18KvewJfjpObzp",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 232,
+      "created_at": "2026-07-21T14:54:04.189689Z",
+      "row": 28
+    }
+  ],
+  "embedding_type": null,
+  "initially_published_at": null,
+  "can_write": true,
+  "can_set_cache_policy": true,
+  "tabs": [],
+  "enable_embedding": false,
+  "collection_id": 100,
+  "show_in_getting_started": false,
+  "name": "مؤشرات النمو — هميم (Growth KPIs)",
+  "is_remote_synced": false,
+  "width": "fixed",
+  "caveats": null,
+  "collection_authority_level": null,
+  "creator_id": 134,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-21T14:54:04.189689Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "last_used_param_values": {
+    "gran01": "monthly"
+  },
+  "id": 232,
+  "last_viewed_at": "2026-07-21T14:54:19.709496Z",
+  "position": null,
+  "archived_directly": false,
+  "entity_id": "Bpo0CIxUTUiQ2JsHCJte-",
+  "param_fields": {},
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-21T14:54:04.277988Z"
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "saleh",
+    "archive_operation_id": null,
+    "name": "saleh",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "effective_location": "/",
+    "id": 100,
+    "archived_directly": null,
+    "entity_id": "h1gJ0l3UuPLO4tIwBMPj0",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-20T07:54:21.268009Z"
+  },
+  "parameters": [
+    {
+      "name": "عرض البيانات",
+      "slug": "granularity",
+      "id": "gran01",
+      "type": "category",
+      "default": "daily",
+      "values_source_type": "static-list",
+      "values_source_config": {
+        "values": [
+          "daily",
+          "monthly",
+          "cumulative"
+        ]
+      }
+    }
+  ],
+  "auto_apply_filters": true,
+  "created_at": "2026-07-21T14:54:03.709762Z",
+  "public_uuid": null,
+  "points_of_interest": null,
+  "can_delete": false
+}
