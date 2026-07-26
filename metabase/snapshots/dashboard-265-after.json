@@ -1,0 +1,4727 @@
+{
+  "description": "OKR tracking for Hamim: Daily (current month through yesterday) on top, Monthly (operating history through yesterday) below. Completed-only, Riyadh-anchored 'through yesterday'. See each card's description for definitions and omitted columns.",
+  "archived": false,
+  "view_count": 38,
+  "collection_position": 1,
+  "dashcards": [
+    {
+      "size_x": 24,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": "2026-07-23T09:45:16.226142Z",
+        "description": "One row per day for the current Riyadh month up to yesterday. DoD deltas. Completed only (reservations.status=3; drafts status=30 and soft-deletes excluded). ORDER = completed pay-per-wash (use_package=0) OR paid package purchase (package_subscriptions.status=1); subscription-redemption washes (use_package=1) are excluded from ORDERS/customers but INCLUDED in Completed washes. New customer = first-ever completed order/wash falls in this period; Returning = had activity in a prior period. Sales(SAR) = pay-per-wash revenue (CAST(total_price)) + package cost. AOV=sales/orders, AOPU=orders/active-customers, ARPU=sales/active-customers. Washers available = distinct washers in attendances. Newest period on top (DESC). Through YESTERDAY only in Riyadh time: period < DATE(UTC_TIMESTAMP()+INTERVAL 3 HOUR) (DB server runs UTC, +3h anchors Asia/Riyadh); the current in-progress period never includes today. Each metric is followed by its change column: count/value metrics use % change, percentage-type metrics use percentage-point (pp) change, via LAG() over the ordered periods. OMITTED (not fabricated): launch2order conversion (only DB source market_report_snapshots is sparse/duplicated and ends 2026-07-04); CAC and CPO (need marketing spend, not in this DB); TTC within-month (no defined DB event); CSAT/ratings/issues (separate source, out of scope).",
+        "archived": false,
+        "view_count": 31,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "VARCHAR",
+            "semantic_type": null,
+            "lib/deduplicated-name": "period",
+            "lib/original-name": "period",
+            "name": "period",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "period",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Text"
+              }
+            ],
+            "effective_type": "type/Text",
+            "lib/desired-column-alias": "period",
+            "display_name": "period",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 10.0,
+                  "mode-fraction": 0.04,
+                  "top-3-fraction": 0.12
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "package_orders",
+            "lib/original-name": "package_orders",
+            "name": "package_orders",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "package_orders",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "package_orders",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "package_orders",
+            "display_name": "package_orders",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 12,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.356856405074488,
+                  "min": 1.0,
+                  "q1": 4.0,
+                  "q3": 9.0,
+                  "excess-kurtosis": 1.540306500960087,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.16,
+                  "top-3-fraction": 0.4,
+                  "max": 21.0,
+                  "sd": 5.432003927342714,
+                  "avg": 7.56
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "package_orders_dod",
+            "lib/original-name": "package_orders_dod",
+            "name": "package_orders_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "package_orders_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "package_orders_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "package_orders_dod",
+            "display_name": "package_orders_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 23,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 2.05348462688278,
+                  "min": -85.7,
+                  "q1": -40.0,
+                  "q3": 83.3,
+                  "excess-kurtosis": 4.472322888458768,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08333333333333333,
+                  "top-3-fraction": 0.20833333333333334,
+                  "max": 600.0,
+                  "sd": 164.03739035592653,
+                  "avg": 63.074999999999996
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single_orders",
+            "lib/original-name": "single_orders",
+            "name": "single_orders",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single_orders",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single_orders",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single_orders",
+            "display_name": "single_orders",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 20,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.9093503417377852,
+                  "min": 37.0,
+                  "q1": 57.0,
+                  "q3": 80.0,
+                  "excess-kurtosis": 2.0135945853582697,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.12,
+                  "top-3-fraction": 0.28,
+                  "max": 135.0,
+                  "sd": 21.00341242115989,
+                  "avg": 73.31999999999998
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single_orders_dod",
+            "lib/original-name": "single_orders_dod",
+            "name": "single_orders_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single_orders_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single_orders_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single_orders_dod",
+            "display_name": "single_orders_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 24,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.23281141030656557,
+                  "min": -33.3,
+                  "q1": -16.7,
+                  "q3": 16.3,
+                  "excess-kurtosis": -0.8901851096619402,
+                  "zero-fraction": 0.04166666666666667,
+                  "mode-fraction": 0.041666666666666664,
+                  "top-3-fraction": 0.125,
+                  "max": 43.4,
+                  "sd": 22.410181433537254,
+                  "avg": 2.6166666666666667
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "total_orders",
+            "lib/original-name": "total_orders",
+            "name": "total_orders",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "total_orders",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "total_orders",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "total_orders",
+            "display_name": "total_orders",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 22,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.44434075298051184,
+                  "min": 38.0,
+                  "q1": 66.0,
+                  "q3": 98.0,
+                  "excess-kurtosis": 0.6304123752274196,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08,
+                  "top-3-fraction": 0.24,
+                  "max": 139.0,
+                  "sd": 22.607742036744845,
+                  "avg": 80.88
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "total_orders_dod",
+            "lib/original-name": "total_orders_dod",
+            "name": "total_orders_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "total_orders_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "total_orders_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "total_orders_dod",
+            "display_name": "total_orders_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.17467355775974033,
+                  "min": -36.8,
+                  "q1": -20.5,
+                  "q3": 18.8,
+                  "excess-kurtosis": -0.9721521043743917,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.041666666666666664,
+                  "top-3-fraction": 0.125,
+                  "max": 47.4,
+                  "sd": 23.78978551663584,
+                  "avg": 3.6208333333333327
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "package_pct",
+            "lib/original-name": "package_pct",
+            "name": "package_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "package_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "package_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "package_pct",
+            "display_name": "package_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.245127352595096,
+                  "min": 1.6,
+                  "q1": 6.1,
+                  "q3": 10.6,
+                  "excess-kurtosis": 1.548597676661358,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.04,
+                  "top-3-fraction": 0.12,
+                  "max": 25.0,
+                  "sd": 5.820867632922088,
+                  "avg": 9.100000000000001
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "package_pct_dod",
+            "lib/original-name": "package_pct_dod",
+            "name": "package_pct_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "package_pct_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "package_pct_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "package_pct_dod",
+            "display_name": "package_pct_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 24,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.5188849182185218,
+                  "min": -7.4,
+                  "q1": -3.9,
+                  "q3": 4.5,
+                  "excess-kurtosis": -0.5233772983693559,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08333333333333333,
+                  "top-3-fraction": 0.16666666666666666,
+                  "max": 12.5,
+                  "sd": 5.360402321046272,
+                  "avg": 0.5999999999999998
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single_pct",
+            "lib/original-name": "single_pct",
+            "name": "single_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single_pct",
+            "display_name": "single_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -1.2451273525950959,
+                  "min": 75.0,
+                  "q1": 89.4,
+                  "q3": 93.9,
+                  "excess-kurtosis": 1.5485976766613563,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.04,
+                  "top-3-fraction": 0.12,
+                  "max": 98.4,
+                  "sd": 5.820867632922086,
+                  "avg": 90.90000000000002
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single_pct_dod",
+            "lib/original-name": "single_pct_dod",
+            "name": "single_pct_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single_pct_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single_pct_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single_pct_dod",
+            "display_name": "single_pct_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 24,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.5188849182185218,
+                  "min": -12.5,
+                  "q1": -4.7,
+                  "q3": 3.7,
+                  "excess-kurtosis": -0.5233772983693559,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08333333333333333,
+                  "top-3-fraction": 0.16666666666666666,
+                  "max": 7.4,
+                  "sd": 5.360402321046272,
+                  "avg": -0.5999999999999998
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "completed_washes",
+            "lib/original-name": "completed_washes",
+            "name": "completed_washes",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "completed_washes",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "completed_washes",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "completed_washes",
+            "display_name": "completed_washes",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 23,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.6662800663317391,
+                  "min": 49.0,
+                  "q1": 83.0,
+                  "q3": 113.0,
+                  "excess-kurtosis": 1.0465049838906282,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08,
+                  "top-3-fraction": 0.2,
+                  "max": 178.0,
+                  "sd": 28.251843597660436,
+                  "avg": 100.79999999999998
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "completed_washes_dod",
+            "lib/original-name": "completed_washes_dod",
+            "name": "completed_washes_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "completed_washes_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "completed_washes_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "completed_washes_dod",
+            "display_name": "completed_washes_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.0918880827094944,
+                  "min": -37.6,
+                  "q1": -20.7,
+                  "q3": 21.7,
+                  "excess-kurtosis": -0.9480321545428554,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.041666666666666664,
+                  "top-3-fraction": 0.125,
+                  "max": 44.9,
+                  "sd": 24.00022946750205,
+                  "avg": 3.883333333333333
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_new_cust",
+            "lib/original-name": "washes_new_cust",
+            "name": "washes_new_cust",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_new_cust",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_new_cust",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_new_cust",
+            "display_name": "washes_new_cust",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 17,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.5301123822960166,
+                  "min": 6.0,
+                  "q1": 15.0,
+                  "q3": 22.0,
+                  "excess-kurtosis": 1.7102220064710991,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.16,
+                  "top-3-fraction": 0.32,
+                  "max": 39.0,
+                  "sd": 6.963715483370448,
+                  "avg": 19.080000000000005
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_new_cust_dod",
+            "lib/original-name": "washes_new_cust_dod",
+            "name": "washes_new_cust_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_new_cust_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_new_cust_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_new_cust_dod",
+            "display_name": "washes_new_cust_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 23,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.115492554424655,
+                  "min": -57.1,
+                  "q1": -21.7,
+                  "q3": 16.7,
+                  "excess-kurtosis": 1.0421735005031647,
+                  "zero-fraction": 0.08333333333333333,
+                  "mode-fraction": 0.08333333333333333,
+                  "top-3-fraction": 0.16666666666666666,
+                  "max": 133.3,
+                  "sd": 47.176326659686524,
+                  "avg": 9.283333333333331
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_returning_cust",
+            "lib/original-name": "washes_returning_cust",
+            "name": "washes_returning_cust",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_returning_cust",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_returning_cust",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_returning_cust",
+            "display_name": "washes_returning_cust",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 21,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.166413342428756,
+                  "min": 38.0,
+                  "q1": 62.0,
+                  "q3": 91.0,
+                  "excess-kurtosis": 2.826377041837218,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08,
+                  "top-3-fraction": 0.24,
+                  "max": 157.0,
+                  "sd": 24.20144623777678,
+                  "avg": 81.72
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_returning_cust_dod",
+            "lib/original-name": "washes_returning_cust_dod",
+            "name": "washes_returning_cust_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_returning_cust_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_returning_cust_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_returning_cust_dod",
+            "display_name": "washes_returning_cust_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.006325823998745434,
+                  "min": -44.6,
+                  "q1": -24.4,
+                  "q3": 21.6,
+                  "excess-kurtosis": -0.6030944494642241,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.041666666666666664,
+                  "top-3-fraction": 0.125,
+                  "max": 57.0,
+                  "sd": 28.519303150215872,
+                  "avg": 5.174999999999999
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_wash_pct",
+            "lib/original-name": "returning_wash_pct",
+            "name": "returning_wash_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_wash_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_wash_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_wash_pct",
+            "display_name": "returning_wash_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 22,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.21013208546425274,
+                  "min": 69.3,
+                  "q1": 78.4,
+                  "q3": 83.2,
+                  "excess-kurtosis": 0.6106835525948551,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08,
+                  "top-3-fraction": 0.24,
+                  "max": 90.6,
+                  "sd": 4.9334740970908815,
+                  "avg": 81.06
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_wash_pct_dod",
+            "lib/original-name": "returning_wash_pct_dod",
+            "name": "returning_wash_pct_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_wash_pct_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_wash_pct_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_wash_pct_dod",
+            "display_name": "returning_wash_pct_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 24,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.1925880024464764,
+                  "min": -13.0,
+                  "q1": -6.0,
+                  "q3": 3.6,
+                  "excess-kurtosis": -0.4780482570107898,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08333333333333333,
+                  "top-3-fraction": 0.16666666666666666,
+                  "max": 16.3,
+                  "sd": 7.687839776867271,
+                  "avg": 0.11249999999999996
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "avg_washes_per_order",
+            "lib/original-name": "avg_washes_per_order",
+            "name": "avg_washes_per_order",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "avg_washes_per_order",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "avg_washes_per_order",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "avg_washes_per_order",
+            "display_name": "avg_washes_per_order",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 18,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.73805063393142,
+                  "min": 1.09,
+                  "q1": 1.2,
+                  "q3": 1.29,
+                  "excess-kurtosis": -0.34110415090108104,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.16,
+                  "top-3-fraction": 0.4,
+                  "max": 1.35,
+                  "sd": 0.07271405182860695,
+                  "avg": 1.2503999999999997
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "avg_washes_per_order_dod",
+            "lib/original-name": "avg_washes_per_order_dod",
+            "name": "avg_washes_per_order_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "avg_washes_per_order_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "avg_washes_per_order_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "avg_washes_per_order_dod",
+            "display_name": "avg_washes_per_order_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 22,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.13399448945326042,
+                  "min": -14.2,
+                  "q1": -3.7,
+                  "q3": 5.5,
+                  "excess-kurtosis": 0.20761921239317793,
+                  "zero-fraction": 0.04166666666666667,
+                  "mode-fraction": 0.08333333333333333,
+                  "top-3-fraction": 0.20833333333333334,
+                  "max": 19.5,
+                  "sd": 8.113631399857502,
+                  "avg": 0.41666666666666663
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "signups",
+            "lib/original-name": "signups",
+            "name": "signups",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "signups",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "signups",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "signups",
+            "display_name": "signups",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 22,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.6974224848573286,
+                  "min": 51.0,
+                  "q1": 68.0,
+                  "q3": 128.0,
+                  "excess-kurtosis": -0.6812795653289556,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08,
+                  "top-3-fraction": 0.24,
+                  "max": 181.0,
+                  "sd": 39.65265859098647,
+                  "avg": 101.00000000000001
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "signups_dod",
+            "lib/original-name": "signups_dod",
+            "name": "signups_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "signups_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "signups_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "signups_dod",
+            "display_name": "signups_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 22,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.5481624252261748,
+                  "min": -37.5,
+                  "q1": -18.8,
+                  "q3": 9.7,
+                  "excess-kurtosis": 3.4090397648966824,
+                  "zero-fraction": 0.125,
+                  "mode-fraction": 0.125,
+                  "top-3-fraction": 0.20833333333333334,
+                  "max": 91.2,
+                  "sd": 28.196267354981995,
+                  "avg": 3.0416666666666674
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "new_customers",
+            "lib/original-name": "new_customers",
+            "name": "new_customers",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "new_customers",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "new_customers",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "new_customers",
+            "display_name": "new_customers",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 17,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.29048993536709905,
+                  "min": 6.0,
+                  "q1": 16.0,
+                  "q3": 22.0,
+                  "excess-kurtosis": 0.4496897708084382,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.12,
+                  "top-3-fraction": 0.32,
+                  "max": 35.0,
+                  "sd": 6.795341541575866,
+                  "avg": 18.52
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "new_customers_dod",
+            "lib/original-name": "new_customers_dod",
+            "name": "new_customers_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "new_customers_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "new_customers_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "new_customers_dod",
+            "display_name": "new_customers_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.4595377811317156,
+                  "min": -57.1,
+                  "q1": -22.7,
+                  "q3": 18.8,
+                  "excess-kurtosis": 2.40392669492611,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.041666666666666664,
+                  "top-3-fraction": 0.125,
+                  "max": 175.0,
+                  "sd": 53.982613277164376,
+                  "avg": 11.258333333333335
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "activation_pct",
+            "lib/original-name": "activation_pct",
+            "name": "activation_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "activation_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "activation_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "activation_pct",
+            "display_name": "activation_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 24,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.0325123956822986,
+                  "min": 11.5,
+                  "q1": 16.4,
+                  "q3": 21.2,
+                  "excess-kurtosis": 3.289874824530836,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08,
+                  "top-3-fraction": 0.16,
+                  "max": 34.4,
+                  "sd": 4.873492929443248,
+                  "avg": 18.848000000000003
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "activation_pct_dod",
+            "lib/original-name": "activation_pct_dod",
+            "name": "activation_pct_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "activation_pct_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "activation_pct_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "activation_pct_dod",
+            "display_name": "activation_pct_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 23,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.7426634755719176,
+                  "min": -15.3,
+                  "q1": -3.9,
+                  "q3": 2.7,
+                  "excess-kurtosis": 2.3860455832021104,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08333333333333333,
+                  "top-3-fraction": 0.20833333333333334,
+                  "max": 21.9,
+                  "sd": 7.432701685647427,
+                  "avg": 0.1624999999999999
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_customers",
+            "lib/original-name": "returning_customers",
+            "name": "returning_customers",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_customers",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_customers",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_customers",
+            "display_name": "returning_customers",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 20,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.41921567119527836,
+                  "min": 18.0,
+                  "q1": 37.0,
+                  "q3": 52.0,
+                  "excess-kurtosis": -0.48685395475168347,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.12,
+                  "top-3-fraction": 0.28,
+                  "max": 60.0,
+                  "sd": 11.341222744190034,
+                  "avg": 43.96
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_customers_dod",
+            "lib/original-name": "returning_customers_dod",
+            "name": "returning_customers_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_customers_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_customers_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_customers_dod",
+            "display_name": "returning_customers_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.1670566360267032,
+                  "min": -48.6,
+                  "q1": -13.3,
+                  "q3": 13.5,
+                  "excess-kurtosis": 3.8664664911919284,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.041666666666666664,
+                  "top-3-fraction": 0.125,
+                  "max": 116.7,
+                  "sd": 34.19664255915835,
+                  "avg": 5.891666666666664
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "active_customers",
+            "lib/original-name": "active_customers",
+            "name": "active_customers",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "active_customers",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "active_customers",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "active_customers",
+            "display_name": "active_customers",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 18,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.05506465871313797,
+                  "min": 29.0,
+                  "q1": 49.0,
+                  "q3": 74.0,
+                  "excess-kurtosis": -0.638902313089563,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.12,
+                  "top-3-fraction": 0.28,
+                  "max": 93.0,
+                  "sd": 16.21501361907127,
+                  "avg": 62.480000000000004
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "active_customers_dod",
+            "lib/original-name": "active_customers_dod",
+            "name": "active_customers_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "active_customers_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "active_customers_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "active_customers_dod",
+            "display_name": "active_customers_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 21,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.7525413262774442,
+                  "min": -37.9,
+                  "q1": -14.0,
+                  "q3": 14.3,
+                  "excess-kurtosis": 0.1256360488953443,
+                  "zero-fraction": 0.1666666666666667,
+                  "mode-fraction": 0.16666666666666666,
+                  "top-3-fraction": 0.25,
+                  "max": 69.0,
+                  "sd": 26.588359662928013,
+                  "avg": 3.95
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_pct",
+            "lib/original-name": "returning_pct",
+            "name": "returning_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_pct",
+            "display_name": "returning_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 23,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.11002578758967194,
+                  "min": 54.4,
+                  "q1": 66.1,
+                  "q3": 74.1,
+                  "excess-kurtosis": 0.23992854798470242,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08,
+                  "top-3-fraction": 0.2,
+                  "max": 85.4,
+                  "sd": 7.235025915641218,
+                  "avg": 70.568
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_pct_dod",
+            "lib/original-name": "returning_pct_dod",
+            "name": "returning_pct_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_pct_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_pct_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_pct_dod",
+            "display_name": "returning_pct_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 23,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.03333895673398328,
+                  "min": -23.3,
+                  "q1": -8.5,
+                  "q3": 5.8,
+                  "excess-kurtosis": -0.3396721698519931,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08333333333333333,
+                  "top-3-fraction": 0.20833333333333334,
+                  "max": 19.5,
+                  "sd": 11.261843202550839,
+                  "avg": 0.00416666666666668
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "sales_sar",
+            "lib/original-name": "sales_sar",
+            "name": "sales_sar",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "sales_sar",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "sales_sar",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "sales_sar",
+            "display_name": "sales_sar",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.4686677449723671,
+                  "min": 1584.0,
+                  "q1": 3597.5,
+                  "q3": 5341.0,
+                  "excess-kurtosis": -0.39261898363802983,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.04,
+                  "top-3-fraction": 0.12,
+                  "max": 6281.0,
+                  "sd": 1217.3488838866206,
+                  "avg": 4393.1979999999985
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "sales_sar_dod",
+            "lib/original-name": "sales_sar_dod",
+            "name": "sales_sar_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "sales_sar_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "sales_sar_dod",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "sales_sar_dod",
+            "display_name": "sales_sar_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.32452765765726505,
+                  "min": -54.7,
+                  "q1": -24.3,
+                  "q3": 23.6,
+                  "excess-kurtosis": 0.21376456804296584,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.041666666666666664,
+                  "top-3-fraction": 0.125,
+                  "max": 86.0,
+                  "sd": 33.23824162800643,
+                  "avg": 5.8374999999999995
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "aov",
+            "lib/original-name": "aov",
+            "name": "aov",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "aov",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "aov",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "aov",
+            "display_name": "aov",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 24,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.06253989735368277,
+                  "min": 41.68,
+                  "q1": 51.47,
+                  "q3": 60.05,
+                  "excess-kurtosis": -0.5240396237099962,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08,
+                  "top-3-fraction": 0.16,
+                  "max": 68.18,
+                  "sd": 7.246571212189482,
+                  "avg": 54.45119999999999
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "aov_dod",
+            "lib/original-name": "aov_dod",
+            "name": "aov_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "aov_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "aov_dod",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "aov_dod",
+            "display_name": "aov_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.45097925019208746,
+                  "min": -30.6,
+                  "q1": -10.3,
+                  "q3": 9.1,
+                  "excess-kurtosis": -0.39467248893693263,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.041666666666666664,
+                  "top-3-fraction": 0.125,
+                  "max": 40.3,
+                  "sd": 19.39402595526837,
+                  "avg": 1.3708333333333345
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "aopu",
+            "lib/original-name": "aopu",
+            "name": "aopu",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "aopu",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "aopu",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "aopu",
+            "display_name": "aopu",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 18,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.5868614166840622,
+                  "min": 1.13,
+                  "q1": 1.2,
+                  "q3": 1.34,
+                  "excess-kurtosis": 4.25740757900039,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08,
+                  "top-3-fraction": 0.24,
+                  "max": 1.72,
+                  "sd": 0.1261282416167503,
+                  "avg": 1.2959999999999998
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "aopu_dod",
+            "lib/original-name": "aopu_dod",
+            "name": "aopu_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "aopu_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "aopu_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "aopu_dod",
+            "display_name": "aopu_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.8711724900786191,
+                  "min": -22.1,
+                  "q1": -9.6,
+                  "q3": 7.3,
+                  "excess-kurtosis": 2.8377832536905134,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.041666666666666664,
+                  "top-3-fraction": 0.125,
+                  "max": 36.5,
+                  "sd": 11.663729702788476,
+                  "avg": 0.7208333333333332
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "arpu",
+            "lib/original-name": "arpu",
+            "name": "arpu",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "arpu",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "arpu",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "arpu",
+            "display_name": "arpu",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.566825615377418,
+                  "min": 54.62,
+                  "q1": 62.84,
+                  "q3": 74.38,
+                  "excess-kurtosis": -0.3135439837491689,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.04,
+                  "top-3-fraction": 0.12,
+                  "max": 90.0,
+                  "sd": 9.629861837015108,
+                  "avg": 70.2516
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "arpu_dod",
+            "lib/original-name": "arpu_dod",
+            "name": "arpu_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "arpu_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "arpu_dod",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "arpu_dod",
+            "display_name": "arpu_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 24,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.11961448415214673,
+                  "min": -29.4,
+                  "q1": -9.4,
+                  "q3": 10.1,
+                  "excess-kurtosis": -0.03708705090443409,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08333333333333333,
+                  "top-3-fraction": 0.16666666666666666,
+                  "max": 39.8,
+                  "sd": 17.09919059021741,
+                  "avg": 1.1333333333333329
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_per_washer",
+            "lib/original-name": "washes_per_washer",
+            "name": "washes_per_washer",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_per_washer",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_per_washer",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_per_washer",
+            "display_name": "washes_per_washer",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 24,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.49788474148433554,
+                  "min": 1.17,
+                  "q1": 1.98,
+                  "q3": 2.76,
+                  "excess-kurtosis": 0.3524439239370003,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.08,
+                  "top-3-fraction": 0.16,
+                  "max": 4.05,
+                  "sd": 0.663929715155653,
+                  "avg": 2.4012000000000002
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_per_washer_dod",
+            "lib/original-name": "washes_per_washer_dod",
+            "name": "washes_per_washer_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_per_washer_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_per_washer_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_per_washer_dod",
+            "display_name": "washes_per_washer_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 25,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.0817296930132106,
+                  "min": -37.0,
+                  "q1": -21.5,
+                  "q3": 26.7,
+                  "excess-kurtosis": -1.1681367668755316,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.041666666666666664,
+                  "top-3-fraction": 0.125,
+                  "max": 52.1,
+                  "sd": 25.87399651488293,
+                  "avg": 5.074999999999998
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washers_available",
+            "lib/original-name": "washers_available",
+            "name": "washers_available",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washers_available",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washers_available",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "washers_available",
+            "display_name": "washers_available",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 7,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.0190429565360326,
+                  "min": 39.0,
+                  "q1": 40.0,
+                  "q3": 43.0,
+                  "excess-kurtosis": 0.5977236678428328,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.2,
+                  "top-3-fraction": 0.6,
+                  "max": 47.0,
+                  "sd": 2.299999999999999,
+                  "avg": 42.04
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washers_available_dod",
+            "lib/original-name": "washers_available_dod",
+            "name": "washers_available_dod",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washers_available_dod",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washers_available_dod",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washers_available_dod",
+            "display_name": "washers_available_dod",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 14,
+                "nil%": 0.04
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.07974990549856781,
+                  "min": -12.8,
+                  "q1": -4.8,
+                  "q3": 2.4,
+                  "excess-kurtosis": -0.05882296009452448,
+                  "zero-fraction": 0.1666666666666667,
+                  "mode-fraction": 0.16666666666666666,
+                  "top-3-fraction": 0.375,
+                  "max": 10.3,
+                  "sd": 5.796825718080292,
+                  "avg": -0.6166666666666666
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "OKR — Daily (current month, through yesterday)",
+        "document_id": null,
+        "last_used_at": "2026-07-26T14:09:08.540412Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 855,
+        "creator_id": 67,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-23T09:45:16.222698Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "\nWITH bounds AS (\n  SELECT DATE_FORMAT(UTC_TIMESTAMP()+INTERVAL 3 HOUR,'%Y-%m-%d') today_str,\n         DATE_FORMAT(UTC_TIMESTAMP()+INTERVAL 3 HOUR,'%Y-%m-01') mstart_str,\n         DATE(UTC_TIMESTAMP()+INTERVAL 3 HOUR) today_d,\n         DATE(DATE_FORMAT(UTC_TIMESTAMP()+INTERVAL 3 HOUR,'%Y-%m-01')) mstart_d\n),\nfa AS (\n  SELECT client_id, MIN(actday) fa FROM (\n    SELECT client_id, `date` actday FROM reservations\n      WHERE status=3 AND use_package=0 AND deleted_at IS NULL AND `date` IS NOT NULL AND `date`<>''\n    UNION ALL\n    SELECT client_id, DATE_FORMAT(created_at,'%Y-%m-%d') FROM package_subscriptions\n      WHERE status=1 AND deleted_at IS NULL\n  ) u GROUP BY client_id\n),\nou AS (\n  SELECT `date` day, client_id, 0 is_pkg, CAST(total_price AS DECIMAL(10,2)) amount\n    FROM reservations WHERE status=3 AND use_package=0 AND deleted_at IS NULL\n      AND `date` >= (SELECT mstart_str FROM bounds) AND `date` < (SELECT today_str FROM bounds)\n  UNION ALL\n  SELECT DATE_FORMAT(created_at,'%Y-%m-%d') day, client_id, 1 is_pkg, cost amount\n    FROM package_subscriptions WHERE status=1 AND deleted_at IS NULL\n      AND DATE_FORMAT(created_at,'%Y-%m-%d') >= (SELECT mstart_str FROM bounds)\n      AND DATE_FORMAT(created_at,'%Y-%m-%d') < (SELECT today_str FROM bounds)\n),\nord AS (\n  SELECT day, SUM(is_pkg) package_orders, SUM(1-is_pkg) single_orders,\n         COUNT(*) total_orders, SUM(amount) sales_sar\n  FROM ou GROUP BY day\n),\nord_cust AS (\n  SELECT o.day, o.client_id, MIN(f.fa) fa FROM ou o JOIN fa f ON f.client_id=o.client_id\n  GROUP BY o.day, o.client_id\n),\ncust AS (\n  SELECT day, COUNT(*) active_customers, SUM(fa=day) new_customers,\n         COUNT(*)-SUM(fa=day) returning_customers\n  FROM ord_cust GROUP BY day\n),\nwash AS (\n  SELECT r.`date` day, COUNT(*) completed_washes,\n         SUM(f.fa=r.`date`) washes_new_cust, COUNT(*)-SUM(f.fa=r.`date`) washes_returning_cust\n  FROM reservations r LEFT JOIN fa f ON f.client_id=r.client_id\n  WHERE r.status=3 AND r.deleted_at IS NULL\n    AND r.`date` >= (SELECT mstart_str FROM bounds) AND r.`date` < (SELECT today_str FROM bounds)\n  GROUP BY r.`date`\n),\nsign AS (\n  SELECT DATE_FORMAT(created_at,'%Y-%m-%d') day, COUNT(*) signups\n  FROM clients WHERE type=0\n    AND DATE_FORMAT(created_at,'%Y-%m-%d') >= (SELECT mstart_str FROM bounds)\n    AND DATE_FORMAT(created_at,'%Y-%m-%d') < (SELECT today_str FROM bounds)\n  GROUP BY day\n),\natt AS (\n  SELECT DATE_FORMAT(`date`,'%Y-%m-%d') day, COUNT(DISTINCT representative_id) washers_available\n  FROM attendances WHERE `date` >= (SELECT mstart_d FROM bounds) AND `date` < (SELECT today_d FROM bounds)\n  GROUP BY day\n),\ndays AS (\n  SELECT day FROM ord UNION SELECT day FROM wash UNION SELECT day FROM cust\n  UNION SELECT day FROM sign UNION SELECT day FROM att\n),\nbase AS (\n  SELECT d.day period,\n    COALESCE(o.package_orders,0) package_orders, COALESCE(o.single_orders,0) single_orders,\n    COALESCE(o.total_orders,0) total_orders, COALESCE(o.sales_sar,0) sales_sar,\n    COALESCE(w.completed_washes,0) completed_washes, COALESCE(w.washes_new_cust,0) washes_new_cust,\n    COALESCE(w.washes_returning_cust,0) washes_returning_cust,\n    COALESCE(c.active_customers,0) active_customers, COALESCE(c.new_customers,0) new_customers,\n    COALESCE(c.returning_customers,0) returning_customers, COALESCE(s.signups,0) signups,\n    COALESCE(a.washers_available,0) washers_available\n  FROM days d\n  LEFT JOIN ord o ON o.day=d.day LEFT JOIN wash w ON w.day=d.day\n  LEFT JOIN cust c ON c.day=d.day LEFT JOIN sign s ON s.day=d.day LEFT JOIN att a ON a.day=d.day\n),\ncalc AS (\n  SELECT period, package_orders, single_orders, total_orders,\n    ROUND(100*package_orders/NULLIF(total_orders,0),1) package_pct,\n    ROUND(100*single_orders/NULLIF(total_orders,0),1) single_pct,\n    completed_washes, washes_new_cust, washes_returning_cust,\n    ROUND(100*washes_returning_cust/NULLIF(completed_washes,0),1) returning_wash_pct,\n    ROUND(completed_washes/NULLIF(total_orders,0),2) avg_washes_per_order,\n    signups, new_customers, ROUND(100*new_customers/NULLIF(signups,0),1) activation_pct,\n    returning_customers, active_customers,\n    ROUND(100*returning_customers/NULLIF(active_customers,0),1) returning_pct,\n    sales_sar, ROUND(sales_sar/NULLIF(total_orders,0),2) aov,\n    ROUND(total_orders/NULLIF(active_customers,0),2) aopu,\n    ROUND(sales_sar/NULLIF(active_customers,0),2) arpu,\n    ROUND(completed_washes/NULLIF(washers_available,0),2) washes_per_washer,\n    washers_available\n  FROM base\n)\nSELECT\n  period,\n  package_orders,\n  ROUND(100*(package_orders - LAG(package_orders) OVER w)/NULLIF(LAG(package_orders) OVER w,0),1) AS package_orders_dod,\n  single_orders,\n  ROUND(100*(single_orders - LAG(single_orders) OVER w)/NULLIF(LAG(single_orders) OVER w,0),1) AS single_orders_dod,\n  total_orders,\n  ROUND(100*(total_orders - LAG(total_orders) OVER w)/NULLIF(LAG(total_orders) OVER w,0),1) AS total_orders_dod,\n  package_pct,\n  ROUND(package_pct - LAG(package_pct) OVER w,1) AS package_pct_dod,\n  single_pct,\n  ROUND(single_pct - LAG(single_pct) OVER w,1) AS single_pct_dod,\n  completed_washes,\n  ROUND(100*(completed_washes - LAG(completed_washes) OVER w)/NULLIF(LAG(completed_washes) OVER w,0),1) AS completed_washes_dod,\n  washes_new_cust,\n  ROUND(100*(washes_new_cust - LAG(washes_new_cust) OVER w)/NULLIF(LAG(washes_new_cust) OVER w,0),1) AS washes_new_cust_dod,\n  washes_returning_cust,\n  ROUND(100*(washes_returning_cust - LAG(washes_returning_cust) OVER w)/NULLIF(LAG(washes_returning_cust) OVER w,0),1) AS washes_returning_cust_dod,\n  returning_wash_pct,\n  ROUND(returning_wash_pct - LAG(returning_wash_pct) OVER w,1) AS returning_wash_pct_dod,\n  avg_washes_per_order,\n  ROUND(100*(avg_washes_per_order - LAG(avg_washes_per_order) OVER w)/NULLIF(LAG(avg_washes_per_order) OVER w,0),1) AS avg_washes_per_order_dod,\n  signups,\n  ROUND(100*(signups - LAG(signups) OVER w)/NULLIF(LAG(signups) OVER w,0),1) AS signups_dod,\n  new_customers,\n  ROUND(100*(new_customers - LAG(new_customers) OVER w)/NULLIF(LAG(new_customers) OVER w,0),1) AS new_customers_dod,\n  activation_pct,\n  ROUND(activation_pct - LAG(activation_pct) OVER w,1) AS activation_pct_dod,\n  returning_customers,\n  ROUND(100*(returning_customers - LAG(returning_customers) OVER w)/NULLIF(LAG(returning_customers) OVER w,0),1) AS returning_customers_dod,\n  active_customers,\n  ROUND(100*(active_customers - LAG(active_customers) OVER w)/NULLIF(LAG(active_customers) OVER w,0),1) AS active_customers_dod,\n  returning_pct,\n  ROUND(returning_pct - LAG(returning_pct) OVER w,1) AS returning_pct_dod,\n  sales_sar,\n  ROUND(100*(sales_sar - LAG(sales_sar) OVER w)/NULLIF(LAG(sales_sar) OVER w,0),1) AS sales_sar_dod,\n  aov,\n  ROUND(100*(aov - LAG(aov) OVER w)/NULLIF(LAG(aov) OVER w,0),1) AS aov_dod,\n  aopu,\n  ROUND(100*(aopu - LAG(aopu) OVER w)/NULLIF(LAG(aopu) OVER w,0),1) AS aopu_dod,\n  arpu,\n  ROUND(100*(arpu - LAG(arpu) OVER w)/NULLIF(LAG(arpu) OVER w,0),1) AS arpu_dod,\n  washes_per_washer,\n  ROUND(100*(washes_per_washer - LAG(washes_per_washer) OVER w)/NULLIF(LAG(washes_per_washer) OVER w,0),1) AS washes_per_washer_dod,\n  washers_available,\n  ROUND(100*(washers_available - LAG(washers_available) OVER w)/NULLIF(LAG(washers_available) OVER w,0),1) AS washers_available_dod\nFROM calc\nWINDOW w AS (ORDER BY period ASC)\nORDER BY period DESC\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 496,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "table",
+        "archived_directly": false,
+        "entity_id": "siu7tDDkKoBVQVBYmQqgw",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-22T09:39:07.941328Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-23T09:45:22.567214Z",
+      "col": 0,
+      "id": 529,
+      "parameter_mappings": [],
+      "card_id": 496,
+      "entity_id": "ySKIVhHCQkvbvkyktb5JE",
+      "visualization_settings": {},
+      "size_y": 9,
+      "dashboard_id": 265,
+      "created_at": "2026-07-22T09:39:10.103737Z",
+      "row": 5
+    },
+    {
+      "size_x": 24,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": "2026-07-23T09:45:18.811268Z",
+        "description": "One row per operating month from first operations (2023-10) to the current partial month (through yesterday). Current month row is partial, so its MoM change vs the prior full month is not like-for-like. Adds monthly-only: within-month repeat %, subscription renewal %. MoM deltas. Completed only (reservations.status=3; drafts status=30 and soft-deletes excluded). ORDER = completed pay-per-wash (use_package=0) OR paid package purchase (package_subscriptions.status=1); subscription-redemption washes (use_package=1) are excluded from ORDERS/customers but INCLUDED in Completed washes. New customer = first-ever completed order/wash falls in this period; Returning = had activity in a prior period. Sales(SAR) = pay-per-wash revenue (CAST(total_price)) + package cost. AOV=sales/orders, AOPU=orders/active-customers, ARPU=sales/active-customers. Washers available = distinct washers in attendances. Newest period on top (DESC). Through YESTERDAY only in Riyadh time: period < DATE(UTC_TIMESTAMP()+INTERVAL 3 HOUR) (DB server runs UTC, +3h anchors Asia/Riyadh); the current in-progress period never includes today. Each metric is followed by its change column: count/value metrics use % change, percentage-type metrics use percentage-point (pp) change, via LAG() over the ordered periods. OMITTED (not fabricated): launch2order conversion (only DB source market_report_snapshots is sparse/duplicated and ends 2026-07-04); CAC and CPO (need marketing spend, not in this DB); TTC within-month (no defined DB event); CSAT/ratings/issues (separate source, out of scope).",
+        "archived": false,
+        "view_count": 42,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "VARCHAR",
+            "semantic_type": null,
+            "lib/deduplicated-name": "period",
+            "lib/original-name": "period",
+            "name": "period",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "period",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "period",
+              {
+                "base-type": "type/Text"
+              }
+            ],
+            "effective_type": "type/Text",
+            "lib/desired-column-alias": "period",
+            "display_name": "period",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 7.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "package_orders",
+            "lib/original-name": "package_orders",
+            "name": "package_orders",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "package_orders",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "package_orders",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "package_orders",
+            "display_name": "package_orders",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 21,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 2.2215681501873465,
+                  "min": 0.0,
+                  "q1": 0.0,
+                  "q3": 257.0,
+                  "excess-kurtosis": 5.484595772975265,
+                  "zero-fraction": 0.4117647058823529,
+                  "mode-fraction": 0.4117647058823529,
+                  "top-3-fraction": 0.47058823529411764,
+                  "max": 1338.0,
+                  "sd": 302.2618020354159,
+                  "avg": 190.5
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "package_orders_mom",
+            "lib/original-name": "package_orders_mom",
+            "name": "package_orders_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "package_orders_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "package_orders_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "package_orders_mom",
+            "display_name": "package_orders_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 20,
+                "nil%": 0.4411764705882353
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.3634441586099695,
+                  "min": -69.8,
+                  "q1": -44.1,
+                  "q3": 85.0,
+                  "excess-kurtosis": 2.899396422514552,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.05263157894736842,
+                  "top-3-fraction": 0.15789473684210525,
+                  "max": 357.7,
+                  "sd": 105.19493183709245,
+                  "avg": 49.55789473684211
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single_orders",
+            "lib/original-name": "single_orders",
+            "name": "single_orders",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single_orders",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single_orders",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single_orders",
+            "display_name": "single_orders",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.2991222561933626,
+                  "min": 138.0,
+                  "q1": 684.0,
+                  "q3": 2025.0,
+                  "excess-kurtosis": -1.2958580026880142,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 2766.0,
+                  "sd": 780.5348005478747,
+                  "avg": 1347.9705882352944
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single_orders_mom",
+            "lib/original-name": "single_orders_mom",
+            "name": "single_orders_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single_orders_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single_orders_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single_orders_mom",
+            "display_name": "single_orders_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 33,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.4192090797443455,
+                  "min": -33.1,
+                  "q1": -13.9,
+                  "q3": 26.3,
+                  "excess-kurtosis": 2.442386643044935,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.06060606060606061,
+                  "top-3-fraction": 0.12121212121212122,
+                  "max": 122.5,
+                  "sd": 34.10464122418389,
+                  "avg": 12.430303030303032
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "total_orders",
+            "lib/original-name": "total_orders",
+            "name": "total_orders",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "total_orders",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "total_orders",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "total_orders",
+            "display_name": "total_orders",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.4408021678448269,
+                  "min": 138.0,
+                  "q1": 684.0,
+                  "q3": 2395.0,
+                  "excess-kurtosis": -1.1888623734829822,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 3505.0,
+                  "sd": 999.6472782571439,
+                  "avg": 1538.470588235294
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "total_orders_mom",
+            "lib/original-name": "total_orders_mom",
+            "name": "total_orders_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "total_orders_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "total_orders_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "total_orders_mom",
+            "display_name": "total_orders_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.4642561677206933,
+                  "min": -26.4,
+                  "q1": -13.9,
+                  "q3": 24.4,
+                  "excess-kurtosis": 2.4671900335224115,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.030303030303030304,
+                  "top-3-fraction": 0.09090909090909091,
+                  "max": 122.5,
+                  "sd": 33.943167742030745,
+                  "avg": 12.663636363636362
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "package_pct",
+            "lib/original-name": "package_pct",
+            "name": "package_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "package_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "package_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "package_pct",
+            "display_name": "package_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 21,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.7216137206129767,
+                  "min": 0.0,
+                  "q1": 0.0,
+                  "q3": 11.6,
+                  "excess-kurtosis": 3.276513000004947,
+                  "zero-fraction": 0.4117647058823529,
+                  "mode-fraction": 0.4117647058823529,
+                  "top-3-fraction": 0.47058823529411764,
+                  "max": 42.1,
+                  "sd": 9.88006689881874,
+                  "avg": 7.394117647058826
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "package_pct_mom",
+            "lib/original-name": "package_pct_mom",
+            "name": "package_pct_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "package_pct_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "package_pct_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "package_pct_mom",
+            "display_name": "package_pct_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 20,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.07224618347223356,
+                  "min": -18.6,
+                  "q1": 0.0,
+                  "q3": 1.7,
+                  "excess-kurtosis": 4.009414797028523,
+                  "zero-fraction": 0.3939393939393939,
+                  "mode-fraction": 0.3939393939393939,
+                  "top-3-fraction": 0.48484848484848486,
+                  "max": 20.6,
+                  "sd": 6.453509439902377,
+                  "avg": 0.2818181818181819
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single_pct",
+            "lib/original-name": "single_pct",
+            "name": "single_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single_pct",
+            "display_name": "single_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 21,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -1.7216137206129754,
+                  "min": 57.9,
+                  "q1": 88.4,
+                  "q3": 100.0,
+                  "excess-kurtosis": 3.2765130000049445,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.4117647058823529,
+                  "top-3-fraction": 0.47058823529411764,
+                  "max": 100.0,
+                  "sd": 9.880066898818738,
+                  "avg": 92.60588235294117
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single_pct_mom",
+            "lib/original-name": "single_pct_mom",
+            "name": "single_pct_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single_pct_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single_pct_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single_pct_mom",
+            "display_name": "single_pct_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 20,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.07224618347223356,
+                  "min": -20.6,
+                  "q1": -1.7,
+                  "q3": 0.0,
+                  "excess-kurtosis": 4.009414797028523,
+                  "zero-fraction": 0.3939393939393939,
+                  "mode-fraction": 0.3939393939393939,
+                  "top-3-fraction": 0.48484848484848486,
+                  "max": 18.6,
+                  "sd": 6.453509439902377,
+                  "avg": -0.2818181818181819
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "completed_washes",
+            "lib/original-name": "completed_washes",
+            "name": "completed_washes",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "completed_washes",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "completed_washes",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "completed_washes",
+            "display_name": "completed_washes",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.5616085539336759,
+                  "min": 138.0,
+                  "q1": 684.0,
+                  "q3": 2848.0,
+                  "excess-kurtosis": -1.0959758928527044,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 4596.0,
+                  "sd": 1356.8778990014443,
+                  "avg": 1836.9411764705885
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "completed_washes_mom",
+            "lib/original-name": "completed_washes_mom",
+            "name": "completed_washes_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "completed_washes_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "completed_washes_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "completed_washes_mom",
+            "display_name": "completed_washes_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.4291899879406949,
+                  "min": -26.4,
+                  "q1": -13.9,
+                  "q3": 23.0,
+                  "excess-kurtosis": 2.5700127075456627,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.030303030303030304,
+                  "top-3-fraction": 0.09090909090909091,
+                  "max": 122.5,
+                  "sd": 33.50092462541259,
+                  "avg": 13.315151515151515
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_new_cust",
+            "lib/original-name": "washes_new_cust",
+            "name": "washes_new_cust",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_new_cust",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_new_cust",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_new_cust",
+            "display_name": "washes_new_cust",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.9328914887741997,
+                  "min": 138.0,
+                  "q1": 290.0,
+                  "q3": 1236.0,
+                  "excess-kurtosis": 0.21505734198966797,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 2387.0,
+                  "sd": 574.406847436085,
+                  "avg": 764.4705882352941
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_new_cust_mom",
+            "lib/original-name": "washes_new_cust_mom",
+            "name": "washes_new_cust_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_new_cust_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_new_cust_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_new_cust_mom",
+            "display_name": "washes_new_cust_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 33,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.9708428226697362,
+                  "min": -48.2,
+                  "q1": -28.5,
+                  "q3": 34.8,
+                  "excess-kurtosis": 0.7776126163916177,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.06060606060606061,
+                  "top-3-fraction": 0.12121212121212122,
+                  "max": 145.8,
+                  "sd": 47.387078095769375,
+                  "avg": 12.97272727272727
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_returning_cust",
+            "lib/original-name": "washes_returning_cust",
+            "name": "washes_returning_cust",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_returning_cust",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_returning_cust",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_returning_cust",
+            "display_name": "washes_returning_cust",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.8517634259331701,
+                  "min": 0.0,
+                  "q1": 451.0,
+                  "q3": 1663.0,
+                  "excess-kurtosis": -0.33159869813111165,
+                  "zero-fraction": 0.02941176470588235,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 3210.0,
+                  "sd": 888.5645296494562,
+                  "avg": 1072.4705882352946
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_returning_cust_mom",
+            "lib/original-name": "washes_returning_cust_mom",
+            "name": "washes_returning_cust_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_returning_cust_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_returning_cust_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_returning_cust_mom",
+            "display_name": "washes_returning_cust_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 33,
+                "nil%": 0.05882352941176471
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 4.609983214583974,
+                  "min": -21.6,
+                  "q1": -5.8,
+                  "q3": 23.3,
+                  "excess-kurtosis": 23.27327415138634,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.03125,
+                  "top-3-fraction": 0.09375,
+                  "max": 453.3,
+                  "sd": 83.51689121939114,
+                  "avg": 27.671875
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_wash_pct",
+            "lib/original-name": "returning_wash_pct",
+            "name": "returning_wash_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_wash_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_wash_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_wash_pct",
+            "display_name": "returning_wash_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 33,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -1.3026884485820331,
+                  "min": 0.0,
+                  "q1": 45.3,
+                  "q3": 66.5,
+                  "excess-kurtosis": 1.9117274090846492,
+                  "zero-fraction": 0.02941176470588235,
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.11764705882352941,
+                  "max": 78.7,
+                  "sd": 18.57703429529472,
+                  "avg": 53.852941176470594
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_wash_pct_mom",
+            "lib/original-name": "returning_wash_pct_mom",
+            "name": "returning_wash_pct_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_wash_pct_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_wash_pct_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_wash_pct_mom",
+            "display_name": "returning_wash_pct_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 32,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.2616986628798035,
+                  "min": -19.5,
+                  "q1": -3.4,
+                  "q3": 7.5,
+                  "excess-kurtosis": 0.19190529147419833,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.06060606060606061,
+                  "top-3-fraction": 0.15151515151515152,
+                  "max": 20.0,
+                  "sd": 8.83172977154395,
+                  "avg": 2.3848484848484843
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "avg_washes_per_order",
+            "lib/original-name": "avg_washes_per_order",
+            "name": "avg_washes_per_order",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "avg_washes_per_order",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "avg_washes_per_order",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "avg_washes_per_order",
+            "display_name": "avg_washes_per_order",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 15,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.2148367235245527,
+                  "min": 1.0,
+                  "q1": 1.0,
+                  "q3": 1.19,
+                  "excess-kurtosis": 0.5074403049793701,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.4411764705882353,
+                  "top-3-fraction": 0.6176470588235294,
+                  "max": 1.54,
+                  "sd": 0.15297786821626486,
+                  "avg": 1.1191176470588236
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "avg_washes_per_order_mom",
+            "lib/original-name": "avg_washes_per_order_mom",
+            "name": "avg_washes_per_order_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "avg_washes_per_order_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "avg_washes_per_order_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "avg_washes_per_order_mom",
+            "display_name": "avg_washes_per_order_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 16,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.8243629698499613,
+                  "min": -12.2,
+                  "q1": 0.0,
+                  "q3": 1.0,
+                  "excess-kurtosis": 8.222236995642534,
+                  "zero-fraction": 0.4848484848484848,
+                  "mode-fraction": 0.48484848484848486,
+                  "top-3-fraction": 0.6060606060606061,
+                  "max": 27.3,
+                  "sd": 6.5224263471920825,
+                  "avg": 0.8727272727272726
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "signups",
+            "lib/original-name": "signups",
+            "name": "signups",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "signups",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "signups",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "signups",
+            "display_name": "signups",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.9616272015117446,
+                  "min": 295.0,
+                  "q1": 584.0,
+                  "q3": 3989.0,
+                  "excess-kurtosis": 0.04393411900559441,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 8928.0,
+                  "sd": 2420.3253617037185,
+                  "avg": 2637.1470588235284
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "signups_mom",
+            "lib/original-name": "signups_mom",
+            "name": "signups_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "signups_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "signups_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "signups_mom",
+            "display_name": "signups_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.2962999646174969,
+                  "min": -71.3,
+                  "q1": -24.3,
+                  "q3": 59.3,
+                  "excess-kurtosis": 1.5725609664208444,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.030303030303030304,
+                  "top-3-fraction": 0.09090909090909091,
+                  "max": 219.2,
+                  "sd": 66.54070225672541,
+                  "avg": 20.754545454545447
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "new_customers",
+            "lib/original-name": "new_customers",
+            "name": "new_customers",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "new_customers",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "new_customers",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "new_customers",
+            "display_name": "new_customers",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 31,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.8222249096346478,
+                  "min": 105.0,
+                  "q1": 235.0,
+                  "q3": 1091.0,
+                  "excess-kurtosis": -0.45838183176434466,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.17647058823529413,
+                  "max": 1810.0,
+                  "sd": 493.5883533541335,
+                  "avg": 660.1470588235295
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "new_customers_mom",
+            "lib/original-name": "new_customers_mom",
+            "name": "new_customers_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "new_customers_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "new_customers_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "new_customers_mom",
+            "display_name": "new_customers_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 33,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.0515758106157576,
+                  "min": -51.3,
+                  "q1": -26.1,
+                  "q3": 36.1,
+                  "excess-kurtosis": 1.0413035781705182,
+                  "zero-fraction": 0.0303030303030303,
+                  "mode-fraction": 0.030303030303030304,
+                  "top-3-fraction": 0.09090909090909091,
+                  "max": 144.3,
+                  "sd": 47.0583211251869,
+                  "avg": 13.139393939393937
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "activation_pct",
+            "lib/original-name": "activation_pct",
+            "name": "activation_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "activation_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "activation_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "activation_pct",
+            "display_name": "activation_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.8741875179032811,
+                  "min": 14.7,
+                  "q1": 21.1,
+                  "q3": 40.8,
+                  "excess-kurtosis": 0.15726590826351794,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 73.2,
+                  "sd": 14.88454078455904,
+                  "avg": 33.88823529411764
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "activation_pct_mom",
+            "lib/original-name": "activation_pct_mom",
+            "name": "activation_pct_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "activation_pct_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "activation_pct_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "activation_pct_mom",
+            "display_name": "activation_pct_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 33,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.3827577608253469,
+                  "min": -33.1,
+                  "q1": -5.5,
+                  "q3": 5.6,
+                  "excess-kurtosis": 2.5428191859079345,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.06060606060606061,
+                  "top-3-fraction": 0.12121212121212122,
+                  "max": 37.3,
+                  "sd": 12.445241423568651,
+                  "avg": -0.18181818181818193
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_customers",
+            "lib/original-name": "returning_customers",
+            "name": "returning_customers",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_customers",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_customers",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_customers",
+            "display_name": "returning_customers",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 33,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.22590597095729553,
+                  "min": 0.0,
+                  "q1": 359.0,
+                  "q3": 875.0,
+                  "excess-kurtosis": -0.8339263717310836,
+                  "zero-fraction": 0.02941176470588235,
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.11764705882352941,
+                  "max": 1315.0,
+                  "sd": 347.2668584024993,
+                  "avg": 576.1764705882351
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_customers_mom",
+            "lib/original-name": "returning_customers_mom",
+            "name": "returning_customers_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_customers_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_customers_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_customers_mom",
+            "display_name": "returning_customers_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 33,
+                "nil%": 0.05882352941176471
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 5.018796418836542,
+                  "min": -19.0,
+                  "q1": -4.8,
+                  "q3": 21.8,
+                  "excess-kurtosis": 26.724701311139793,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.03125,
+                  "top-3-fraction": 0.09375,
+                  "max": 566.7,
+                  "sd": 102.17937456597369,
+                  "avg": 29.184375000000003
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "active_customers",
+            "lib/original-name": "active_customers",
+            "name": "active_customers",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "active_customers",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "active_customers",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "active_customers",
+            "display_name": "active_customers",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.39273910335326245,
+                  "min": 105.0,
+                  "q1": 533.0,
+                  "q3": 1894.0,
+                  "excess-kurtosis": -1.2361523909378698,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 2806.0,
+                  "sd": 783.1793293070447,
+                  "avg": 1236.3235294117646
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "active_customers_mom",
+            "lib/original-name": "active_customers_mom",
+            "name": "active_customers_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "active_customers_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "active_customers_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "active_customers_mom",
+            "display_name": "active_customers_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 32,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.4002765839267104,
+                  "min": -32.5,
+                  "q1": -10.5,
+                  "q3": 25.6,
+                  "excess-kurtosis": 2.6005057811264183,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.06060606060606061,
+                  "top-3-fraction": 0.15151515151515152,
+                  "max": 126.7,
+                  "sd": 34.70214439710572,
+                  "avg": 12.484848484848484
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_pct",
+            "lib/original-name": "returning_pct",
+            "name": "returning_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_pct",
+            "display_name": "returning_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 33,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.8833359291789922,
+                  "min": 0.0,
+                  "q1": 37.1,
+                  "q3": 61.4,
+                  "excess-kurtosis": 0.8098390340697654,
+                  "zero-fraction": 0.02941176470588235,
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.11764705882352941,
+                  "max": 72.3,
+                  "sd": 17.40618244089655,
+                  "avg": 46.57647058823529
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "returning_pct_mom",
+            "lib/original-name": "returning_pct_mom",
+            "name": "returning_pct_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "returning_pct_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "returning_pct_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "returning_pct_mom",
+            "display_name": "returning_pct_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 32,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.2412343260546227,
+                  "min": -19.0,
+                  "q1": -4.3,
+                  "q3": 7.8,
+                  "excess-kurtosis": -0.28218361808856374,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.06060606060606061,
+                  "top-3-fraction": 0.15151515151515152,
+                  "max": 18.0,
+                  "sd": 8.624001918535795,
+                  "avg": 1.9818181818181817
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "sales_sar",
+            "lib/original-name": "sales_sar",
+            "name": "sales_sar",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "sales_sar",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "sales_sar",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "sales_sar",
+            "display_name": "sales_sar",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.740597109028527,
+                  "min": 4255.0,
+                  "q1": 22910.0,
+                  "q3": 99485.87,
+                  "excess-kurtosis": -0.681181440345096,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 171975.35,
+                  "sd": 50157.06566341321,
+                  "avg": 63257.70235294116
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "sales_sar_mom",
+            "lib/original-name": "sales_sar_mom",
+            "name": "sales_sar_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "sales_sar_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "sales_sar_mom",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "sales_sar_mom",
+            "display_name": "sales_sar_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 33,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 2.953784726816959,
+                  "min": -33.8,
+                  "q1": -13.7,
+                  "q3": 27.0,
+                  "excess-kurtosis": 11.013678435469705,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.06060606060606061,
+                  "top-3-fraction": 0.12121212121212122,
+                  "max": 240.7,
+                  "sd": 51.35664403330534,
+                  "avg": 17.436363636363634
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "aov",
+            "lib/original-name": "aov",
+            "name": "aov",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "aov",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "aov",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "aov",
+            "display_name": "aov",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.4966157721749363,
+                  "min": 15.85,
+                  "q1": 31.29,
+                  "q3": 39.98,
+                  "excess-kurtosis": 0.44578958477068653,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 54.86,
+                  "sd": 8.700438271379324,
+                  "avg": 37.29264705882354
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "aov_mom",
+            "lib/original-name": "aov_mom",
+            "name": "aov_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "aov_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "aov_mom",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "aov_mom",
+            "display_name": "aov_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 30,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 2.5218601721365896,
+                  "min": -48.2,
+                  "q1": -0.5,
+                  "q3": 6.4,
+                  "excess-kurtosis": 14.674896685568998,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.12121212121212122,
+                  "top-3-fraction": 0.21212121212121213,
+                  "max": 95.3,
+                  "sd": 20.171033367708556,
+                  "avg": 3.4060606060606067
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "aopu",
+            "lib/original-name": "aopu",
+            "name": "aopu",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "aopu",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "aopu",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "aopu",
+            "display_name": "aopu",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 22,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.2560680385879495,
+                  "min": 1.12,
+                  "q1": 1.17,
+                  "q3": 1.28,
+                  "excess-kurtosis": 0.8649556900798134,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.14705882352941177,
+                  "top-3-fraction": 0.3235294117647059,
+                  "max": 1.51,
+                  "sd": 0.10224093385796974,
+                  "avg": 1.237941176470588
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "aopu_mom",
+            "lib/original-name": "aopu_mom",
+            "name": "aopu_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "aopu_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "aopu_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "aopu_mom",
+            "display_name": "aopu_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 27,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.3356316594340241,
+                  "min": -22.1,
+                  "q1": -2.4,
+                  "q3": 2.6,
+                  "excess-kurtosis": 4.23810836978047,
+                  "zero-fraction": 0.09090909090909091,
+                  "mode-fraction": 0.09090909090909091,
+                  "top-3-fraction": 0.21212121212121213,
+                  "max": 16.7,
+                  "sd": 6.709458780051646,
+                  "avg": 0.6606060606060603
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "arpu",
+            "lib/original-name": "arpu",
+            "name": "arpu",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "arpu",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "arpu",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "arpu",
+            "display_name": "arpu",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.1242569090260526,
+                  "min": 19.86,
+                  "q1": 38.08,
+                  "q3": 47.89,
+                  "excess-kurtosis": 0.8154654087780107,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 82.09,
+                  "sd": 13.854148130072163,
+                  "avg": 46.62088235294117
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DOUBLE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "arpu_mom",
+            "lib/original-name": "arpu_mom",
+            "name": "arpu_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "arpu_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "arpu_mom",
+              {
+                "base-type": "type/Float"
+              }
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "arpu_mom",
+            "display_name": "arpu_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 32,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 2.2564820533140275,
+                  "min": -49.6,
+                  "q1": -3.5,
+                  "q3": 8.8,
+                  "excess-kurtosis": 11.817893220685296,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.06060606060606061,
+                  "top-3-fraction": 0.15151515151515152,
+                  "max": 100.1,
+                  "sd": 22.020199060559527,
+                  "avg": 4.166666666666665
+                }
+              }
+            },
+            "base_type": "type/Float"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_per_washer",
+            "lib/original-name": "washes_per_washer",
+            "name": "washes_per_washer",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_per_washer",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_per_washer",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_per_washer",
+            "display_name": "washes_per_washer",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 8,
+                "nil%": 0.7941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.663909584092542,
+                  "min": 2.4,
+                  "q1": 2.56,
+                  "q3": 3.92,
+                  "excess-kurtosis": -0.546738876527761,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.14285714285714285,
+                  "top-3-fraction": 0.42857142857142855,
+                  "max": 4.51,
+                  "sd": 0.7597994722920239,
+                  "avg": 3.255714285714286
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_per_washer_mom",
+            "lib/original-name": "washes_per_washer_mom",
+            "name": "washes_per_washer_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_per_washer_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_per_washer_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_per_washer_mom",
+            "display_name": "washes_per_washer_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 7,
+                "nil%": 0.823529411764706
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.6090670108046565,
+                  "min": -36.4,
+                  "q1": -26.2,
+                  "q3": 13.4,
+                  "excess-kurtosis": -1.6220500961112174,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.16666666666666666,
+                  "top-3-fraction": 0.5,
+                  "max": 15.1,
+                  "sd": 21.50261999540211,
+                  "avg": -5.633333333333333
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washers_available",
+            "lib/original-name": "washers_available",
+            "name": "washers_available",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washers_available",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washers_available",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "washers_available",
+            "display_name": "washers_available",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 7,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.5910768343540214,
+                  "min": 0.0,
+                  "q1": 0.0,
+                  "q3": 0.0,
+                  "excess-kurtosis": 0.6727879730349735,
+                  "zero-fraction": 0.7941176470588235,
+                  "mode-fraction": 0.7941176470588235,
+                  "top-3-fraction": 0.8823529411764706,
+                  "max": 55.0,
+                  "sd": 19.766010906750395,
+                  "avg": 9.823529411764708
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washers_available_mom",
+            "lib/original-name": "washers_available_mom",
+            "name": "washers_available_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washers_available_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washers_available_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washers_available_mom",
+            "display_name": "washers_available_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 6,
+                "nil%": 0.823529411764706
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.07859023271168175,
+                  "min": -7.4,
+                  "q1": -1.8,
+                  "q3": 14.6,
+                  "excess-kurtosis": -1.8244248076806961,
+                  "zero-fraction": 0.1666666666666667,
+                  "mode-fraction": 0.16666666666666666,
+                  "top-3-fraction": 0.5,
+                  "max": 17.1,
+                  "sd": 9.715485920254666,
+                  "avg": 5.066666666666666
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "repeat_customers",
+            "lib/original-name": "repeat_customers",
+            "name": "repeat_customers",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "repeat_customers",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "repeat_customers",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "repeat_customers",
+            "display_name": "repeat_customers",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 32,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.2226509696491756,
+                  "min": 14.0,
+                  "q1": 89.0,
+                  "q3": 212.0,
+                  "excess-kurtosis": -0.8712537709752923,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.14705882352941177,
+                  "max": 320.0,
+                  "sd": 75.54336149021064,
+                  "avg": 154.55882352941177
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "repeat_customers_mom",
+            "lib/original-name": "repeat_customers_mom",
+            "name": "repeat_customers_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "repeat_customers_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "repeat_customers_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "repeat_customers_mom",
+            "display_name": "repeat_customers_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 32,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 3.574105872542408,
+                  "min": -31.3,
+                  "q1": -15.2,
+                  "q3": 20.7,
+                  "excess-kurtosis": 16.060108277122335,
+                  "zero-fraction": 0.0303030303030303,
+                  "mode-fraction": 0.06060606060606061,
+                  "top-3-fraction": 0.12121212121212122,
+                  "max": 278.6,
+                  "sd": 55.448469798816845,
+                  "avg": 15.73030303030303
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "within_month_repeat_pct",
+            "lib/original-name": "within_month_repeat_pct",
+            "name": "within_month_repeat_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "within_month_repeat_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "within_month_repeat_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "within_month_repeat_pct",
+            "display_name": "within_month_repeat_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 32,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.3492294103200914,
+                  "min": 8.3,
+                  "q1": 11.9,
+                  "q3": 16.5,
+                  "excess-kurtosis": -0.04130404904513396,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.14705882352941177,
+                  "max": 22.3,
+                  "sd": 3.4928039086649316,
+                  "avg": 14.18235294117647
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "within_month_repeat_pct_mom",
+            "lib/original-name": "within_month_repeat_pct_mom",
+            "name": "within_month_repeat_pct_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "within_month_repeat_pct_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "within_month_repeat_pct_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "within_month_repeat_pct_mom",
+            "display_name": "within_month_repeat_pct_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 32,
+                "nil%": 0.02941176470588235
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.964667799887535,
+                  "min": -5.0,
+                  "q1": -1.8,
+                  "q3": 1.7,
+                  "excess-kurtosis": 2.456268900665426,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.06060606060606061,
+                  "top-3-fraction": 0.15151515151515152,
+                  "max": 9.0,
+                  "sd": 2.7666267339213806,
+                  "avg": 0.012121212121212033
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "renewals",
+            "lib/original-name": "renewals",
+            "name": "renewals",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "renewals",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "renewals",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "renewals",
+            "display_name": "renewals",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 19,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.7964050680157349,
+                  "min": 0.0,
+                  "q1": 0.0,
+                  "q3": 62.0,
+                  "excess-kurtosis": 2.35779274994511,
+                  "zero-fraction": 0.4705882352941176,
+                  "mode-fraction": 0.47058823529411764,
+                  "top-3-fraction": 0.5294117647058824,
+                  "max": 274.0,
+                  "sd": 79.19778823501998,
+                  "avg": 50.205882352941174
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "renewals_mom",
+            "lib/original-name": "renewals_mom",
+            "name": "renewals_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "renewals_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "renewals_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "renewals_mom",
+            "display_name": "renewals_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 18,
+                "nil%": 0.5
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.6081834855052644,
+                  "min": -65.7,
+                  "q1": -14.3,
+                  "q3": 62.9,
+                  "excess-kurtosis": 3.921393797126448,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.17647058823529413,
+                  "max": 266.7,
+                  "sd": 78.14589297100197,
+                  "avg": 36.39411764705882
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "subscription_renewal_pct",
+            "lib/original-name": "subscription_renewal_pct",
+            "name": "subscription_renewal_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "subscription_renewal_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "subscription_renewal_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "subscription_renewal_pct",
+            "display_name": "subscription_renewal_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 19,
+                "nil%": 0.4117647058823529
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.33757902245793886,
+                  "min": 0.0,
+                  "q1": 10.9,
+                  "q3": 35.3,
+                  "excess-kurtosis": -0.1955641292904664,
+                  "zero-fraction": 0.1,
+                  "mode-fraction": 0.1,
+                  "top-3-fraction": 0.2,
+                  "max": 62.4,
+                  "sd": 16.522312664680864,
+                  "avg": 25.444999999999997
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "subscription_renewal_pct_mom",
+            "lib/original-name": "subscription_renewal_pct_mom",
+            "name": "subscription_renewal_pct_mom",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "subscription_renewal_pct_mom",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "subscription_renewal_pct_mom",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "subscription_renewal_pct_mom",
+            "display_name": "subscription_renewal_pct_mom",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 17,
+                "nil%": 0.4411764705882353
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.0079273760066067,
+                  "min": -16.7,
+                  "q1": -4.3,
+                  "q3": 11.1,
+                  "excess-kurtosis": -0.13142067456145146,
+                  "zero-fraction": 0.05263157894736842,
+                  "mode-fraction": 0.10526315789473684,
+                  "top-3-fraction": 0.2631578947368421,
+                  "max": 25.7,
+                  "sd": 10.706709379216107,
+                  "avg": 3.2842105263157895
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "OKR — Monthly (operating history, through yesterday)",
+        "document_id": null,
+        "last_used_at": "2026-07-26T14:09:08.540412Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 1821,
+        "creator_id": 67,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-23T09:45:18.80859Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "\nWITH bounds AS (\n  SELECT DATE_FORMAT(UTC_TIMESTAMP()+INTERVAL 3 HOUR,'%Y-%m-%d') today_str,\n         DATE(UTC_TIMESTAMP()+INTERVAL 3 HOUR) today_d\n),\nfa AS (\n  SELECT client_id, MIN(actday) fa FROM (\n    SELECT client_id, `date` actday FROM reservations\n      WHERE status=3 AND use_package=0 AND deleted_at IS NULL AND `date` IS NOT NULL AND `date`<>''\n    UNION ALL\n    SELECT client_id, DATE_FORMAT(created_at,'%Y-%m-%d') FROM package_subscriptions\n      WHERE status=1 AND deleted_at IS NULL\n  ) u GROUP BY client_id\n),\nou AS (\n  SELECT LEFT(`date`,7) ym, client_id, 0 is_pkg, CAST(total_price AS DECIMAL(10,2)) amount\n    FROM reservations WHERE status=3 AND use_package=0 AND deleted_at IS NULL\n      AND `date` IS NOT NULL AND `date`<>'' AND `date` < (SELECT today_str FROM bounds)\n  UNION ALL\n  SELECT DATE_FORMAT(created_at,'%Y-%m') ym, client_id, 1 is_pkg, cost amount\n    FROM package_subscriptions WHERE status=1 AND deleted_at IS NULL\n      AND DATE_FORMAT(created_at,'%Y-%m-%d') < (SELECT today_str FROM bounds)\n),\nord AS (\n  SELECT ym, SUM(is_pkg) package_orders, SUM(1-is_pkg) single_orders,\n         COUNT(*) total_orders, SUM(amount) sales_sar FROM ou GROUP BY ym\n),\nord_cust AS (\n  SELECT o.ym, o.client_id, COUNT(*) cnt, MIN(f.fa) fa\n  FROM ou o JOIN fa f ON f.client_id=o.client_id GROUP BY o.ym, o.client_id\n),\ncust AS (\n  SELECT ym, COUNT(*) active_customers, SUM(LEFT(fa,7)=ym) new_customers,\n         COUNT(*)-SUM(LEFT(fa,7)=ym) returning_customers,\n         SUM(cnt>=2) repeat_customers\n  FROM ord_cust GROUP BY ym\n),\nwash AS (\n  SELECT LEFT(r.`date`,7) ym, COUNT(*) completed_washes,\n         SUM(LEFT(f.fa,7)=LEFT(r.`date`,7)) washes_new_cust,\n         COUNT(*)-SUM(LEFT(f.fa,7)=LEFT(r.`date`,7)) washes_returning_cust\n  FROM reservations r LEFT JOIN fa f ON f.client_id=r.client_id\n  WHERE r.status=3 AND r.deleted_at IS NULL AND r.`date` IS NOT NULL AND r.`date`<>''\n    AND r.`date` < (SELECT today_str FROM bounds)\n  GROUP BY LEFT(r.`date`,7)\n),\nsign AS (\n  SELECT DATE_FORMAT(created_at,'%Y-%m') ym, COUNT(*) signups\n  FROM clients WHERE type=0 AND DATE_FORMAT(created_at,'%Y-%m-%d') < (SELECT today_str FROM bounds)\n  GROUP BY ym\n),\nsubren AS (\n  SELECT DATE_FORMAT(ps.created_at,'%Y-%m') ym, COUNT(*) paid_subs,\n    SUM(EXISTS(SELECT 1 FROM package_subscriptions p2 WHERE p2.client_id=ps.client_id\n          AND p2.status=1 AND p2.deleted_at IS NULL AND p2.created_at<ps.created_at)) renewals\n  FROM package_subscriptions ps WHERE ps.status=1 AND ps.deleted_at IS NULL\n    AND DATE_FORMAT(ps.created_at,'%Y-%m-%d') < (SELECT today_str FROM bounds)\n  GROUP BY ym\n),\natt AS (\n  SELECT DATE_FORMAT(`date`,'%Y-%m') ym, COUNT(*) washer_days,\n         COUNT(DISTINCT representative_id) washers_available\n  FROM attendances WHERE `date` < (SELECT today_d FROM bounds) GROUP BY ym\n),\nmonths AS (\n  -- operating months only: anchor to real order/wash activity (first ops = 2023-10),\n  -- excludes a few pre-launch months that had only scattered signups and zero orders/washes\n  SELECT ym FROM ord UNION SELECT ym FROM wash\n),\nbase AS (\n  SELECT m.ym period,\n    COALESCE(o.package_orders,0) package_orders, COALESCE(o.single_orders,0) single_orders,\n    COALESCE(o.total_orders,0) total_orders, COALESCE(o.sales_sar,0) sales_sar,\n    COALESCE(w.completed_washes,0) completed_washes, COALESCE(w.washes_new_cust,0) washes_new_cust,\n    COALESCE(w.washes_returning_cust,0) washes_returning_cust,\n    COALESCE(c.active_customers,0) active_customers, COALESCE(c.new_customers,0) new_customers,\n    COALESCE(c.returning_customers,0) returning_customers, COALESCE(c.repeat_customers,0) repeat_customers,\n    COALESCE(s.signups,0) signups, COALESCE(a.washers_available,0) washers_available,\n    COALESCE(a.washer_days,0) washer_days,\n    COALESCE(sr.paid_subs,0) paid_subs, COALESCE(sr.renewals,0) renewals\n  FROM months m\n  LEFT JOIN ord o ON o.ym=m.ym LEFT JOIN wash w ON w.ym=m.ym LEFT JOIN cust c ON c.ym=m.ym\n  LEFT JOIN sign s ON s.ym=m.ym LEFT JOIN att a ON a.ym=m.ym LEFT JOIN subren sr ON sr.ym=m.ym\n),\ncalc AS (\n  SELECT period, package_orders, single_orders, total_orders,\n    ROUND(100*package_orders/NULLIF(total_orders,0),1) package_pct,\n    ROUND(100*single_orders/NULLIF(total_orders,0),1) single_pct,\n    completed_washes, washes_new_cust, washes_returning_cust,\n    ROUND(100*washes_returning_cust/NULLIF(completed_washes,0),1) returning_wash_pct,\n    ROUND(completed_washes/NULLIF(total_orders,0),2) avg_washes_per_order,\n    signups, new_customers, ROUND(100*new_customers/NULLIF(signups,0),1) activation_pct,\n    returning_customers, active_customers,\n    ROUND(100*returning_customers/NULLIF(active_customers,0),1) returning_pct,\n    sales_sar, ROUND(sales_sar/NULLIF(total_orders,0),2) aov,\n    ROUND(total_orders/NULLIF(active_customers,0),2) aopu,\n    ROUND(sales_sar/NULLIF(active_customers,0),2) arpu,\n    ROUND(completed_washes/NULLIF(washer_days,0),2) washes_per_washer, washers_available,\n    repeat_customers, ROUND(100*repeat_customers/NULLIF(active_customers,0),1) within_month_repeat_pct,\n    renewals, ROUND(100*renewals/NULLIF(paid_subs,0),1) subscription_renewal_pct\n  FROM base\n)\nSELECT\n  period,\n  package_orders,\n  ROUND(100*(package_orders - LAG(package_orders) OVER w)/NULLIF(LAG(package_orders) OVER w,0),1) AS package_orders_mom,\n  single_orders,\n  ROUND(100*(single_orders - LAG(single_orders) OVER w)/NULLIF(LAG(single_orders) OVER w,0),1) AS single_orders_mom,\n  total_orders,\n  ROUND(100*(total_orders - LAG(total_orders) OVER w)/NULLIF(LAG(total_orders) OVER w,0),1) AS total_orders_mom,\n  package_pct,\n  ROUND(package_pct - LAG(package_pct) OVER w,1) AS package_pct_mom,\n  single_pct,\n  ROUND(single_pct - LAG(single_pct) OVER w,1) AS single_pct_mom,\n  completed_washes,\n  ROUND(100*(completed_washes - LAG(completed_washes) OVER w)/NULLIF(LAG(completed_washes) OVER w,0),1) AS completed_washes_mom,\n  washes_new_cust,\n  ROUND(100*(washes_new_cust - LAG(washes_new_cust) OVER w)/NULLIF(LAG(washes_new_cust) OVER w,0),1) AS washes_new_cust_mom,\n  washes_returning_cust,\n  ROUND(100*(washes_returning_cust - LAG(washes_returning_cust) OVER w)/NULLIF(LAG(washes_returning_cust) OVER w,0),1) AS washes_returning_cust_mom,\n  returning_wash_pct,\n  ROUND(returning_wash_pct - LAG(returning_wash_pct) OVER w,1) AS returning_wash_pct_mom,\n  avg_washes_per_order,\n  ROUND(100*(avg_washes_per_order - LAG(avg_washes_per_order) OVER w)/NULLIF(LAG(avg_washes_per_order) OVER w,0),1) AS avg_washes_per_order_mom,\n  signups,\n  ROUND(100*(signups - LAG(signups) OVER w)/NULLIF(LAG(signups) OVER w,0),1) AS signups_mom,\n  new_customers,\n  ROUND(100*(new_customers - LAG(new_customers) OVER w)/NULLIF(LAG(new_customers) OVER w,0),1) AS new_customers_mom,\n  activation_pct,\n  ROUND(activation_pct - LAG(activation_pct) OVER w,1) AS activation_pct_mom,\n  returning_customers,\n  ROUND(100*(returning_customers - LAG(returning_customers) OVER w)/NULLIF(LAG(returning_customers) OVER w,0),1) AS returning_customers_mom,\n  active_customers,\n  ROUND(100*(active_customers - LAG(active_customers) OVER w)/NULLIF(LAG(active_customers) OVER w,0),1) AS active_customers_mom,\n  returning_pct,\n  ROUND(returning_pct - LAG(returning_pct) OVER w,1) AS returning_pct_mom,\n  sales_sar,\n  ROUND(100*(sales_sar - LAG(sales_sar) OVER w)/NULLIF(LAG(sales_sar) OVER w,0),1) AS sales_sar_mom,\n  aov,\n  ROUND(100*(aov - LAG(aov) OVER w)/NULLIF(LAG(aov) OVER w,0),1) AS aov_mom,\n  aopu,\n  ROUND(100*(aopu - LAG(aopu) OVER w)/NULLIF(LAG(aopu) OVER w,0),1) AS aopu_mom,\n  arpu,\n  ROUND(100*(arpu - LAG(arpu) OVER w)/NULLIF(LAG(arpu) OVER w,0),1) AS arpu_mom,\n  washes_per_washer,\n  ROUND(100*(washes_per_washer - LAG(washes_per_washer) OVER w)/NULLIF(LAG(washes_per_washer) OVER w,0),1) AS washes_per_washer_mom,\n  washers_available,\n  ROUND(100*(washers_available - LAG(washers_available) OVER w)/NULLIF(LAG(washers_available) OVER w,0),1) AS washers_available_mom,\n  repeat_customers,\n  ROUND(100*(repeat_customers - LAG(repeat_customers) OVER w)/NULLIF(LAG(repeat_customers) OVER w,0),1) AS repeat_customers_mom,\n  within_month_repeat_pct,\n  ROUND(within_month_repeat_pct - LAG(within_month_repeat_pct) OVER w,1) AS within_month_repeat_pct_mom,\n  renewals,\n  ROUND(100*(renewals - LAG(renewals) OVER w)/NULLIF(LAG(renewals) OVER w,0),1) AS renewals_mom,\n  subscription_renewal_pct,\n  ROUND(subscription_renewal_pct - LAG(subscription_renewal_pct) OVER w,1) AS subscription_renewal_pct_mom\nFROM calc\nWINDOW w AS (ORDER BY period ASC)\nORDER BY period DESC\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 497,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "table",
+        "archived_directly": false,
+        "entity_id": "36eJO8_TkXZAGlBNdvt7x",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-22T09:39:09.143636Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-23T09:45:22.567214Z",
+      "col": 0,
+      "id": 530,
+      "parameter_mappings": [],
+      "card_id": 497,
+      "entity_id": "twJ-Cnm7GX4uNzJWc_fJt",
+      "visualization_settings": {},
+      "size_y": 13,
+      "dashboard_id": 265,
+      "created_at": "2026-07-22T09:39:10.103737Z",
+      "row": 14
+    },
+    {
+      "size_x": 24,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": "2026-07-23T09:45:23.796777Z",
+        "description": "North Star trend (DAILY). washes_per_washer_day = completed washes that day (reservations.status=3, drafts/deleted excluded) / washers active that day (COUNT(DISTINCT representative_id) in attendances), the SAME definition as the Daily OKR card (496). Daily series ascending, trailing ~30 days; big number = yesterday, arrow = day-over-day vs the day before. Cut at yesterday, Riyadh (date < DATE(UTC_TIMESTAMP()+INTERVAL 3 HOUR)). Benchmark goal ~4.0/day, break-even ~6.",
+        "archived": false,
+        "view_count": 24,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "date",
+            "lib/original-name": "date",
+            "name": "date",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "date",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "date",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "date",
+            "display_name": "date",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 30,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2026-06-26",
+                  "latest": "2026-07-25",
+                  "mode-fraction": 0.03333333333333333,
+                  "top-3-fraction": 0.1
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes_per_washer_day",
+            "lib/original-name": "washes_per_washer_day",
+            "name": "washes_per_washer_day",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes_per_washer_day",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes_per_washer_day",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "washes_per_washer_day",
+            "display_name": "washes_per_washer_day",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 29,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.5324496353279108,
+                  "min": 1.17,
+                  "q1": 2.02,
+                  "q3": 2.76,
+                  "excess-kurtosis": 0.48540987721674167,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.06666666666666667,
+                  "top-3-fraction": 0.13333333333333333,
+                  "max": 4.05,
+                  "sd": 0.6291140459079106,
+                  "avg": 2.4050000000000002
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "North Star · Washes per Washer per Day",
+        "document_id": null,
+        "last_used_at": "2026-07-26T14:09:08.540412Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 365,
+        "creator_id": 67,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-23T09:45:23.794116Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "WITH bounds AS (\n  SELECT DATE_FORMAT(UTC_TIMESTAMP()+INTERVAL 3 HOUR,'%Y-%m-%d') today_str,\n         DATE(UTC_TIMESTAMP()+INTERVAL 3 HOUR) today_d,\n         DATE_FORMAT(UTC_TIMESTAMP()+INTERVAL 3 HOUR - INTERVAL 30 DAY,'%Y-%m-%d') start_str,\n         DATE(UTC_TIMESTAMP()+INTERVAL 3 HOUR - INTERVAL 30 DAY) start_d\n),\nwash AS (\n  SELECT `date` day, COUNT(*) completed_washes\n  FROM reservations\n  WHERE status=3 AND deleted_at IS NULL AND `date` IS NOT NULL AND `date`<>''\n    AND `date` >= (SELECT start_str FROM bounds) AND `date` < (SELECT today_str FROM bounds)\n  GROUP BY `date`\n),\natt AS (\n  SELECT DATE_FORMAT(`date`,'%Y-%m-%d') day, COUNT(DISTINCT representative_id) washers_available\n  FROM attendances\n  WHERE `date` >= (SELECT start_d FROM bounds) AND `date` < (SELECT today_d FROM bounds)\n  GROUP BY DATE_FORMAT(`date`,'%Y-%m-%d')\n)\nSELECT CAST(w.day AS DATE) AS date,\n       ROUND(w.completed_washes/NULLIF(a.washers_available,0),2) AS washes_per_washer_day\nFROM wash w JOIN att a ON a.day=w.day\nWHERE a.washers_available > 0\nORDER BY date ASC;\n"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 529,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "smartscalar",
+        "archived_directly": false,
+        "entity_id": "pImbcZVLrp-VBStehHViL",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-22T10:26:11.176579Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-22T11:06:12.251189Z",
+      "col": 0,
+      "id": 562,
+      "parameter_mappings": [],
+      "card_id": 529,
+      "entity_id": "6969WI_7bjsXOB5hzE15s",
+      "visualization_settings": {},
+      "size_y": 5,
+      "dashboard_id": 265,
+      "created_at": "2026-07-22T10:26:12.34444Z",
+      "row": 0
+    },
+    {
+      "size_x": 18,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": "إجمالي الغسلات المدفوعة شهرياً = غسلات مفردة (use_package=0) + غسلات باقات (use_package=1). كل حجز=غسلة؛ الباقات تُسهم بعدة غسلات. HameemDB.",
+        "archived": false,
+        "view_count": 1,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "month",
+            "lib/original-name": "month",
+            "name": "month",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "month",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "month",
+            "display_name": "month",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2023-10-01",
+                  "latest": "2026-07-01",
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single_washes",
+            "lib/original-name": "single_washes",
+            "name": "single_washes",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single_washes",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single_washes",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single_washes",
+            "display_name": "single_washes",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.2734603459172143,
+                  "min": 256.0,
+                  "q1": 840.0,
+                  "q3": 2120.0,
+                  "excess-kurtosis": -1.2357130590836243,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 2940.0,
+                  "sd": 781.9083589642598,
+                  "avg": 1507.5
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "package_washes",
+            "lib/original-name": "package_washes",
+            "name": "package_washes",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "package_washes",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "package_washes",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "package_washes",
+            "display_name": "package_washes",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 21,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.6056387313603377,
+                  "min": 0.0,
+                  "q1": 0.0,
+                  "q3": 806.0,
+                  "excess-kurtosis": 1.9180034297090285,
+                  "zero-fraction": 0.4117647058823529,
+                  "mode-fraction": 0.4117647058823529,
+                  "top-3-fraction": 0.47058823529411764,
+                  "max": 2873.0,
+                  "sd": 770.9433464877696,
+                  "avg": 546.5882352941177
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "total_paid_washes",
+            "lib/original-name": "total_paid_washes",
+            "name": "total_paid_washes",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "total_paid_washes",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "total_paid_washes",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "total_paid_washes",
+            "display_name": "total_paid_washes",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.6034830736893244,
+                  "min": 256.0,
+                  "q1": 840.0,
+                  "q3": 3168.0,
+                  "excess-kurtosis": -0.9961686557314358,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.029411764705882353,
+                  "top-3-fraction": 0.08823529411764706,
+                  "max": 5009.0,
+                  "sd": 1431.4027738793573,
+                  "avg": 2054.088235294117
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "Purchases Washes (paid) — single vs package",
+        "document_id": null,
+        "last_used_at": "2026-07-26T14:11:00.983184Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 569,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-26T14:11:00.51821Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(created_at,'%Y-%m-01') AS DATE) AS month, SUM(use_package=0) AS single_washes, SUM(use_package=1) AS package_washes, COUNT(*) AS total_paid_washes FROM reservations WHERE deleted_at IS NULL GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 595,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "qaWzwx1Jr913fIj91LpS0",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "stackable.stack_type": "stacked",
+          "graph.y_axis.title_text": "غسلات مدفوعة",
+          "graph.show_values": true,
+          "graph.metrics": [
+            "single_washes",
+            "package_washes"
+          ]
+        },
+        "metabase_version": "v1.62.5.1 (5fc1cff)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-26T14:11:00.51821Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-26T14:11:16.96085Z",
+      "col": 0,
+      "id": 661,
+      "parameter_mappings": [],
+      "card_id": 595,
+      "entity_id": "aNVADHEVPkz2vRbpyuRGY",
+      "visualization_settings": {},
+      "size_y": 8,
+      "dashboard_id": 265,
+      "created_at": "2026-07-26T14:11:16.96085Z",
+      "row": 27
+    }
+  ],
+  "embedding_type": null,
+  "initially_published_at": null,
+  "can_write": true,
+  "can_set_cache_policy": true,
+  "tabs": [],
+  "enable_embedding": false,
+  "collection_id": 35,
+  "show_in_getting_started": false,
+  "name": "Hamim · OKR Tracking",
+  "is_remote_synced": false,
+  "width": "fixed",
+  "caveats": null,
+  "collection_authority_level": null,
+  "creator_id": 67,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-23T09:45:22.567214Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "last_used_param_values": {},
+  "id": 265,
+  "last_viewed_at": "2026-07-26T14:09:08.516617Z",
+  "position": null,
+  "archived_directly": false,
+  "entity_id": "gtXuhU7SrxlZcjNfEZRkT",
+  "param_fields": {},
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-26T14:11:17.078768Z"
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "hamim",
+    "archive_operation_id": null,
+    "name": "Hamim",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "effective_location": "/",
+    "id": 35,
+    "archived_directly": null,
+    "entity_id": "9mwTmrtXSSbfaKiBa77cb",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-14T09:18:46.723266Z"
+  },
+  "parameters": [],
+  "auto_apply_filters": true,
+  "created_at": "2026-07-22T09:39:09.678272Z",
+  "public_uuid": null,
+  "points_of_interest": null,
+  "can_delete": false
+}

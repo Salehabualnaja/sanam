@@ -44,3 +44,9 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **Also:** fixed lib.sh card snapshot/restore for Metabase pMBQL format (snap_card/restore_card).
 - **Before-snapshots:** listed in `metabase/backups/growth_dates_undo.txt`
 - **Undo:** `bash metabase/undo_growth_dates.sh`
+
+### 20260726T141137Z — ADD 'Purchases Washes' card #595 to dashboard #265 (Hamim/35)
+- **Scope:** saleh-only lock lifted per explicit user request; ALLOWED_COLLECTIONS now {100,35}.
+- **Metric:** total paid washes monthly = single (use_package=0) + package washes (use_package=1), stacked. Definition ① (reliable; bundled/unused package washes not counted — DB stores per-package counts only in free text).
+- **Before-snapshot:** dashboard-265-*.before.json
+- **Undo:** `bash metabase/undo_purchases_washes.sh`

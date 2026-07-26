@@ -25,24 +25,28 @@ mkdir -p "$BACKUP_DIR" "$SNAP_DIR"
 # ---------------------------------------------------------------------------
 TARGET_COLLECTION_ID=100
 TARGET_COLLECTION_NAME="saleh"
+# Scope lock lifted per explicit user request (2026-07-21): now also allow Hamim (35).
+# Safety net (snapshot-before-edit, changelog, archive-not-delete) still applies.
+ALLOWED_COLLECTIONS="100 35"
 
-# assert_scope ENTITY_TYPE ID  -> fails (non-zero) if entity is NOT in collection 100.
-# Use before editing/moving/archiving an EXISTING dashboard or card.
+_in_allowed() { case " $ALLOWED_COLLECTIONS " in *" $1 "*) return 0;; *) return 1;; esac; }
+
+# assert_scope ENTITY_TYPE ID  -> fails if entity is NOT in an allowed collection.
 assert_scope() {
   local etype="$1" id="$2"
   local cid
   cid=$(mb_api GET "/api/${etype}/${id}" | jq -r '.collection_id // empty')
-  if [ "$cid" != "$TARGET_COLLECTION_ID" ]; then
-    echo "!! REFUSED: ${etype}/${id} is in collection '${cid:-root/none}', not ${TARGET_COLLECTION_ID} (saleh). Aborting." >&2
+  if ! _in_allowed "$cid"; then
+    echo "!! REFUSED: ${etype}/${id} is in collection '${cid:-root/none}', not in allowed {$ALLOWED_COLLECTIONS}. Aborting." >&2
     return 1
   fi
   return 0
 }
 
-# assert_create_scope COLLECTION_ID  -> fails if a create/move target isn't collection 100.
+# assert_create_scope COLLECTION_ID  -> fails if a create/move target isn't allowed.
 assert_create_scope() {
-  if [ "${1:-}" != "$TARGET_COLLECTION_ID" ]; then
-    echo "!! REFUSED: target collection '${1:-none}' is not ${TARGET_COLLECTION_ID} (saleh). Aborting." >&2
+  if ! _in_allowed "${1:-}"; then
+    echo "!! REFUSED: target collection '${1:-none}' is not in allowed {$ALLOWED_COLLECTIONS}. Aborting." >&2
     return 1
   fi
   return 0
