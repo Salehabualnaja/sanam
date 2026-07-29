@@ -56,3 +56,8 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **Cards:** scalars (washes/revenue/AOV/accounts/completion), accounts table, monthly washes (single/pkg), monthly revenue, washes by city.
 - **Note:** cards 628–633 were orphaned by a build bug and archived.
 - **Undo:** `bash metabase/undo_b2b_dash.sh`
+
+### 20260729T121126Z — CREATE Individual-Customers dashboard #331 (Hamim/35) + 12 cards (643–654)
+- **What:** consumer analytics EXCLUDING B2B (client_id NOT IN 71515,41380,40233,14302). Focus on repeat-purchase rate + other KPIs.
+- **Cards:** scalars (customers, washes, revenue, AOV, repeat rate 64.9%, AOPU 2.85), monthly washes, monthly revenue, new-vs-returning, repeat-rate trend, orders-per-customer distribution, washes by city.
+- **Undo:** `bash metabase/undo_individual_dash.sh`
