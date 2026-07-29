@@ -50,3 +50,9 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **Metric:** total paid washes monthly = single (use_package=0) + package washes (use_package=1), stacked. Definition ① (reliable; bundled/unused package washes not counted — DB stores per-package counts only in free text).
 - **Before-snapshot:** dashboard-265-*.before.json
 - **Undo:** `bash metabase/undo_purchases_washes.sh`
+
+### 20260729T115516Z — CREATE B2B Analytics dashboard #298 (Hamim/35) + 9 cards (634–642)
+- **What:** dedicated B2B customers dashboard, all cards scoped to curated B2B set (كلين لايف 71515, طلبات مسمار 41380, هاللو اب 40233, مسمار-بريدة 14302), with a custom 'B2B Account' dropdown filter ({{account}} on username).
+- **Cards:** scalars (washes/revenue/AOV/accounts/completion), accounts table, monthly washes (single/pkg), monthly revenue, washes by city.
+- **Note:** cards 628–633 were orphaned by a build bug and archived.
+- **Undo:** `bash metabase/undo_b2b_dash.sh`
