@@ -61,3 +61,8 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **What:** consumer analytics EXCLUDING B2B (client_id NOT IN 71515,41380,40233,14302). Focus on repeat-purchase rate + other KPIs.
 - **Cards:** scalars (customers, washes, revenue, AOV, repeat rate 64.9%, AOPU 2.85), monthly washes, monthly revenue, new-vs-returning, repeat-rate trend, orders-per-customer distribution, washes by city.
 - **Undo:** `bash metabase/undo_individual_dash.sh`
+
+### 20260803T130513Z — MERGE dashboards 331+298 into #364 (3 tabs) + Daily tab (Hamim/35)
+- **What:** new merged dashboard #364 with tabs: Individuals (reuses cards 643-654), B2B (reuses 634-642 + account filter), Daily (new cards 661 line, 662 table = daily order count individual vs B2B).
+- **Old dashboards 331 & 298 archived** (cards reused, still live).
+- **Undo:** `bash metabase/undo_merged_dash.sh`

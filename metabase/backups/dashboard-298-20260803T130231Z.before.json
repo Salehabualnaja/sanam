@@ -1,0 +1,1770 @@
+{
+  "description": "كل معلومات عملاء B2B (كلين لايف/مسمار/هاللو اب...) مع فلتر مخصص لاختيار الحساب.",
+  "archived": false,
+  "view_count": 7,
+  "collection_position": 2,
+  "dashcards": [
+    {
+      "size_x": 5,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 7,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes",
+            "lib/original-name": "washes",
+            "name": "washes",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "washes",
+            "display_name": "washes",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 1,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": null,
+                  "min": 3969.0,
+                  "q1": 3969.0,
+                  "q3": 3969.0,
+                  "excess-kurtosis": null,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 1.0,
+                  "top-3-fraction": 1.0,
+                  "max": 3969.0,
+                  "sd": 0.0,
+                  "avg": 3969.0
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "B2B · إجمالي الغسلات",
+        "document_id": null,
+        "last_used_at": "2026-08-03T13:00:01.912758Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 633,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-29T11:54:26.772413Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": [
+                {
+                  "display-name": "B2B Account",
+                  "id": "acct-tag",
+                  "name": "account",
+                  "type": "text"
+                }
+              ],
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT COUNT(*) washes FROM reservations r JOIN clients c ON c.id=r.client_id WHERE r.deleted_at IS NULL AND r.client_id IN (71515,41380,40233,14302) [[ AND c.username = {{account}} ]]"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 634,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "scalar",
+        "archived_directly": false,
+        "entity_id": "oAPtrB78R68rIrgLq4E9h",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v1.63.1.9 (bab5dbe)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-29T11:54:26.772413Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-29T11:54:36.045853Z",
+      "col": 0,
+      "id": 694,
+      "parameter_mappings": [
+        {
+          "parameter_id": "acct01",
+          "card_id": 634,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "account"
+            ]
+          ]
+        }
+      ],
+      "card_id": 634,
+      "entity_id": "D7ZskNqIPJhlzSazNcgbJ",
+      "visualization_settings": {},
+      "size_y": 4,
+      "dashboard_id": 298,
+      "created_at": "2026-07-29T11:54:36.045853Z",
+      "row": 0
+    },
+    {
+      "size_x": 5,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 6,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "revenue",
+            "lib/original-name": "revenue",
+            "name": "revenue",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "revenue",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "revenue",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "revenue",
+            "display_name": "revenue",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 1,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": null,
+                  "min": 130608.0,
+                  "q1": 130608.0,
+                  "q3": 130608.0,
+                  "excess-kurtosis": null,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 1.0,
+                  "top-3-fraction": 1.0,
+                  "max": 130608.0,
+                  "sd": 0.0,
+                  "avg": 130608.0
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "B2B · الإيراد (﷼)",
+        "document_id": null,
+        "last_used_at": "2026-08-03T13:00:01.912758Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 535,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-29T11:54:27.826302Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": [
+                {
+                  "display-name": "B2B Account",
+                  "id": "acct-tag",
+                  "name": "account",
+                  "type": "text"
+                }
+              ],
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT ROUND(SUM(CAST(r.total_price AS DECIMAL(12,2))),0) revenue FROM reservations r JOIN clients c ON c.id=r.client_id WHERE r.deleted_at IS NULL AND r.client_id IN (71515,41380,40233,14302) [[ AND c.username = {{account}} ]]"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 635,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "scalar",
+        "archived_directly": false,
+        "entity_id": "KsPBUwFUQRdwNdSCsvSpC",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v1.63.1.9 (bab5dbe)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-29T11:54:27.826302Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-29T11:54:36.045853Z",
+      "col": 5,
+      "id": 695,
+      "parameter_mappings": [
+        {
+          "parameter_id": "acct01",
+          "card_id": 635,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "account"
+            ]
+          ]
+        }
+      ],
+      "card_id": 635,
+      "entity_id": "_cbajknRSxhtmrv6_v8R6",
+      "visualization_settings": {},
+      "size_y": 4,
+      "dashboard_id": 298,
+      "created_at": "2026-07-29T11:54:36.045853Z",
+      "row": 0
+    },
+    {
+      "size_x": 5,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 6,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "aov",
+            "lib/original-name": "aov",
+            "name": "aov",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "aov",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "aov",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "aov",
+            "display_name": "aov",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 1,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": null,
+                  "min": 32.9,
+                  "q1": 32.9,
+                  "q3": 32.9,
+                  "excess-kurtosis": null,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 1.0,
+                  "top-3-fraction": 1.0,
+                  "max": 32.9,
+                  "sd": 0.0,
+                  "avg": 32.9
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "B2B · متوسط قيمة الطلب (AOV)",
+        "document_id": null,
+        "last_used_at": "2026-08-03T13:00:01.912758Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 412,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-29T11:54:28.878314Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": [
+                {
+                  "display-name": "B2B Account",
+                  "id": "acct-tag",
+                  "name": "account",
+                  "type": "text"
+                }
+              ],
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT ROUND(AVG(CASE WHEN r.use_package=0 THEN CAST(r.total_price AS DECIMAL(12,2)) END),1) aov FROM reservations r JOIN clients c ON c.id=r.client_id WHERE r.deleted_at IS NULL AND r.client_id IN (71515,41380,40233,14302) [[ AND c.username = {{account}} ]]"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 636,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "scalar",
+        "archived_directly": false,
+        "entity_id": "cMLdIx4E2l2uub5rG7xfy",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v1.63.1.9 (bab5dbe)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-29T11:54:28.878314Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-29T11:54:36.045853Z",
+      "col": 10,
+      "id": 696,
+      "parameter_mappings": [
+        {
+          "parameter_id": "acct01",
+          "card_id": 636,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "account"
+            ]
+          ]
+        }
+      ],
+      "card_id": 636,
+      "entity_id": "WmPL3OyUOlBqfxR_mP9HW",
+      "visualization_settings": {},
+      "size_y": 4,
+      "dashboard_id": 298,
+      "created_at": "2026-07-29T11:54:36.045853Z",
+      "row": 0
+    },
+    {
+      "size_x": 4,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 6,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "accounts",
+            "lib/original-name": "accounts",
+            "name": "accounts",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "accounts",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "accounts",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "accounts",
+            "display_name": "accounts",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 1,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": null,
+                  "min": 4.0,
+                  "q1": 4.0,
+                  "q3": 4.0,
+                  "excess-kurtosis": null,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 1.0,
+                  "top-3-fraction": 1.0,
+                  "max": 4.0,
+                  "sd": 0.0,
+                  "avg": 4.0
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "B2B · عدد الحسابات النشطة",
+        "document_id": null,
+        "last_used_at": "2026-08-03T13:00:01.912758Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 426,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-29T11:54:29.903963Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": [
+                {
+                  "display-name": "B2B Account",
+                  "id": "acct-tag",
+                  "name": "account",
+                  "type": "text"
+                }
+              ],
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT COUNT(DISTINCT r.client_id) accounts FROM reservations r JOIN clients c ON c.id=r.client_id WHERE r.deleted_at IS NULL AND r.client_id IN (71515,41380,40233,14302) [[ AND c.username = {{account}} ]]"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 637,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "scalar",
+        "archived_directly": false,
+        "entity_id": "1-sqhWWjoNgZ8V7MjyoRo",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v1.63.1.9 (bab5dbe)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-29T11:54:29.903963Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-29T11:54:36.045853Z",
+      "col": 15,
+      "id": 697,
+      "parameter_mappings": [
+        {
+          "parameter_id": "acct01",
+          "card_id": 637,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "account"
+            ]
+          ]
+        }
+      ],
+      "card_id": 637,
+      "entity_id": "kea3BS3AmFvy-NcVr1897",
+      "visualization_settings": {},
+      "size_y": 4,
+      "dashboard_id": 298,
+      "created_at": "2026-07-29T11:54:36.045853Z",
+      "row": 0
+    },
+    {
+      "size_x": 5,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 6,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "completion_pct",
+            "lib/original-name": "completion_pct",
+            "name": "completion_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "completion_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "completion_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "completion_pct",
+            "display_name": "completion_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 1,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": null,
+                  "min": 91.2,
+                  "q1": 91.2,
+                  "q3": 91.2,
+                  "excess-kurtosis": null,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 1.0,
+                  "top-3-fraction": 1.0,
+                  "max": 91.2,
+                  "sd": 0.0,
+                  "avg": 91.2
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "B2B · معدل الإتمام %",
+        "document_id": null,
+        "last_used_at": "2026-08-03T13:00:01.912758Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 535,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-29T11:54:31.072078Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": [
+                {
+                  "display-name": "B2B Account",
+                  "id": "acct-tag",
+                  "name": "account",
+                  "type": "text"
+                }
+              ],
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT ROUND(100*SUM(r.status=3)/COUNT(*),1) completion_pct FROM reservations r JOIN clients c ON c.id=r.client_id WHERE r.deleted_at IS NULL AND r.client_id IN (71515,41380,40233,14302) [[ AND c.username = {{account}} ]]"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 638,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "scalar",
+        "archived_directly": false,
+        "entity_id": "xS82dLqUmOWXM_yvJmktn",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v1.63.1.9 (bab5dbe)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-29T11:54:31.072078Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-29T11:54:36.045853Z",
+      "col": 19,
+      "id": 698,
+      "parameter_mappings": [
+        {
+          "parameter_id": "acct01",
+          "card_id": 638,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "account"
+            ]
+          ]
+        }
+      ],
+      "card_id": 638,
+      "entity_id": "tdcx96hY-MwIIIWJPSuai",
+      "visualization_settings": {},
+      "size_y": 4,
+      "dashboard_id": 298,
+      "created_at": "2026-07-29T11:54:36.045853Z",
+      "row": 0
+    },
+    {
+      "size_x": 24,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 6,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "VARCHAR",
+            "semantic_type": null,
+            "lib/deduplicated-name": "account",
+            "lib/original-name": "account",
+            "name": "account",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "account",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "account",
+              {
+                "base-type": "type/Text"
+              }
+            ],
+            "effective_type": "type/Text",
+            "lib/desired-column-alias": "account",
+            "display_name": "account",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 4,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 9.75,
+                  "mode-fraction": 0.25,
+                  "top-3-fraction": 0.75
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes",
+            "lib/original-name": "washes",
+            "name": "washes",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "washes",
+            "display_name": "washes",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 4,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.5881070349905734,
+                  "min": 103.0,
+                  "q1": 103.0,
+                  "q3": 1303.0,
+                  "excess-kurtosis": -0.22900221667129017,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.25,
+                  "top-3-fraction": 0.75,
+                  "max": 1719.0,
+                  "sd": 692.212575730895,
+                  "avg": 992.25
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "revenue",
+            "lib/original-name": "revenue",
+            "name": "revenue",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "revenue",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "revenue",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "revenue",
+            "display_name": "revenue",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 4,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.31402247060515903,
+                  "min": 3487.0,
+                  "q1": 3487.0,
+                  "q3": 39958.0,
+                  "excess-kurtosis": 0.3171333959904352,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.25,
+                  "top-3-fraction": 0.75,
+                  "max": 59133.0,
+                  "sd": 23285.053188687372,
+                  "avg": 32652.0
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "aov",
+            "lib/original-name": "aov",
+            "name": "aov",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "aov",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "aov",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "aov",
+            "display_name": "aov",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 4,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -1.4904006634125182,
+                  "min": 30.7,
+                  "q1": 30.7,
+                  "q3": 33.9,
+                  "excess-kurtosis": 2.2416449064220494,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.25,
+                  "top-3-fraction": 0.75,
+                  "max": 34.4,
+                  "sd": 1.6421530582338137,
+                  "avg": 33.05
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "package_washes",
+            "lib/original-name": "package_washes",
+            "name": "package_washes",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "package_washes",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "package_washes",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "package_washes",
+            "display_name": "package_washes",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 1,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": null,
+                  "min": 0.0,
+                  "q1": 0.0,
+                  "q3": 0.0,
+                  "excess-kurtosis": null,
+                  "zero-fraction": 1.0,
+                  "mode-fraction": 1.0,
+                  "top-3-fraction": 1.0,
+                  "max": 0.0,
+                  "sd": 0.0,
+                  "avg": 0.0
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "completion_pct",
+            "lib/original-name": "completion_pct",
+            "name": "completion_pct",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "completion_pct",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "completion_pct",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "completion_pct",
+            "display_name": "completion_pct",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 4,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": -0.3434315624668036,
+                  "min": 80.6,
+                  "q1": 80.6,
+                  "q3": 93.5,
+                  "excess-kurtosis": -3.5732463182913587,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.25,
+                  "top-3-fraction": 0.75,
+                  "max": 95.1,
+                  "sd": 6.859239510810705,
+                  "avg": 88.625
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "first_order",
+            "lib/original-name": "first_order",
+            "name": "first_order",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "first_order",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "first_order",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "first_order",
+            "display_name": "first_order",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 4,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2025-04-22",
+                  "latest": "2026-03-04",
+                  "mode-fraction": 0.25,
+                  "top-3-fraction": 0.75
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "last_order",
+            "lib/original-name": "last_order",
+            "name": "last_order",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "last_order",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "last_order",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "last_order",
+            "display_name": "last_order",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 3,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2025-12-26",
+                  "latest": "2026-08-03",
+                  "mode-fraction": 0.5,
+                  "top-3-fraction": 1.0
+                }
+              }
+            },
+            "base_type": "type/Date"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "B2B · تفصيل الحسابات",
+        "document_id": null,
+        "last_used_at": "2026-08-03T13:00:01.912758Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": 428,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-29T11:54:32.213696Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": [
+                {
+                  "display-name": "B2B Account",
+                  "id": "acct-tag",
+                  "name": "account",
+                  "type": "text"
+                }
+              ],
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT c.username AS account, COUNT(*) AS washes, ROUND(SUM(CAST(r.total_price AS DECIMAL(12,2))),0) AS revenue, ROUND(AVG(CASE WHEN r.use_package=0 THEN CAST(r.total_price AS DECIMAL(12,2)) END),1) AS aov, SUM(r.use_package=1) AS package_washes, ROUND(100*SUM(r.status=3)/COUNT(*),1) AS completion_pct, MIN(DATE(r.created_at)) AS first_order, MAX(DATE(r.created_at)) AS last_order FROM reservations r JOIN clients c ON c.id=r.client_id WHERE r.deleted_at IS NULL AND r.client_id IN (71515,41380,40233,14302) [[ AND c.username = {{account}} ]] GROUP BY c.username ORDER BY washes DESC"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 639,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "table",
+        "archived_directly": false,
+        "entity_id": "erQdx_L05d7vn0iEcGNvh",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v1.63.1.9 (bab5dbe)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-29T11:54:32.213696Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-29T11:54:36.045853Z",
+      "col": 0,
+      "id": 699,
+      "parameter_mappings": [
+        {
+          "parameter_id": "acct01",
+          "card_id": 639,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "account"
+            ]
+          ]
+        }
+      ],
+      "card_id": 639,
+      "entity_id": "xBE8m9GY8BLGkBjXIkzif",
+      "visualization_settings": {},
+      "size_y": 8,
+      "dashboard_id": 298,
+      "created_at": "2026-07-29T11:54:36.045853Z",
+      "row": 4
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 5,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "month",
+            "lib/original-name": "month",
+            "name": "month",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "month",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "month",
+            "display_name": "month",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 17,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2025-04-01",
+                  "latest": "2026-08-01",
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.17647058823529413
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "single",
+            "lib/original-name": "single",
+            "name": "single",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "single",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "single",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "single",
+            "display_name": "single",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 17,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.7914328230240264,
+                  "min": 6.0,
+                  "q1": 11.0,
+                  "q3": 532.0,
+                  "excess-kurtosis": -0.9293642307755645,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.17647058823529413,
+                  "max": 789.0,
+                  "sd": 269.1786390222715,
+                  "avg": 233.47058823529412
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "package",
+            "lib/original-name": "package",
+            "name": "package",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "package",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "package",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "package",
+            "display_name": "package",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 1,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": null,
+                  "min": 0.0,
+                  "q1": 0.0,
+                  "q3": 0.0,
+                  "excess-kurtosis": null,
+                  "zero-fraction": 1.0,
+                  "mode-fraction": 1.0,
+                  "top-3-fraction": 1.0,
+                  "max": 0.0,
+                  "sd": 0.0,
+                  "avg": 0.0
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "B2B · الغسلات الشهرية (مفردة/باقة)",
+        "document_id": null,
+        "last_used_at": "2026-08-03T13:00:01.912758Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-29T11:54:33.166626Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": [
+                {
+                  "display-name": "B2B Account",
+                  "id": "acct-tag",
+                  "name": "account",
+                  "type": "text"
+                }
+              ],
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(r.created_at,'%Y-%m-01') AS DATE) AS month, SUM(r.use_package=0) AS single, SUM(r.use_package=1) AS package FROM reservations r JOIN clients c ON c.id=r.client_id WHERE r.deleted_at IS NULL AND r.client_id IN (71515,41380,40233,14302) [[ AND c.username = {{account}} ]] GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 640,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "vgCVYB2h0gNoVB14DoOhI",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "stackable.stack_type": "stacked",
+          "graph.metrics": [
+            "single",
+            "package"
+          ]
+        },
+        "metabase_version": "v1.63.1.9 (bab5dbe)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-29T11:54:33.166626Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-29T11:54:36.045853Z",
+      "col": 0,
+      "id": 700,
+      "parameter_mappings": [
+        {
+          "parameter_id": "acct01",
+          "card_id": 640,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "account"
+            ]
+          ]
+        }
+      ],
+      "card_id": 640,
+      "entity_id": "wALybR3ilbH-dBuZjLTB0",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 298,
+      "created_at": "2026-07-29T11:54:36.045853Z",
+      "row": 12
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 5,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "semantic_type": null,
+            "lib/deduplicated-name": "month",
+            "lib/original-name": "month",
+            "name": "month",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "month",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "month",
+              {
+                "base-type": "type/Date"
+              }
+            ],
+            "effective_type": "type/Date",
+            "lib/desired-column-alias": "month",
+            "display_name": "month",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 17,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2025-04-01",
+                  "latest": "2026-08-01",
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.17647058823529413
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "revenue",
+            "lib/original-name": "revenue",
+            "name": "revenue",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "revenue",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "revenue",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "revenue",
+            "display_name": "revenue",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 17,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 0.8513737131584732,
+                  "min": 204.0,
+                  "q1": 374.0,
+                  "q3": 17303.0,
+                  "excess-kurtosis": -0.6950131571583085,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.058823529411764705,
+                  "top-3-fraction": 0.17647058823529413,
+                  "max": 26881.0,
+                  "sd": 8898.633641398184,
+                  "avg": 7682.94117647059
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "B2B · الإيراد الشهري",
+        "document_id": null,
+        "last_used_at": "2026-08-03T13:00:01.912758Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-29T11:54:34.100513Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": [
+                {
+                  "display-name": "B2B Account",
+                  "id": "acct-tag",
+                  "name": "account",
+                  "type": "text"
+                }
+              ],
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT CAST(DATE_FORMAT(r.created_at,'%Y-%m-01') AS DATE) AS month, ROUND(SUM(CAST(r.total_price AS DECIMAL(12,2))),0) AS revenue FROM reservations r JOIN clients c ON c.id=r.client_id WHERE r.deleted_at IS NULL AND r.client_id IN (71515,41380,40233,14302) [[ AND c.username = {{account}} ]] GROUP BY 1 ORDER BY 1"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 641,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "eM0u-L_CtfqgVDRsEPMAk",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "month"
+          ],
+          "graph.metrics": [
+            "revenue"
+          ]
+        },
+        "metabase_version": "v1.63.1.9 (bab5dbe)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-29T11:54:34.100513Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-29T11:54:36.045853Z",
+      "col": 12,
+      "id": 701,
+      "parameter_mappings": [
+        {
+          "parameter_id": "acct01",
+          "card_id": 641,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "account"
+            ]
+          ]
+        }
+      ],
+      "card_id": 641,
+      "entity_id": "BtA6hlULiKVch40Slzp61",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 298,
+      "created_at": "2026-07-29T11:54:36.045853Z",
+      "row": 12
+    },
+    {
+      "size_x": 24,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 6,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "database_type": "LONGTEXT",
+            "semantic_type": "type/City",
+            "lib/deduplicated-name": "city",
+            "lib/original-name": "city",
+            "name": "city",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "city",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "city",
+              {
+                "base-type": "type/Text"
+              }
+            ],
+            "effective_type": "type/Text",
+            "lib/desired-column-alias": "city",
+            "display_name": "city",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 3,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 5.333333333333333,
+                  "mode-fraction": 0.3333333333333333,
+                  "top-3-fraction": 1.0
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "database_type": "BIGINT",
+            "semantic_type": null,
+            "lib/deduplicated-name": "washes",
+            "lib/original-name": "washes",
+            "name": "washes",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "washes",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "washes",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "washes",
+            "display_name": "washes",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 3,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 1.7132361617496832,
+                  "min": 69.0,
+                  "q1": 69.0,
+                  "q3": 3634.0,
+                  "excess-kurtosis": null,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.3333333333333333,
+                  "top-3-fraction": 1.0,
+                  "max": 3634.0,
+                  "sd": 2003.807126447054,
+                  "avg": 1323.0
+                }
+              }
+            },
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "B2B · الغسلات حسب المدينة",
+        "document_id": null,
+        "last_used_at": "2026-08-03T13:00:01.912758Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-07-29T11:54:35.174209Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": [
+                {
+                  "display-name": "B2B Account",
+                  "id": "acct-tag",
+                  "name": "account",
+                  "type": "text"
+                }
+              ],
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT JSON_UNQUOTE(JSON_EXTRACT(ci.name,'$.ar')) AS city, COUNT(*) AS washes FROM reservations r JOIN clients c ON c.id=r.client_id LEFT JOIN cities ci ON ci.id=r.city_id WHERE r.deleted_at IS NULL AND r.client_id IN (71515,41380,40233,14302) [[ AND c.username = {{account}} ]] GROUP BY city ORDER BY washes DESC"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 642,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "row",
+        "archived_directly": false,
+        "entity_id": "vvXP1f7xy6T7C0D1wy3Tg",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "city"
+          ],
+          "graph.metrics": [
+            "washes"
+          ]
+        },
+        "metabase_version": "v1.63.1.9 (bab5dbe)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-07-29T11:54:35.174209Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-07-29T11:54:36.045853Z",
+      "col": 0,
+      "id": 702,
+      "parameter_mappings": [
+        {
+          "parameter_id": "acct01",
+          "card_id": 642,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "account"
+            ]
+          ]
+        }
+      ],
+      "card_id": 642,
+      "entity_id": "Gs2Qt2fTTIjejDsRFEFVz",
+      "visualization_settings": {},
+      "size_y": 6,
+      "dashboard_id": 298,
+      "created_at": "2026-07-29T11:54:36.045853Z",
+      "row": 19
+    }
+  ],
+  "embedding_type": null,
+  "initially_published_at": null,
+  "can_write": true,
+  "can_set_cache_policy": true,
+  "tabs": [],
+  "enable_embedding": false,
+  "collection_id": 35,
+  "show_in_getting_started": false,
+  "name": "Hamim · B2B Customers Analytics — تحليل عملاء الشركات",
+  "is_remote_synced": false,
+  "width": "fixed",
+  "caveats": null,
+  "collection_authority_level": null,
+  "creator_id": 134,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-07-29T12:14:17.863262Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "last_used_param_values": {
+    "acct01": "كلين لايف"
+  },
+  "id": 298,
+  "last_viewed_at": "2026-08-03T13:00:01.749677Z",
+  "position": null,
+  "archived_directly": false,
+  "entity_id": "uOVA3yM2mxuND0rgbsEM2",
+  "param_fields": {},
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-07-29T11:54:36.135666Z"
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "hamim",
+    "archive_operation_id": null,
+    "name": "Hamim",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "effective_location": "/",
+    "id": 35,
+    "archived_directly": null,
+    "entity_id": "9mwTmrtXSSbfaKiBa77cb",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-14T09:18:46.723266Z"
+  },
+  "parameters": [
+    {
+      "name": "B2B Account",
+      "slug": "account",
+      "id": "acct01",
+      "type": "category",
+      "values_source_type": "static-list",
+      "values_source_config": {
+        "values": [
+          "كلين لايف",
+          "طلبات مسمار",
+          "هاللو اب",
+          "مسمار-بريدة"
+        ]
+      }
+    }
+  ],
+  "auto_apply_filters": true,
+  "created_at": "2026-07-29T11:54:35.567066Z",
+  "public_uuid": null,
+  "points_of_interest": null,
+  "can_delete": false
+}
