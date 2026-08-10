@@ -66,3 +66,7 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **What:** new merged dashboard #364 with tabs: Individuals (reuses cards 643-654), B2B (reuses 634-642 + account filter), Daily (new cards 661 line, 662 table = daily order count individual vs B2B).
 - **Old dashboards 331 & 298 archived** (cards reused, still live).
 - **Undo:** `bash metabase/undo_merged_dash.sh`
+
+### 20260810T140100Z — CREATE 'الطلبات حسب أحياء الرياض' dashboard #463 (Hamim/35)
+- **What:** table card #760 — orders per Riyadh neighborhood (city_id=2), columns: الحي/عدد الطلبات/مفردة/باقات/متوسط القيمة/نسبة من الرياض, sorted desc, with a date-range filter.
+- **Undo:** `bash metabase/undo_riyadh_areas_dash.sh`
