@@ -70,3 +70,8 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 ### 20260810T140100Z — CREATE 'الطلبات حسب أحياء الرياض' dashboard #463 (Hamim/35)
 - **What:** table card #760 — orders per Riyadh neighborhood (city_id=2), columns: الحي/عدد الطلبات/مفردة/باقات/متوسط القيمة/نسبة من الرياض, sorted desc, with a date-range filter.
 - **Undo:** `bash metabase/undo_riyadh_areas_dash.sh`
+
+### 20260810T140501Z — EDIT Riyadh-areas table #760: month/year dropdown filter
+- **Change:** replaced date-range filter with a 'الشهر' (YYYY-MM) static-list dropdown on dashboard #463; card 760 query now filters DATE_FORMAT(created_at,'%Y-%m')={{month}}. Default = 2026-08.
+- **Before-snapshot:** metabase/backups/card-760-*.legacy.json
+- **Undo:** `bash metabase/undo_riyadh_areas_dash.sh` (archives), or restore_card 760 from snapshot.

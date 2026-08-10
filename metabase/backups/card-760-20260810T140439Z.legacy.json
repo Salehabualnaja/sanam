@@ -1,0 +1,29 @@
+{
+  "dataset_query": {
+    "database": 67,
+    "type": "native",
+    "native": {
+      "query": "SELECT a.name AS الحي, COUNT(*) AS عدد_الطلبات, SUM(reservations.use_package=0) AS مفردة, SUM(reservations.use_package=1) AS باقات, ROUND(AVG(CAST(reservations.total_price AS DECIMAL(12,2))),0) AS متوسط_القيمة, ROUND(100*COUNT(*)/SUM(COUNT(*)) OVER (),1) AS نسبة_من_الرياض FROM reservations JOIN areas a ON a.id=reservations.area_id WHERE reservations.deleted_at IS NULL AND reservations.city_id=2 AND {{date}} GROUP BY a.name ORDER BY عدد_الطلبات DESC",
+      "template-tags": [
+        {
+          "dimension": [
+            "field",
+            {
+              "base-type": "type/DateTimeWithLocalTZ",
+              "lib/uuid": "443869d4-447b-4520-9493-754aa79807f8",
+              "effective-type": "type/DateTimeWithLocalTZ"
+            },
+            5112
+          ],
+          "id": "date-tag",
+          "name": "date",
+          "display-name": "الفترة",
+          "type": "dimension",
+          "widget-type": "date/all-options"
+        }
+      ]
+    }
+  },
+  "display": "table",
+  "visualization_settings": {}
+}

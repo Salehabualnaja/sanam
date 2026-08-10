@@ -1,0 +1,272 @@
+{
+  "description": "جدول عدد الطلبات مرتّباً حسب أحياء مدينة الرياض، مع فلتر فترة.",
+  "archived": false,
+  "view_count": 0,
+  "collection_position": null,
+  "dashcards": [
+    {
+      "size_x": 16,
+      "dashboard_tab_id": null,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": "2026-08-10T14:04:41.442743Z",
+        "description": "عدد الطلبات مرتّباً تنازلياً حسب أحياء مدينة الرياض (city_id=2) مع الفلتر الزمني.",
+        "archived": false,
+        "view_count": 1,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": null,
+        "result_metadata": [
+          {
+            "name": "الحي",
+            "database_type": "VARCHAR",
+            "base_type": "type/Text",
+            "display_name": "الحي",
+            "field_ref": [
+              "field",
+              "الحي",
+              {
+                "base-type": "type/Text"
+              }
+            ]
+          },
+          {
+            "name": "عدد_الطلبات",
+            "database_type": "BIGINT",
+            "base_type": "type/BigInteger",
+            "display_name": "عدد_الطلبات",
+            "field_ref": [
+              "field",
+              "عدد_الطلبات",
+              {
+                "base-type": "type/BigInteger"
+              }
+            ]
+          },
+          {
+            "name": "مفردة",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "مفردة",
+            "field_ref": [
+              "field",
+              "مفردة",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          },
+          {
+            "name": "باقات",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "باقات",
+            "field_ref": [
+              "field",
+              "باقات",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          },
+          {
+            "name": "متوسط_القيمة",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "متوسط_القيمة",
+            "field_ref": [
+              "field",
+              "متوسط_القيمة",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          },
+          {
+            "name": "نسبة_من_الرياض",
+            "database_type": "DECIMAL",
+            "base_type": "type/Decimal",
+            "display_name": "نسبة_من_الرياض",
+            "field_ref": [
+              "field",
+              "نسبة_من_الرياض",
+              {
+                "base-type": "type/Decimal"
+              }
+            ]
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 67,
+        "enable_embedding": false,
+        "collection_id": 35,
+        "query_type": "native",
+        "download_perms": "full",
+        "name": "عدد الطلبات حسب أحياء الرياض",
+        "document_id": null,
+        "last_used_at": "2026-08-10T14:00:22.996217Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 134,
+        "moderation_reviews": [],
+        "updated_at": "2026-08-10T14:04:41.439053Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "lib/type": "mbql/query",
+          "database": 67,
+          "stages": [
+            {
+              "template-tags": [
+                {
+                  "display-name": "الشهر",
+                  "id": "month-tag",
+                  "name": "month",
+                  "type": "text"
+                }
+              ],
+              "lib/type": "mbql.stage/native",
+              "native": "SELECT a.name AS الحي, COUNT(*) AS عدد_الطلبات, SUM(reservations.use_package=0) AS مفردة, SUM(reservations.use_package=1) AS باقات, ROUND(AVG(CAST(reservations.total_price AS DECIMAL(12,2))),0) AS متوسط_القيمة, ROUND(100*COUNT(*)/SUM(COUNT(*)) OVER (),1) AS نسبة_من_الرياض FROM reservations JOIN areas a ON a.id=reservations.area_id WHERE reservations.deleted_at IS NULL AND reservations.city_id=2 [[ AND DATE_FORMAT(reservations.created_at,'%Y-%m') = {{month}} ]] GROUP BY a.name ORDER BY عدد_الطلبات DESC"
+            }
+          ]
+        },
+        "dimension_mappings": null,
+        "id": 760,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "table",
+        "archived_directly": false,
+        "entity_id": "bNlvl8pyqWWpDlACgXeZn",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v1.63.7 (3a9868b)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-08-10T14:00:21.834157Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-08-10T14:04:43.3542Z",
+      "col": 0,
+      "id": 860,
+      "parameter_mappings": [
+        {
+          "parameter_id": "month01",
+          "card_id": 760,
+          "target": [
+            "variable",
+            [
+              "template-tag",
+              "month"
+            ]
+          ]
+        }
+      ],
+      "card_id": 760,
+      "entity_id": "jJ8-BuU9FmCxd4j4M4dPJ",
+      "visualization_settings": {},
+      "size_y": 12,
+      "dashboard_id": 463,
+      "created_at": "2026-08-10T14:04:43.3542Z",
+      "row": 0
+    }
+  ],
+  "embedding_type": null,
+  "initially_published_at": null,
+  "can_write": true,
+  "can_set_cache_policy": true,
+  "tabs": [],
+  "enable_embedding": false,
+  "collection_id": 35,
+  "show_in_getting_started": false,
+  "name": "Hamim · الطلبات حسب أحياء الرياض",
+  "is_remote_synced": false,
+  "width": "fixed",
+  "caveats": null,
+  "collection_authority_level": null,
+  "creator_id": 134,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-08-10T14:04:43.3542Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "last_used_param_values": {},
+  "id": 463,
+  "last_viewed_at": "2026-08-10T14:00:45.661115Z",
+  "position": null,
+  "archived_directly": false,
+  "entity_id": "r7CXijHhCc7nm1HdLhIi3",
+  "param_fields": {},
+  "last-edit-info": {
+    "id": 134,
+    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
+    "first_name": "saleh",
+    "last_name": "",
+    "timestamp": "2026-08-10T14:04:43.42481Z"
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "hamim",
+    "archive_operation_id": null,
+    "name": "Hamim",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "effective_location": "/",
+    "id": 35,
+    "archived_directly": null,
+    "entity_id": "9mwTmrtXSSbfaKiBa77cb",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-07-14T09:18:46.723266Z"
+  },
+  "parameters": [
+    {
+      "name": "الشهر",
+      "slug": "month",
+      "id": "month01",
+      "type": "category",
+      "default": "2026-08",
+      "values_source_type": "static-list",
+      "values_source_config": {
+        "values": [
+          "2026-08",
+          "2026-07",
+          "2026-06",
+          "2026-05",
+          "2026-04",
+          "2026-03",
+          "2026-02",
+          "2026-01",
+          "2025-12",
+          "2025-11",
+          "2025-10",
+          "2025-09",
+          "2025-08",
+          "2025-07",
+          "2025-06",
+          "2025-05",
+          "2025-04",
+          "2025-03"
+        ]
+      }
+    }
+  ],
+  "auto_apply_filters": true,
+  "created_at": "2026-08-10T14:00:45.661115Z",
+  "public_uuid": null,
+  "points_of_interest": null,
+  "can_delete": false
+}
