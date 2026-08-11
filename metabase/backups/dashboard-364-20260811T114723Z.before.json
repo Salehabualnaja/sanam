@@ -1,211 +1,9 @@
 {
   "description": "دمج تحليل الأفراد وB2B في داشبورد واحد بثلاثة تبويبات + تبويب يومي لعدد الطلبات (أفراد/شركات).",
   "archived": false,
-  "view_count": 16,
+  "view_count": 14,
   "collection_position": 1,
   "dashcards": [
-    {
-      "size_x": 24,
-      "dashboard_tab_id": 102,
-      "series": [],
-      "inline_parameters": [],
-      "action_id": null,
-      "collection_authority_level": null,
-      "card": {
-        "cache_invalidated_at": null,
-        "description": null,
-        "archived": false,
-        "view_count": 13,
-        "collection_position": null,
-        "source_card_id": null,
-        "table_id": null,
-        "result_metadata": [
-          {
-            "database_type": "DATE",
-            "semantic_type": null,
-            "lib/deduplicated-name": "day",
-            "lib/original-name": "day",
-            "name": "day",
-            "lib/source": "source/native",
-            "lib/source-column-alias": "day",
-            "source": "native",
-            "field_ref": [
-              "field",
-              "day",
-              {
-                "base-type": "type/Date"
-              }
-            ],
-            "effective_type": "type/Date",
-            "lib/desired-column-alias": "day",
-            "display_name": "day",
-            "fingerprint": {
-              "global": {
-                "distinct-count": 1027,
-                "nil%": 0.0
-              },
-              "type": {
-                "type/DateTime": {
-                  "earliest": "2023-10-07",
-                  "latest": "2026-08-11",
-                  "mode-fraction": 0.0009737098344693282,
-                  "top-3-fraction": 0.0029211295034079843
-                }
-              }
-            },
-            "base_type": "type/Date"
-          },
-          {
-            "database_type": "DECIMAL",
-            "semantic_type": null,
-            "lib/deduplicated-name": "individual_orders",
-            "lib/original-name": "individual_orders",
-            "name": "individual_orders",
-            "lib/source": "source/native",
-            "lib/source-column-alias": "individual_orders",
-            "source": "native",
-            "field_ref": [
-              "field",
-              "individual_orders",
-              {
-                "base-type": "type/Decimal"
-              }
-            ],
-            "effective_type": "type/Decimal",
-            "lib/desired-column-alias": "individual_orders",
-            "display_name": "individual_orders",
-            "fingerprint": {
-              "global": {
-                "distinct-count": 191,
-                "nil%": 0.0
-              },
-              "type": {
-                "type/Number": {
-                  "skewness": 1.1969697439962956,
-                  "min": 1.0,
-                  "q1": 26.0,
-                  "q3": 98.0,
-                  "excess-kurtosis": 2.0033568757136093,
-                  "zero-fraction": 0.0,
-                  "mode-fraction": 0.018500486854917234,
-                  "top-3-fraction": 0.053554040895813046,
-                  "max": 319.0,
-                  "sd": 49.644419145987605,
-                  "avg": 65.84128529698155
-                }
-              }
-            },
-            "base_type": "type/Decimal"
-          },
-          {
-            "database_type": "DECIMAL",
-            "semantic_type": null,
-            "lib/deduplicated-name": "b2b_orders",
-            "lib/original-name": "b2b_orders",
-            "name": "b2b_orders",
-            "lib/source": "source/native",
-            "lib/source-column-alias": "b2b_orders",
-            "source": "native",
-            "field_ref": [
-              "field",
-              "b2b_orders",
-              {
-                "base-type": "type/Decimal"
-              }
-            ],
-            "effective_type": "type/Decimal",
-            "lib/desired-column-alias": "b2b_orders",
-            "display_name": "b2b_orders",
-            "fingerprint": {
-              "global": {
-                "distinct-count": 48,
-                "nil%": 0.0
-              },
-              "type": {
-                "type/Number": {
-                  "skewness": 3.552661195767214,
-                  "min": 0.0,
-                  "q1": 0.0,
-                  "q3": 3.0,
-                  "excess-kurtosis": 15.678086633281481,
-                  "zero-fraction": 0.7234664070107109,
-                  "mode-fraction": 0.7234664070107109,
-                  "top-3-fraction": 0.7585199610516066,
-                  "max": 74.0,
-                  "sd": 9.400669918055723,
-                  "avg": 3.959104186952289
-                }
-              }
-            },
-            "base_type": "type/Decimal"
-          }
-        ],
-        "embedding_type": null,
-        "initially_published_at": null,
-        "can_write": true,
-        "card_schema": 23,
-        "database_id": 67,
-        "enable_embedding": false,
-        "collection_id": 35,
-        "query_type": "native",
-        "download_perms": "full",
-        "name": "يومي · عدد الطلبات (أفراد مقابل شركات)",
-        "document_id": null,
-        "last_used_at": "2026-08-11T07:01:34.306409Z",
-        "type": "question",
-        "dimensions": null,
-        "query_average_duration": 730,
-        "creator_id": 134,
-        "moderation_reviews": [],
-        "updated_at": "2026-08-03T13:03:10.384368Z",
-        "made_public_by_id": null,
-        "embedding_params": null,
-        "cache_ttl": null,
-        "dataset_query": {
-          "lib/type": "mbql/query",
-          "database": 67,
-          "stages": [
-            {
-              "lib/type": "mbql.stage/native",
-              "native": "SELECT DATE(created_at) day, SUM(client_id NOT IN (71515,41380,40233,14302)) individual_orders, SUM(client_id IN (71515,41380,40233,14302)) b2b_orders FROM reservations WHERE deleted_at IS NULL GROUP BY day ORDER BY day"
-            }
-          ]
-        },
-        "dimension_mappings": null,
-        "id": 661,
-        "legacy_query": null,
-        "parameter_mappings": [],
-        "display": "line",
-        "archived_directly": false,
-        "entity_id": "yMfojozSStATwOO-Nq5OJ",
-        "collection_preview": true,
-        "visualization_settings": {
-          "graph.dimensions": [
-            "day"
-          ],
-          "graph.metrics": [
-            "individual_orders",
-            "b2b_orders"
-          ]
-        },
-        "metabase_version": "v1.63.2 (9a6cadd)",
-        "parameters": [],
-        "dashboard_id": null,
-        "created_at": "2026-08-03T13:03:10.384368Z",
-        "public_uuid": null
-      },
-      "updated_at": "2026-08-03T13:04:23.945353Z",
-      "col": 0,
-      "id": 748,
-      "parameter_mappings": [],
-      "card_id": 661,
-      "entity_id": "50vq5utVrLOFK1mq3-mG2",
-      "visualization_settings": {},
-      "size_y": 8,
-      "dashboard_id": 364,
-      "created_at": "2026-08-03T13:04:23.945353Z",
-      "row": 0
-    },
     {
       "size_x": 24,
       "dashboard_tab_id": 102,
@@ -3887,9 +3685,9 @@
       "collection_authority_level": null,
       "card": {
         "cache_invalidated_at": null,
-        "description": "عدد الغسلات المكتملة (status=3) يومياً موزّعة على الشركات (B2B) والأفراد مع الإجمالي — آخر 90 يوم.",
+        "description": null,
         "archived": false,
-        "view_count": 1,
+        "view_count": 13,
         "collection_position": null,
         "source_card_id": null,
         "table_id": null,
@@ -3897,33 +3695,33 @@
           {
             "database_type": "DATE",
             "semantic_type": null,
-            "lib/deduplicated-name": "اليوم",
-            "lib/original-name": "اليوم",
-            "name": "اليوم",
+            "lib/deduplicated-name": "day",
+            "lib/original-name": "day",
+            "name": "day",
             "lib/source": "source/native",
-            "lib/source-column-alias": "اليوم",
+            "lib/source-column-alias": "day",
             "source": "native",
             "field_ref": [
               "field",
-              "اليوم",
+              "day",
               {
                 "base-type": "type/Date"
               }
             ],
             "effective_type": "type/Date",
-            "lib/desired-column-alias": "اليوم",
-            "display_name": "اليوم",
+            "lib/desired-column-alias": "day",
+            "display_name": "day",
             "fingerprint": {
               "global": {
-                "distinct-count": 91,
+                "distinct-count": 1027,
                 "nil%": 0.0
               },
               "type": {
                 "type/DateTime": {
-                  "earliest": "2026-05-13",
+                  "earliest": "2023-10-07",
                   "latest": "2026-08-11",
-                  "mode-fraction": 0.01098901098901099,
-                  "top-3-fraction": 0.03296703296703297
+                  "mode-fraction": 0.0009737098344693282,
+                  "top-3-fraction": 0.0029211295034079843
                 }
               }
             },
@@ -3932,170 +3730,86 @@
           {
             "database_type": "DECIMAL",
             "semantic_type": null,
-            "lib/deduplicated-name": "غسلات_الشركات",
-            "lib/original-name": "غسلات_الشركات",
-            "name": "غسلات_الشركات",
+            "lib/deduplicated-name": "individual_orders",
+            "lib/original-name": "individual_orders",
+            "name": "individual_orders",
             "lib/source": "source/native",
-            "lib/source-column-alias": "غسلات_الشركات",
+            "lib/source-column-alias": "individual_orders",
             "source": "native",
             "field_ref": [
               "field",
-              "غسلات_الشركات",
+              "individual_orders",
               {
                 "base-type": "type/Decimal"
               }
             ],
             "effective_type": "type/Decimal",
-            "lib/desired-column-alias": "غسلات_الشركات",
-            "display_name": "غسلات_الشركات",
+            "lib/desired-column-alias": "individual_orders",
+            "display_name": "individual_orders",
             "fingerprint": {
               "global": {
-                "distinct-count": 27,
+                "distinct-count": 191,
                 "nil%": 0.0
               },
               "type": {
                 "type/Number": {
-                  "skewness": 2.083439222773522,
+                  "skewness": 1.1969697439962956,
+                  "min": 1.0,
+                  "q1": 26.0,
+                  "q3": 98.0,
+                  "excess-kurtosis": 2.0033568757136093,
+                  "zero-fraction": 0.0,
+                  "mode-fraction": 0.018500486854917234,
+                  "top-3-fraction": 0.053554040895813046,
+                  "max": 319.0,
+                  "sd": 49.644419145987605,
+                  "avg": 65.84128529698155
+                }
+              }
+            },
+            "base_type": "type/Decimal"
+          },
+          {
+            "database_type": "DECIMAL",
+            "semantic_type": null,
+            "lib/deduplicated-name": "b2b_orders",
+            "lib/original-name": "b2b_orders",
+            "name": "b2b_orders",
+            "lib/source": "source/native",
+            "lib/source-column-alias": "b2b_orders",
+            "source": "native",
+            "field_ref": [
+              "field",
+              "b2b_orders",
+              {
+                "base-type": "type/Decimal"
+              }
+            ],
+            "effective_type": "type/Decimal",
+            "lib/desired-column-alias": "b2b_orders",
+            "display_name": "b2b_orders",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 48,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Number": {
+                  "skewness": 3.552661195767214,
                   "min": 0.0,
-                  "q1": 8.0,
-                  "q3": 16.0,
-                  "excess-kurtosis": 9.347351804113849,
-                  "zero-fraction": 0.02197802197802198,
-                  "mode-fraction": 0.0989010989010989,
-                  "top-3-fraction": 0.26373626373626374,
-                  "max": 54.0,
-                  "sd": 7.432019956574434,
-                  "avg": 13.142857142857146
+                  "q1": 0.0,
+                  "q3": 3.0,
+                  "excess-kurtosis": 15.678086633281481,
+                  "zero-fraction": 0.7234664070107109,
+                  "mode-fraction": 0.7234664070107109,
+                  "top-3-fraction": 0.7585199610516066,
+                  "max": 74.0,
+                  "sd": 9.400669918055723,
+                  "avg": 3.959104186952289
                 }
               }
             },
             "base_type": "type/Decimal"
-          },
-          {
-            "database_type": "DECIMAL",
-            "semantic_type": null,
-            "lib/deduplicated-name": "غسلات_الأفراد",
-            "lib/original-name": "غسلات_الأفراد",
-            "name": "غسلات_الأفراد",
-            "lib/source": "source/native",
-            "lib/source-column-alias": "غسلات_الأفراد",
-            "source": "native",
-            "field_ref": [
-              "field",
-              "غسلات_الأفراد",
-              {
-                "base-type": "type/Decimal"
-              }
-            ],
-            "effective_type": "type/Decimal",
-            "lib/desired-column-alias": "غسلات_الأفراد",
-            "display_name": "غسلات_الأفراد",
-            "fingerprint": {
-              "global": {
-                "distinct-count": 63,
-                "nil%": 0.0
-              },
-              "type": {
-                "type/Number": {
-                  "skewness": -0.0858368687180597,
-                  "min": 2.0,
-                  "q1": 77.0,
-                  "q3": 115.0,
-                  "excess-kurtosis": 0.5477998039058356,
-                  "zero-fraction": 0.0,
-                  "mode-fraction": 0.054945054945054944,
-                  "top-3-fraction": 0.12087912087912088,
-                  "max": 163.0,
-                  "sd": 31.18474627904483,
-                  "avg": 96.40659340659343
-                }
-              }
-            },
-            "base_type": "type/Decimal"
-          },
-          {
-            "database_type": "DECIMAL",
-            "semantic_type": null,
-            "lib/deduplicated-name": "إجمالي_الغسلات_المكتملة",
-            "lib/original-name": "إجمالي_الغسلات_المكتملة",
-            "name": "إجمالي_الغسلات_المكتملة",
-            "lib/source": "source/native",
-            "lib/source-column-alias": "إجمالي_الغسلات_المكتملة",
-            "source": "native",
-            "field_ref": [
-              "field",
-              "إجمالي_الغسلات_المكتملة",
-              {
-                "base-type": "type/Decimal"
-              }
-            ],
-            "effective_type": "type/Decimal",
-            "lib/desired-column-alias": "إجمالي_الغسلات_المكتملة",
-            "display_name": "إجمالي_الغسلات_المكتملة",
-            "fingerprint": {
-              "global": {
-                "distinct-count": 62,
-                "nil%": 0.0
-              },
-              "type": {
-                "type/Number": {
-                  "skewness": -0.2876877748203841,
-                  "min": 2.0,
-                  "q1": 89.0,
-                  "q3": 133.0,
-                  "excess-kurtosis": 0.7672029777456641,
-                  "zero-fraction": 0.0,
-                  "mode-fraction": 0.054945054945054944,
-                  "top-3-fraction": 0.12087912087912088,
-                  "max": 182.0,
-                  "sd": 33.63901958416206,
-                  "avg": 109.54945054945057
-                }
-              }
-            },
-            "base_type": "type/Decimal"
-          },
-          {
-            "database_type": "BIGINT",
-            "semantic_type": null,
-            "lib/deduplicated-name": "إجمالي_الطلبات",
-            "lib/original-name": "إجمالي_الطلبات",
-            "name": "إجمالي_الطلبات",
-            "lib/source": "source/native",
-            "lib/source-column-alias": "إجمالي_الطلبات",
-            "source": "native",
-            "field_ref": [
-              "field",
-              "إجمالي_الطلبات",
-              {
-                "base-type": "type/BigInteger"
-              }
-            ],
-            "effective_type": "type/BigInteger",
-            "lib/desired-column-alias": "إجمالي_الطلبات",
-            "display_name": "إجمالي_الطلبات",
-            "fingerprint": {
-              "global": {
-                "distinct-count": 66,
-                "nil%": 0.0
-              },
-              "type": {
-                "type/Number": {
-                  "skewness": -0.016758897642864378,
-                  "min": 19.0,
-                  "q1": 95.0,
-                  "q3": 144.0,
-                  "excess-kurtosis": 0.08528151537614503,
-                  "zero-fraction": 0.0,
-                  "mode-fraction": 0.04395604395604396,
-                  "top-3-fraction": 0.12087912087912088,
-                  "max": 192.0,
-                  "sd": 35.227777917381296,
-                  "avg": 117.87912087912086
-                }
-              }
-            },
-            "base_type": "type/BigInteger"
           }
         ],
         "embedding_type": null,
@@ -4107,15 +3821,15 @@
         "collection_id": 35,
         "query_type": "native",
         "download_perms": "full",
-        "name": "غسلات مكتملة يومياً — شركات / أفراد / الإجمالي",
+        "name": "يومي · عدد الطلبات (أفراد مقابل شركات)",
         "document_id": null,
-        "last_used_at": "2026-08-11T11:47:08.350368Z",
+        "last_used_at": "2026-08-11T07:01:34.306409Z",
         "type": "question",
         "dimensions": null,
-        "query_average_duration": 672,
+        "query_average_duration": 730,
         "creator_id": 134,
         "moderation_reviews": [],
-        "updated_at": "2026-08-11T11:47:07.475624Z",
+        "updated_at": "2026-08-03T13:03:10.384368Z",
         "made_public_by_id": null,
         "embedding_params": null,
         "cache_ttl": null,
@@ -4125,36 +3839,44 @@
           "stages": [
             {
               "lib/type": "mbql.stage/native",
-              "native": "SELECT DATE(created_at) AS اليوم, SUM(status=3 AND client_id IN (71515,41380,40233,14302)) AS غسلات_الشركات, SUM(status=3 AND client_id NOT IN (71515,41380,40233,14302)) AS غسلات_الأفراد, SUM(status=3) AS إجمالي_الغسلات_المكتملة, COUNT(*) AS إجمالي_الطلبات FROM reservations WHERE deleted_at IS NULL AND created_at >= DATE_SUB(CURDATE(), INTERVAL 90 DAY) GROUP BY اليوم ORDER BY اليوم DESC"
+              "native": "SELECT DATE(created_at) day, SUM(client_id NOT IN (71515,41380,40233,14302)) individual_orders, SUM(client_id IN (71515,41380,40233,14302)) b2b_orders FROM reservations WHERE deleted_at IS NULL GROUP BY day ORDER BY day"
             }
           ]
         },
         "dimension_mappings": null,
-        "id": 793,
+        "id": 661,
         "legacy_query": null,
         "parameter_mappings": [],
-        "display": "table",
+        "display": "line",
         "archived_directly": false,
-        "entity_id": "nh97_przu6KNQ9sgUOgT3",
+        "entity_id": "yMfojozSStATwOO-Nq5OJ",
         "collection_preview": true,
-        "visualization_settings": {},
-        "metabase_version": "v1.63.9 (9ec5439)",
+        "visualization_settings": {
+          "graph.dimensions": [
+            "day"
+          ],
+          "graph.metrics": [
+            "individual_orders",
+            "b2b_orders"
+          ]
+        },
+        "metabase_version": "v1.63.2 (9a6cadd)",
         "parameters": [],
         "dashboard_id": null,
-        "created_at": "2026-08-11T11:47:07.475624Z",
+        "created_at": "2026-08-03T13:03:10.384368Z",
         "public_uuid": null
       },
-      "updated_at": "2026-08-11T11:47:25.822164Z",
+      "updated_at": "2026-08-03T13:04:23.945353Z",
       "col": 0,
-      "id": 892,
+      "id": 748,
       "parameter_mappings": [],
-      "card_id": 793,
-      "entity_id": "okr6jzDenHSqsffVFm_-J",
+      "card_id": 661,
+      "entity_id": "50vq5utVrLOFK1mq3-mG2",
       "visualization_settings": {},
-      "size_y": 9,
+      "size_y": 8,
       "dashboard_id": 364,
-      "created_at": "2026-08-11T11:47:25.822164Z",
-      "row": 16
+      "created_at": "2026-08-03T13:04:23.945353Z",
+      "row": 0
     }
   ],
   "embedding_type": null,
@@ -4213,11 +3935,11 @@
   "entity_id": "mFNNTs5Ekq_h2wbN9vV5f",
   "param_fields": {},
   "last-edit-info": {
-    "id": 134,
-    "email": "api-key-user-a911cff3-87e5-4b5f-ab84-1e2786ad1002@api-key.invalid",
-    "first_name": "saleh",
-    "last_name": "",
-    "timestamp": "2026-08-11T11:47:26.019292Z"
+    "id": 34,
+    "email": "sanamstudio2026@gmail.com",
+    "first_name": "Abdullah",
+    "last_name": "Aitah",
+    "timestamp": "2026-08-03T13:57:24.304639Z"
   },
   "collection": {
     "authority_level": null,

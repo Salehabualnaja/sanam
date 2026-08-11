@@ -75,3 +75,8 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **Change:** replaced date-range filter with a 'الشهر' (YYYY-MM) static-list dropdown on dashboard #463; card 760 query now filters DATE_FORMAT(created_at,'%Y-%m')={{month}}. Default = 2026-08.
 - **Before-snapshot:** metabase/backups/card-760-*.legacy.json
 - **Undo:** `bash metabase/undo_riyadh_areas_dash.sh` (archives), or restore_card 760 from snapshot.
+
+### 20260811T114745Z — ADD daily completed-washes table #793 to Daily tab of dashboard #364
+- **What:** table = per-day completed washes (status=3) split into غسلات الشركات (B2B) / غسلات الأفراد / إجمالي المكتملة + إجمالي الطلبات, last 90 days.
+- **Before-snapshot:** metabase/backups/dashboard-364-*.before.json
+- **Undo:** remove dashcard 793 from dash 364 and `archive card 793`.
