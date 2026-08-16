@@ -80,3 +80,9 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **What:** table = per-day completed washes (status=3) split into غسلات الشركات (B2B) / غسلات الأفراد / إجمالي المكتملة + إجمالي الطلبات, last 90 days.
 - **Before-snapshot:** metabase/backups/dashboard-364-*.before.json
 - **Undo:** remove dashcard 793 from dash 364 and `archive card 793`.
+
+### 20260816T133731Z — EDIT OKR daily table #496: add 'purchased_orders' column
+- **What:** added a new column 'purchased_orders' (+ purchased_orders_dod) to the daily OKR table (dashboard #265) = orders purchased per day by created_at (single paid reservations use_package=0, all statuses) + packages purchased (status=1). Distinct from total_orders (scheduled-date, completed-only). Placed right after total_orders.
+- **How:** added a 'purch' CTE + wired through days/base/calc/final SELECT via 5 surgical edits; dry-run validated before saving.
+- **Before-snapshot:** metabase/backups/card-496-*.legacy.json
+- **Undo:** `restore_card 496 metabase/backups/card-496-<ts>.legacy.json`
