@@ -86,3 +86,8 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **How:** added a 'purch' CTE + wired through days/base/calc/final SELECT via 5 surgical edits; dry-run validated before saving.
 - **Before-snapshot:** metabase/backups/card-496-*.legacy.json
 - **Undo:** `restore_card 496 metabase/backups/card-496-<ts>.legacy.json`
+
+### 20260817T130416Z — EDIT OKR daily table #496: add 'avg_min_between_washes' column
+- **What:** per-day avg minutes between consecutive washes for the same driver (representative_start_at(next) − representative_end_at(prev), gaps 0–180min, status=3). Tracked day-by-day in the daily OKR table (#265). Placed after washes_per_washer.
+- **Before-snapshot:** metabase/backups/card-496-20260817T130347Z.legacy.json
+- **Undo:** `restore_card 496 metabase/backups/card-496-20260817T130347Z.legacy.json`
