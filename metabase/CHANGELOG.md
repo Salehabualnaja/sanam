@@ -96,3 +96,7 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **What:** 4 new columns (by purchase day, current month) in daily OKR table (#265): single_purchased (use_package=0 reservations), pkg_customized (is_customized=1), pkg_non_customized (is_customized=0), bogo_free_wash (offer 'عرض الغسلة المجانية' packages 162/167/168). All status=1 paid packages. Placed after purchased_orders.
 - **Before-snapshot:** metabase/backups/card-496-20260826T093242Z.legacy.json
 - **Undo:** `restore_card 496 metabase/backups/card-496-20260826T093242Z.legacy.json`
+
+### 20260826T093516Z — MOVE purchase-breakdown into its own table #859 on dashboard #265
+- **What:** created a dedicated table card #859 (day | single_purchased | pkg_customized | pkg_non_customized | bogo_free_wash, last 60 days) and added it to dashboard #265. Reverted card #496 to remove the 4 inline columns (restored card-496-20260826T093242Z.legacy.json) so the big table stays clean.
+- **Undo:** `bash metabase/undo_purchase_breakdown_table.sh` (removes 859); to bring the columns back into 496, re-apply metabase/sql/okr_daily_496_latest.sql.
