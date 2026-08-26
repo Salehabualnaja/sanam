@@ -91,3 +91,8 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **What:** per-day avg minutes between consecutive washes for the same driver (representative_start_at(next) − representative_end_at(prev), gaps 0–180min, status=3). Tracked day-by-day in the daily OKR table (#265). Placed after washes_per_washer.
 - **Before-snapshot:** metabase/backups/card-496-20260817T130347Z.legacy.json
 - **Undo:** `restore_card 496 metabase/backups/card-496-20260817T130347Z.legacy.json`
+
+### 20260826T093308Z — EDIT OKR daily table #496: add package/single purchase breakdown columns
+- **What:** 4 new columns (by purchase day, current month) in daily OKR table (#265): single_purchased (use_package=0 reservations), pkg_customized (is_customized=1), pkg_non_customized (is_customized=0), bogo_free_wash (offer 'عرض الغسلة المجانية' packages 162/167/168). All status=1 paid packages. Placed after purchased_orders.
+- **Before-snapshot:** metabase/backups/card-496-20260826T093242Z.legacy.json
+- **Undo:** `restore_card 496 metabase/backups/card-496-20260826T093242Z.legacy.json`

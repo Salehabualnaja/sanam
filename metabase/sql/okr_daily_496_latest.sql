@@ -84,9 +84,27 @@ btw AS (
       AND `date` >= (SELECT mstart_str FROM bounds) AND `date` < (SELECT today_str FROM bounds)
   ) g WHERE gap BETWEEN 0 AND 180 GROUP BY day
 ),
+sp AS (
+  SELECT DATE_FORMAT(created_at,'%Y-%m-%d') day, COUNT(*) single_purchased
+  FROM reservations WHERE use_package=0 AND deleted_at IS NULL
+    AND DATE_FORMAT(created_at,'%Y-%m-%d') >= (SELECT mstart_str FROM bounds)
+    AND DATE_FORMAT(created_at,'%Y-%m-%d') < (SELECT today_str FROM bounds)
+  GROUP BY day
+),
+pbk AS (
+  SELECT DATE_FORMAT(ps.created_at,'%Y-%m-%d') day,
+    SUM(p.is_customized=1) pkg_customized,
+    SUM(COALESCE(p.is_customized,0)=0) pkg_non_customized,
+    SUM(ps.package_id IN (162,167,168)) bogo_free_wash
+  FROM package_subscriptions ps JOIN packages p ON p.id=ps.package_id
+  WHERE ps.status=1 AND ps.deleted_at IS NULL
+    AND DATE_FORMAT(ps.created_at,'%Y-%m-%d') >= (SELECT mstart_str FROM bounds)
+    AND DATE_FORMAT(ps.created_at,'%Y-%m-%d') < (SELECT today_str FROM bounds)
+  GROUP BY day
+),
 days AS (
   SELECT day FROM ord UNION SELECT day FROM wash UNION SELECT day FROM cust
-  UNION SELECT day FROM sign UNION SELECT day FROM att UNION SELECT day FROM purch UNION SELECT day FROM btw
+  UNION SELECT day FROM sign UNION SELECT day FROM att UNION SELECT day FROM purch UNION SELECT day FROM btw UNION SELECT day FROM sp UNION SELECT day FROM pbk
 ),
 base AS (
   SELECT d.day period,
@@ -96,10 +114,10 @@ base AS (
     COALESCE(w.washes_returning_cust,0) washes_returning_cust,
     COALESCE(c.active_customers,0) active_customers, COALESCE(c.new_customers,0) new_customers,
     COALESCE(c.returning_customers,0) returning_customers, COALESCE(s.signups,0) signups,
-    COALESCE(a.washers_available,0) washers_available, COALESCE(p.purchased_orders,0) purchased_orders, b.avg_min_between_washes
+    COALESCE(a.washers_available,0) washers_available, COALESCE(p.purchased_orders,0) purchased_orders, b.avg_min_between_washes, COALESCE(s2.single_purchased,0) single_purchased, COALESCE(pk.pkg_customized,0) pkg_customized, COALESCE(pk.pkg_non_customized,0) pkg_non_customized, COALESCE(pk.bogo_free_wash,0) bogo_free_wash
   FROM days d
   LEFT JOIN ord o ON o.day=d.day LEFT JOIN wash w ON w.day=d.day
-  LEFT JOIN cust c ON c.day=d.day LEFT JOIN sign s ON s.day=d.day LEFT JOIN att a ON a.day=d.day LEFT JOIN purch p ON p.day=d.day LEFT JOIN btw b ON b.day=d.day
+  LEFT JOIN cust c ON c.day=d.day LEFT JOIN sign s ON s.day=d.day LEFT JOIN att a ON a.day=d.day LEFT JOIN purch p ON p.day=d.day LEFT JOIN btw b ON b.day=d.day LEFT JOIN sp s2 ON s2.day=d.day LEFT JOIN pbk pk ON pk.day=d.day
 ),
 calc AS (
   SELECT period, package_orders, single_orders, total_orders,
@@ -115,7 +133,7 @@ calc AS (
     ROUND(total_orders/NULLIF(active_customers,0),2) aopu,
     ROUND(sales_sar/NULLIF(active_customers,0),2) arpu,
     ROUND(completed_washes/NULLIF(washers_available,0),2) washes_per_washer,
-    washers_available, purchased_orders, avg_min_between_washes
+    washers_available, purchased_orders, avg_min_between_washes, single_purchased, pkg_customized, pkg_non_customized, bogo_free_wash
   FROM base
 )
 SELECT
@@ -128,6 +146,10 @@ SELECT
   ROUND(100*(total_orders - LAG(total_orders) OVER w)/NULLIF(LAG(total_orders) OVER w,0),1) AS total_orders_dod,
   purchased_orders,
   ROUND(100*(purchased_orders - LAG(purchased_orders) OVER w)/NULLIF(LAG(purchased_orders) OVER w,0),1) AS purchased_orders_dod,
+  single_purchased,
+  pkg_customized,
+  pkg_non_customized,
+  bogo_free_wash,
   package_pct,
   ROUND(package_pct - LAG(package_pct) OVER w,1) AS package_pct_dod,
   single_pct,
@@ -171,5 +193,6 @@ SELECT
 FROM calc
 WINDOW w AS (ORDER BY period ASC)
 ORDER BY period DESC
+
 
 
