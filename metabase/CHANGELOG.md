@@ -100,3 +100,9 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 ### 20260826T093516Z — MOVE purchase-breakdown into its own table #859 on dashboard #265
 - **What:** created a dedicated table card #859 (day | single_purchased | pkg_customized | pkg_non_customized | bogo_free_wash, last 60 days) and added it to dashboard #265. Reverted card #496 to remove the 4 inline columns (restored card-496-20260826T093242Z.legacy.json) so the big table stays clean.
 - **Undo:** `bash metabase/undo_purchase_breakdown_table.sh` (removes 859); to bring the columns back into 496, re-apply metabase/sql/okr_daily_496_latest.sql.
+
+### 20260908T144000Z — CREATE 'Experment' dashboard #529 (Hamim/35) + 4 cards (925–928)
+- **Region:** areas الياسمين(60)/الملقا(79)/النرجس-شمال(61)/النرجس-جنوب(30)/الصحافة(59), city_id=2. Zones for wasted-proxy: groups 27/29/38.
+- **Card 925 (table):** daily metrics last 90 days — الغسلات المكتملة (status=3 by end_at), الطلبات المهدرة (=cancelled status=6; no_appionments was degenerate 2-3/day), متوسط وقت التنقل (gap between consecutive washes same rep 0-180min), غسلات لكل مندوب (completed/distinct reps), طلبات 10:30م–2ص, إجمالي/مفردة/باقات (by created_at).
+- **Cards 926 bar (single/pkg), 927 line (completed), 928 line (per-rep).**
+- **Undo:** `bash metabase/undo_experiment_dash.sh`
