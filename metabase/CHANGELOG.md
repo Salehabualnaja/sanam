@@ -120,3 +120,8 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **Metric:** كفاءة المناديب = المنفّذ÷المسند لكل مندوب، مقيسة أسبوعيًا (%). Bar by week from 2026-09-21. Week1=88.4%.
 - **SQL:** metabase/sql/weekly/weekly_efficiency.sql
 - **Undo:** archive card 1057 (included in undo_weekly_okr.sh).
+
+### 20260928T140415Z — ADD weekly assignment-efficiency card #1058 to dashboard #562
+- **Metric:** كفاءة الإسناد = زيارات صفحة المواعيد (user_area_availability_alert_logs = no-slot page hits) ÷ عدد الطلبات، أسبوعيًا. Week1=0.085 (75/880).
+- **Caveat:** only no-slot appointment-page visits are logged; total page visits not tracked.
+- **SQL:** metabase/sql/weekly/weekly_assign_efficiency.sql
