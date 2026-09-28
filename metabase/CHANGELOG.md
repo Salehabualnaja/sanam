@@ -115,3 +115,8 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 ### 20260928T100412Z — EDIT weekly North Star card #1024
 - **Change:** reverted metric to daily rate (washes per washer per DAY) but displayed as a single scalar = weighted average over 21 Sep→yesterday = SUM(daily washes)/SUM(daily distinct washers). Currently 4.73.
 - **Before-snapshot:** metabase/backups/ (card-1024.before.json in scratch) — or restore weekly per-week version from git history.
+
+### 20260928T135538Z — ADD weekly washer-efficiency card #1057 to dashboard #562
+- **Metric:** كفاءة المناديب = المنفّذ÷المسند لكل مندوب، مقيسة أسبوعيًا (%). Bar by week from 2026-09-21. Week1=88.4%.
+- **SQL:** metabase/sql/weekly/weekly_efficiency.sql
+- **Undo:** archive card 1057 (included in undo_weekly_okr.sh).
