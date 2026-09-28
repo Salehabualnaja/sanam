@@ -118,59 +118,52 @@ calc AS (
     washers_available, purchased_orders, avg_min_between_washes
   FROM base
 )
-SELECT
-  period,
-  package_orders,
-  ROUND(100*(package_orders - LAG(package_orders) OVER w)/NULLIF(LAG(package_orders) OVER w,0),1) AS package_orders_wow,
-  single_orders,
-  ROUND(100*(single_orders - LAG(single_orders) OVER w)/NULLIF(LAG(single_orders) OVER w,0),1) AS single_orders_wow,
-  total_orders,
-  ROUND(100*(total_orders - LAG(total_orders) OVER w)/NULLIF(LAG(total_orders) OVER w,0),1) AS total_orders_wow,
-  purchased_orders,
-  ROUND(100*(purchased_orders - LAG(purchased_orders) OVER w)/NULLIF(LAG(purchased_orders) OVER w,0),1) AS purchased_orders_wow,
-  package_pct,
-  ROUND(package_pct - LAG(package_pct) OVER w,1) AS package_pct_wow,
-  single_pct,
-  ROUND(single_pct - LAG(single_pct) OVER w,1) AS single_pct_wow,
-  completed_washes,
-  ROUND(100*(completed_washes - LAG(completed_washes) OVER w)/NULLIF(LAG(completed_washes) OVER w,0),1) AS completed_washes_wow,
-  washes_new_cust,
-  ROUND(100*(washes_new_cust - LAG(washes_new_cust) OVER w)/NULLIF(LAG(washes_new_cust) OVER w,0),1) AS washes_new_cust_wow,
-  washes_returning_cust,
-  ROUND(100*(washes_returning_cust - LAG(washes_returning_cust) OVER w)/NULLIF(LAG(washes_returning_cust) OVER w,0),1) AS washes_returning_cust_wow,
-  returning_wash_pct,
-  ROUND(returning_wash_pct - LAG(returning_wash_pct) OVER w,1) AS returning_wash_pct_wow,
-  avg_washes_per_order,
-  ROUND(100*(avg_washes_per_order - LAG(avg_washes_per_order) OVER w)/NULLIF(LAG(avg_washes_per_order) OVER w,0),1) AS avg_washes_per_order_wow,
-  signups,
-  ROUND(100*(signups - LAG(signups) OVER w)/NULLIF(LAG(signups) OVER w,0),1) AS signups_wow,
-  new_customers,
-  ROUND(100*(new_customers - LAG(new_customers) OVER w)/NULLIF(LAG(new_customers) OVER w,0),1) AS new_customers_wow,
-  activation_pct,
-  ROUND(activation_pct - LAG(activation_pct) OVER w,1) AS activation_pct_wow,
-  returning_customers,
-  ROUND(100*(returning_customers - LAG(returning_customers) OVER w)/NULLIF(LAG(returning_customers) OVER w,0),1) AS returning_customers_wow,
-  active_customers,
-  ROUND(100*(active_customers - LAG(active_customers) OVER w)/NULLIF(LAG(active_customers) OVER w,0),1) AS active_customers_wow,
-  returning_pct,
-  ROUND(returning_pct - LAG(returning_pct) OVER w,1) AS returning_pct_wow,
-  sales_sar,
-  ROUND(100*(sales_sar - LAG(sales_sar) OVER w)/NULLIF(LAG(sales_sar) OVER w,0),1) AS sales_sar_wow,
-  aov,
-  ROUND(100*(aov - LAG(aov) OVER w)/NULLIF(LAG(aov) OVER w,0),1) AS aov_wow,
-  aopu,
-  ROUND(100*(aopu - LAG(aopu) OVER w)/NULLIF(LAG(aopu) OVER w,0),1) AS aopu_wow,
-  arpu,
-  ROUND(100*(arpu - LAG(arpu) OVER w)/NULLIF(LAG(arpu) OVER w,0),1) AS arpu_wow,
-  washes_per_washer,
-  ROUND(100*(washes_per_washer - LAG(washes_per_washer) OVER w)/NULLIF(LAG(washes_per_washer) OVER w,0),1) AS washes_per_washer_wow,
-  avg_min_between_washes,
-  ROUND(avg_min_between_washes - LAG(avg_min_between_washes) OVER w,1) AS avg_min_between_washes_wow,
-  washers_available,
-  ROUND(100*(washers_available - LAG(washers_available) OVER w)/NULLIF(LAG(washers_available) OVER w,0),1) AS washers_available_wow
-FROM calc
-WINDOW w AS (ORDER BY period ASC)
-ORDER BY period DESC
-
-
-
+SELECT الأسبوع, المؤشر, القيمة FROM (
+  SELECT period AS الأسبوع, '01 · المبيعات (ريال)' AS المؤشر, CAST(sales_sar AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '02 · إجمالي الطلبات' AS المؤشر, CAST(total_orders AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '03 · الطلبات المشتراة' AS المؤشر, CAST(purchased_orders AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '04 · طلبات الباقات' AS المؤشر, CAST(package_orders AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '05 · طلبات المفردة' AS المؤشر, CAST(single_orders AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '06 · نسبة الباقات %' AS المؤشر, CAST(package_pct AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '07 · نسبة المفردة %' AS المؤشر, CAST(single_pct AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '08 · الغسلات المكتملة' AS المؤشر, CAST(completed_washes AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '09 · غسلات عملاء جدد' AS المؤشر, CAST(washes_new_cust AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '10 · غسلات عملاء عائدين' AS المؤشر, CAST(washes_returning_cust AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '11 · نسبة غسلات العائدين %' AS المؤشر, CAST(returning_wash_pct AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '12 · متوسط الغسلات لكل طلب' AS المؤشر, CAST(avg_washes_per_order AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '13 · التسجيلات' AS المؤشر, CAST(signups AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '14 · عملاء جدد' AS المؤشر, CAST(new_customers AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '15 · نسبة التفعيل %' AS المؤشر, CAST(activation_pct AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '16 · عملاء عائدون' AS المؤشر, CAST(returning_customers AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '17 · عملاء نشطون' AS المؤشر, CAST(active_customers AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '18 · نسبة العائدين %' AS المؤشر, CAST(returning_pct AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '19 · متوسط قيمة الطلب (AOV)' AS المؤشر, CAST(aov AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '20 · الطلبات لكل عميل (AOPU)' AS المؤشر, CAST(aopu AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '21 · الإيراد لكل عميل (ARPU)' AS المؤشر, CAST(arpu AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '22 · غسلات لكل مندوب' AS المؤشر, CAST(washes_per_washer AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '23 · متوسط الوقت بين الغسلات (دقيقة)' AS المؤشر, CAST(avg_min_between_washes AS DECIMAL(12,2)) AS القيمة FROM calc
+UNION ALL
+  SELECT period AS الأسبوع, '24 · المناديب المتاحون' AS المؤشر, CAST(washers_available AS DECIMAL(12,2)) AS القيمة FROM calc
+) u ORDER BY المؤشر, الأسبوع
