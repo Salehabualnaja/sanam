@@ -125,7 +125,7 @@ calc AS (
     washers_available, purchased_orders, avg_min_between_washes,
     ROUND(assigned/NULLIF(asg_washers,0),2) assigned_per_washer,
     ROUND(executed/NULLIF(exec_washers,0),2) executed_per_washer,
-    ROUND((assigned/NULLIF(asg_washers,0))/NULLIF(executed/NULLIF(exec_washers,0),0),2) washer_efficiency
+    ROUND((executed/NULLIF(exec_washers,0))/NULLIF(assigned/NULLIF(asg_washers,0),0),2) washer_efficiency
   FROM base
 ),
 unp AS (
@@ -181,7 +181,7 @@ UNION ALL
 UNION ALL
   SELECT period AS wk, '26 · الطلبات المنفذة لكل مندوب' AS المؤشر, CAST(executed_per_washer AS DECIMAL(12,2)) AS val FROM calc
 UNION ALL
-  SELECT period AS wk, '27 · كفاءة المناديب (مسند÷منفذ)' AS المؤشر, CAST(washer_efficiency AS DECIMAL(12,2)) AS val FROM calc
+  SELECT period AS wk, '27 · كفاءة المناديب (منفّذ÷مسند) %' AS المؤشر, CAST(100*washer_efficiency AS DECIMAL(12,2)) AS val FROM calc
 )
 SELECT المؤشر,
   MAX(CASE WHEN wk='2026-09-21' THEN val END) AS `2026-09-21`,

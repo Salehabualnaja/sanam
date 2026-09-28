@@ -125,7 +125,7 @@ calc AS (
     washers_available, purchased_orders, avg_min_between_washes,
     ROUND(assigned/NULLIF(asg_washers,0),2) assigned_per_washer,
     ROUND(executed/NULLIF(exec_washers,0),2) executed_per_washer,
-    ROUND((assigned/NULLIF(asg_washers,0))/NULLIF(executed/NULLIF(exec_washers,0),0),2) washer_efficiency
+    ROUND((executed/NULLIF(exec_washers,0))/NULLIF(assigned/NULLIF(asg_washers,0),0),2) washer_efficiency
   FROM base
 )
 SELECT
