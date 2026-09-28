@@ -111,3 +111,7 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **What:** weekly copy of dashboard #265. All metrics regrouped to weekly buckets anchored to 2026-09-21 (week = 7-day block from anchor); DoD→WoW. Cards: 1024 North Star (per-washer/week), 1025 OKR weekly table, 1026 purchases washes weekly bar, 1027 weekly purchase breakdown.
 - **Source SQL:** metabase/sql/weekly/weekly_{529,496,595,859}.sql
 - **Undo:** `bash metabase/undo_weekly_okr.sh`
+
+### 20260928T100412Z — EDIT weekly North Star card #1024
+- **Change:** reverted metric to daily rate (washes per washer per DAY) but displayed as a single scalar = weighted average over 21 Sep→yesterday = SUM(daily washes)/SUM(daily distinct washers). Currently 4.73.
+- **Before-snapshot:** metabase/backups/ (card-1024.before.json in scratch) — or restore weekly per-week version from git history.

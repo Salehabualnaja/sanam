@@ -1,18 +1,15 @@
-
-WITH wash AS (
-  SELECT DATE_FORMAT(DATE_ADD('2026-09-21', INTERVAL FLOOR(DATEDIFF(`date`,'2026-09-21')/7)*7 DAY),'%Y-%m-%d') wk, COUNT(*) completed_washes
+WITH d AS (
+  SELECT `date` day, COUNT(*) washes
   FROM reservations
   WHERE status=3 AND deleted_at IS NULL AND `date` IS NOT NULL AND `date`<>''
     AND `date` >= '2026-09-21' AND `date` < DATE_FORMAT(UTC_TIMESTAMP()+INTERVAL 3 HOUR,'%Y-%m-%d')
-  GROUP BY wk
+  GROUP BY `date`
 ),
-att AS (
-  SELECT DATE_FORMAT(DATE_ADD('2026-09-21', INTERVAL FLOOR(DATEDIFF(`date`,'2026-09-21')/7)*7 DAY),'%Y-%m-%d') wk, COUNT(DISTINCT representative_id) washers
+a AS (
+  SELECT DATE_FORMAT(`date`,'%Y-%m-%d') day, COUNT(DISTINCT representative_id) washers
   FROM attendances
   WHERE `date` >= '2026-09-21' AND `date` < DATE(UTC_TIMESTAMP()+INTERVAL 3 HOUR)
-  GROUP BY wk
+  GROUP BY day
 )
-SELECT CAST(w.wk AS DATE) AS week_start,
-       ROUND(w.completed_washes/NULLIF(a.washers,0),2) AS washes_per_washer_week
-FROM wash w JOIN att a ON a.wk=w.wk
-ORDER BY week_start ASC;
+SELECT ROUND(SUM(d.washes)/NULLIF(SUM(a.washers),0),2) AS متوسط_الغسلات_لكل_مندوب_يوميا
+FROM d JOIN a ON a.day=d.day

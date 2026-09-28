@@ -1,0 +1,12 @@
+{
+  "dataset_query": {
+    "database": 67,
+    "type": "native",
+    "native": {
+      "query": "\nWITH wash AS (\n  SELECT DATE_FORMAT(DATE_ADD('2026-09-21', INTERVAL FLOOR(DATEDIFF(`date`,'2026-09-21')/7)*7 DAY),'%Y-%m-%d') wk, COUNT(*) completed_washes\n  FROM reservations\n  WHERE status=3 AND deleted_at IS NULL AND `date` IS NOT NULL AND `date`<>''\n    AND `date` >= '2026-09-21' AND `date` < DATE_FORMAT(UTC_TIMESTAMP()+INTERVAL 3 HOUR,'%Y-%m-%d')\n  GROUP BY wk\n),\natt AS (\n  SELECT DATE_FORMAT(DATE_ADD('2026-09-21', INTERVAL FLOOR(DATEDIFF(`date`,'2026-09-21')/7)*7 DAY),'%Y-%m-%d') wk, COUNT(DISTINCT representative_id) washers\n  FROM attendances\n  WHERE `date` >= '2026-09-21' AND `date` < DATE(UTC_TIMESTAMP()+INTERVAL 3 HOUR)\n  GROUP BY wk\n)\nSELECT CAST(w.wk AS DATE) AS week_start,\n       ROUND(w.completed_washes/NULLIF(a.washers,0),2) AS washes_per_washer_week\nFROM wash w JOIN att a ON a.wk=w.wk\nORDER BY week_start ASC;\n",
+      "template-tags": {}
+    }
+  },
+  "display": "smartscalar",
+  "visualization_settings": {}
+}
