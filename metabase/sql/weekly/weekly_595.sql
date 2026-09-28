@@ -1,0 +1,1 @@
+SELECT CAST(DATE_FORMAT(DATE_ADD('2026-09-21', INTERVAL FLOOR(DATEDIFF(created_at,'2026-09-21')/7)*7 DAY),'%Y-%m-%d') AS DATE) AS week_start, SUM(use_package=0) AS single_washes, SUM(use_package=1) AS package_washes, COUNT(*) AS total_paid_washes FROM reservations WHERE deleted_at IS NULL AND created_at >= '2026-09-21' GROUP BY 1 ORDER BY 1

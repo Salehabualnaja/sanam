@@ -106,3 +106,8 @@ Snapshots live in `metabase/backups/`. Helper functions in `metabase/lib.sh`.
 - **Card 925 (table):** daily metrics last 90 days — الغسلات المكتملة (status=3 by end_at), الطلبات المهدرة (=cancelled status=6; no_appionments was degenerate 2-3/day), متوسط وقت التنقل (gap between consecutive washes same rep 0-180min), غسلات لكل مندوب (completed/distinct reps), طلبات 10:30م–2ص, إجمالي/مفردة/باقات (by created_at).
 - **Cards 926 bar (single/pkg), 927 line (completed), 928 line (per-rep).**
 - **Undo:** `bash metabase/undo_experiment_dash.sh`
+
+### 20260928T095459Z — CREATE 'Hamim · OKR Tracking — أسبوعي' dashboard #562 (Hamim/35) + 4 cards (1024–1027)
+- **What:** weekly copy of dashboard #265. All metrics regrouped to weekly buckets anchored to 2026-09-21 (week = 7-day block from anchor); DoD→WoW. Cards: 1024 North Star (per-washer/week), 1025 OKR weekly table, 1026 purchases washes weekly bar, 1027 weekly purchase breakdown.
+- **Source SQL:** metabase/sql/weekly/weekly_{529,496,595,859}.sql
+- **Undo:** `bash metabase/undo_weekly_okr.sh`
